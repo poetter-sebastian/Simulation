@@ -58,3 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+/Assets/StandartAseets
+/Assets/TutorialInfo
+/Assets/RiderFlow.UserData

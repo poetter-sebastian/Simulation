@@ -1,0 +1,41 @@
+﻿@startuml
+
+[*] --> GetStatus
+
+GetStatus : Main state for the agent
+
+GetStatus --> SearchFood
+GetStatus --> SearchWater
+GetStatus --> SearchSleepingPlace
+GetStatus --> SearchPartner
+GetStatus --> SearchGroup
+
+SearchWater --> Drink
+SearchWater --> GetStatus
+Drink -u> GetStatus
+Drink -u> SearchWater
+
+SearchFood --> Eat
+SearchFood --> GetStatus
+Eat -u> GetStatus
+Eat -u> SearchFood
+
+SearchSleepingPlace --> GetStatus
+SearchSleepingPlace --> Sleep
+Sleep --> GetStatus
+Sleep --> SearchSleepingPlace
+
+SearchPartner --> GetStatus
+SearchPartner --> Breeding
+SearchPartner --> SocialInteractions
+Breeding --> GetStatus
+Breeding --> SearchPartner
+
+SearchGroup --> GetStatus
+SearchGroup --> SocialInteractions
+SearchGroup --> SearchPartner
+SocialInteractions --> GetStatus
+SocialInteractions --> SocialInteractions
+SocialInteractions --> SearchGroup
+
+@enduml

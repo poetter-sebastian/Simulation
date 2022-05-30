@@ -1,0 +1,128 @@
+@startuml
+	class Climate {
+		+modifier:Modifier[]
+		
+		+Climate()
+	}
+	
+	class WorldGenerator {
+	    +modifier:Modifier[]
+	
+		+Generate():World
+		+WorldGenerator()
+	}
+	
+	class TimeManager {
+		+modifier:Modifier[]
+		
+		+TimeManager()
+	}
+	
+    class World {
+        #size:vector2
+        #position:vector3
+        -climate:Climate
+        -worldGenerator:WorldGenerator
+        -timeManager:TimeManager
+        -objects:WorldObject[]
+        
+        +World()
+        -HandleAgents()
+    }
+	
+	class WorldObject {
+		#objectName:string
+		#position:vector3
+		#world:world
+		
+		+WorldObject()
+	}
+	
+	
+	class Agent {
+        +movable:bool
+        +alive:bool
+        +domain:string
+        +kingdom:string
+        +phylum:string
+        +class:string
+        +order:string
+        +family:string
+        +genus:string
+        +species:string
+        
+        +o2Modifier:float
+        +co2Modifier:float
+        +ch4Modifier:float
+        +weight:float
+        +temperature:float
+        +size:float
+        +age:float
+        +Diurnal:bool
+        +health:int
+        +healthy:int
+        +thirst:int
+        +injuries:modifier[]
+        +diseases:modifier[]
+        
+        +progeny:int
+        +gestationPeriods:float
+        +timeToMature:float
+        
+        #behaviour:AgentBehaviour
+        
+        +Agent()
+    }
+
+	class AgentBehaviour {
+		-TransitionalStateSystem:state[]
+		
+		+GetNextState():state
+	}
+	
+	class FloraAgent {
+	    +canProduceFood: bool
+	    +plantType:tree, bush, gras, flower
+	    +requiredWaterLevel: int
+	    +requiredMinerals:minerals[]
+	    +requiredTemperature:float
+	    +requiredHumidity:float
+	     
+		+FloraAgent()
+	}
+	
+    class FaunaAgent {
+        +visibility:int
+        +speed:float
+        
+        +hunger:int
+        +memory:int
+        +consumerType:plants,flesh,both
+        +consumedType: Agent[]
+        +socialFactor:int
+        
+        +SenseOfSmell:int
+        +SenseOfHearing:int
+    
+        +FaunaAgent()
+    }
+    
+    object Animal1
+	
+	World::objects *- WorldObject
+	World::timeManager *- TimeManager
+	World::worldGenerator *-- WorldGenerator
+	World::climate *-- Climate
+	
+	MonoBehaviour <|-- WorldObject
+	MonoBehaviour <|- World
+	
+	WorldObject <|-- Agent
+	
+	Agent <|-- FloraAgent
+	Agent::behaviour *-- AgentBehaviour
+	
+	Agent <|-- FaunaAgent
+	FaunaAgent <|-- Animal1
+	
+@enduml

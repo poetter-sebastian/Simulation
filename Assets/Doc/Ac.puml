@@ -1,0 +1,23 @@
+﻿@startuml
+
+start
+:Time.Handle();
+:Climate.Handle();
+:HandleAgents();
+if (multithread?) then (yes)
+  fork
+    :handle agent 1;
+  fork again
+    :...;
+  fork again
+    :handle agent n;
+  end fork
+else (monoproc)
+  :handle agent 1;
+  :...;
+  :handle agent n;
+endif
+
+stop
+
+@enduml

@@ -12,6 +12,7 @@ namespace World.Agents.Animals
             family = "Leporidae";
             genus = "Lepus";
             species = "Lepus europaeus";
+            
         }
 
         public override void Handle()

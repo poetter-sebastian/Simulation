@@ -43,21 +43,6 @@ namespace World.Agents
         [Tooltip("Carbon dioxide modifier of agent")]
         public float co2Modifier;
         /// <summary>
-        /// Methane modifier value of the agent
-        /// </summary>
-        [Tooltip("Methane modifier of agent")]
-        public float ch4Modifier;
-        /// <summary>
-        /// Body weight value of the agent
-        /// </summary>
-        [Tooltip("Body weight of agent")]
-        public float weight;
-        /// <summary>
-        /// Body temperature value of the agent
-        /// </summary>
-        [Tooltip("Body temperature of agent")]
-        public float temperature;
-        /// <summary>
         /// Body size value of the agent
         /// </summary>
         [Tooltip("Body size of agent")]

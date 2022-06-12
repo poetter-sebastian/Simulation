@@ -39,7 +39,7 @@
 	}
 	
 	
-	class Agent {
+	Abstract class Agent {
         +movable:bool
         +alive:bool
         +domain:string
@@ -74,13 +74,13 @@
         +Agent()
     }
 
-	class AgentBehaviour {
+	Abstract class AgentBehaviour {
 		-TransitionalStateSystem:state[]
 		
 		+GetNextState():state
 	}
 	
-	class FloraAgent {
+	Abstract class FloraAgent {
 	    +canProduceFood: bool
 	    +plantType:tree, bush, gras, flower
 	    +requiredWaterLevel: int
@@ -91,7 +91,7 @@
 		+FloraAgent()
 	}
 	
-    class FaunaAgent {
+    Abstract class FaunaAgent {
         +visibility:int
         +speed:float
         
@@ -107,7 +107,13 @@
         +FaunaAgent()
     }
     
-    object Animal1
+    Abstract class HerbivoreBehaviour {
+    
+    }
+    
+    Abstract class CarnivoreBehaviour {
+        
+    }
 	
 	World::objects *- WorldObject
 	World::timeManager *- TimeManager
@@ -122,7 +128,19 @@
 	Agent <|-- FloraAgent
 	Agent::behaviour *-- AgentBehaviour
 	
+	AgentBehaviour <|-- HerbivoreBehaviour
+	AgentBehaviour <|-- CarnivoreBehaviour
+	
+	HerbivoreBehaviour <|-- BunnyBehaviour
+	CarnivoreBehaviour <|-- FoxBehaviour
+	
 	Agent <|-- FaunaAgent
-	FaunaAgent <|-- Animal1
+	
+	FaunaAgent <|-- Bunny
+	FaunaAgent <|-- Fox
+	
+	Fox *-- FoxBehaviour
+	
+	Bunny *-- BunnyBehaviour
 	
 @enduml

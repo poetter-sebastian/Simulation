@@ -1,6 +1,6 @@
 ﻿namespace World.Agents
 {
-    public class FloraAgent: Agent
+    public abstract class FloraAgent: Agent
     {
         
     }

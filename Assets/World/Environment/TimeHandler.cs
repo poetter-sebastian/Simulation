@@ -36,8 +36,21 @@ namespace World.Environment
         public bool realTime = false;
         
         private DateTime localTime;
-
+        
+        public TimeEvents currentState;
+        
+        public static TimeHandler Instance;
+        
+        public event EventHandler TimeChangedToDawn;
+        public event EventHandler TimeChangedToNoon;
+        public event EventHandler TimeChangedToAfternoon;
+        public event EventHandler TimeChangedToDusk;
+        public event EventHandler TimeChangedToNight;
+        public event EventHandler TimeChangedToMidnight;
+        public event EventHandler TimeChangedToAfternight;
+        
         public DateTime LocalTime => localTime;
+        
         private void OnValidate()
         {
             try
@@ -46,11 +59,66 @@ namespace World.Environment
                 localTime = d;
                 //Debug.Log(d);
                 sun.SetPosition();
+                CalcStateFromTime(hour);
             }
             catch(ArgumentOutOfRangeException e)
             {
                 Debug.LogWarning("bad date"+e.Message);
             }
+        }
+
+        private void Awake()
+        {
+            if(!Instance)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Debug.LogError("World instance already set!");
+            }
+        }
+
+        private void Start()
+        {
+            if (!realTime)
+            {
+                localTime = new DateTime(year,month,day,hour,minutes,0);
+                hour = localTime.Hour;
+                minutes = localTime.Minute;
+                date = localTime.Date;
+            }
+            else
+            {
+                localTime = DateTime.Now;
+                hour = localTime.Hour;
+                minutes = localTime.Minute;
+                date = localTime.Date;
+            }
+            TimeChangedToDawn += OnDawn;
+            TimeChangedToNoon += OnNoon;
+            TimeChangedToAfternoon += OnAfternoon;
+            TimeChangedToDusk += OnDusk;
+            TimeChangedToNight += OnNight;
+            TimeChangedToMidnight += OnMidnight;
+            TimeChangedToAfternight += OnAfternight;
+        }
+        
+        private void Update()
+        {
+            localTime = localTime.AddSeconds(timeSpeed * Time.deltaTime);
+            if (frameStep==0) 
+            {
+                //set time
+                hour = localTime.Hour;
+                minutes = localTime.Minute;
+                date = localTime.Date;
+                //set sun
+                sun.SetPosition();
+                //set state
+                CalcStateFromTime(hour);
+            }
+            frameStep = (frameStep + 1) % frameSteps;
         }
         
         public void SetTime(int hour, int minutes) 
@@ -78,40 +146,107 @@ namespace World.Environment
             timeSpeed = speed;
         }
 
-        private void Start()
+        private void OnDawn(object sender, EventArgs e)
         {
-            if (!realTime)
+            Debug.Log("Its dawn!");
+        }
+        private void OnNoon(object sender, EventArgs e)
+        {
+            Debug.Log("Its noon!");
+        }
+        private void OnAfternoon(object sender, EventArgs e)
+        {
+            Debug.Log("Its after noon!");
+        }
+        private void OnDusk(object sender, EventArgs e)
+        {
+            Debug.Log("Its dusk!");
+        }
+        private void OnNight(object sender, EventArgs e)
+        {
+            Debug.Log("Its night!");
+        }
+        private void OnMidnight(object sender, EventArgs e)
+        {
+            Debug.Log("Its midnight!");
+        }
+        
+        private void OnAfternight(object sender, EventArgs e)
+        {
+            Debug.Log("Its after night!");
+        }       
+        
+        [Serializable]
+        public enum Seasons
+        {
+            //humid continental climate
+            Spring,
+            Summer,
+            Autumn,
+            Winter,
+            //equatorial climate
+            WetSeason,
+            DrySeason,
+        }
+        
+        [Serializable]
+        public enum TimeEvents
+        {
+            Dawn,
+            Noon,
+            Afternoon, 
+            Dusk,
+            Night,
+            Midnight,
+            Afternight,
+        }
+        
+        public void CalcStateFromTime(int time)
+        {
+            var oldState = currentState;
+            currentState = (time) switch
             {
-                localTime = new DateTime(year,month,day,hour,minutes,0);
-                hour = localTime.Hour;
-                minutes = localTime.Minute;
-                date = localTime.Date;
-            }
-            else
+                (>= 6 and < 11) => TimeEvents.Dawn,
+                (>= 11 and < 13) => TimeEvents.Noon,
+                (>= 13 and < 17) => TimeEvents.Afternoon,
+                (>= 17 and < 21) => TimeEvents.Dusk,
+                (>= 21 and < 23) => TimeEvents.Night,
+                (>= 23) => TimeEvents.Midnight,
+                (>= 1 and < 6) => TimeEvents.Afternight,
+                _ => TimeEvents.Afternight,
+            };
+            if (oldState != currentState)
             {
-                localTime = DateTime.Now;
-                hour = localTime.Hour;
-                minutes = localTime.Minute;
-                date = localTime.Date;
+                CallEventFromStatus(currentState)?.Invoke(this, EventArgs.Empty);
             }
         }
         
-        private void Update()
+        public EventHandler CallEventFromStatus(TimeEvents events)
         {
-            localTime = localTime.AddSeconds(timeSpeed * Time.deltaTime);
-            if (frameStep==0) 
+            return events switch
             {
-                hour = localTime.Hour;
-                minutes = localTime.Minute;
-                date = localTime.Date;
-                sun.SetPosition();
-            }
-            frameStep = (frameStep + 1) % frameSteps;
+                TimeEvents.Dawn => TimeChangedToDawn,
+                TimeEvents.Noon => TimeChangedToNoon,
+                TimeEvents.Afternoon => TimeChangedToAfternoon,
+                TimeEvents.Dusk => TimeChangedToDusk,
+                TimeEvents.Night => TimeChangedToNight,
+                TimeEvents.Midnight => TimeChangedToMidnight,
+                TimeEvents.Afternight => TimeChangedToAfternight,
+                _ => null,
+            };
         }
         
-        public enum TimeStates
+        public TimeEvents CalcStateFromLong(float lon)
         {
-            
+            return (lon, currentState) switch
+            {
+                (> -0, TimeEvents.Midnight) => TimeEvents.Dawn,
+                (> 50, TimeEvents.Dawn) => TimeEvents.Noon,
+                (< 20, TimeEvents.Noon) => TimeEvents.Dusk,
+                (< 0, TimeEvents.Dusk) => TimeEvents.Night,
+                (< -50, TimeEvents.Night) => TimeEvents.Midnight,
+                _ => currentState
+            };
         }
     }
 }

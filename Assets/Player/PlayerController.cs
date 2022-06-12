@@ -118,6 +118,15 @@ namespace Player
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MainAction"",
+                    ""type"": ""Value"",
+                    ""id"": ""ff29dd6c-2a3a-4798-9f56-63e397ff769c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -340,6 +349,17 @@ namespace Player
                     ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a5ee5cc-0e0e-4cf1-bf86-9a622cbb0f36"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MainAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -358,6 +378,7 @@ namespace Player
             m_Player_Backward = m_Player.FindAction("Backward", throwIfNotFound: true);
             m_Player_Left = m_Player.FindAction("Left", throwIfNotFound: true);
             m_Player_Right = m_Player.FindAction("Right", throwIfNotFound: true);
+            m_Player_MainAction = m_Player.FindAction("MainAction", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -427,6 +448,7 @@ namespace Player
         private readonly InputAction m_Player_Backward;
         private readonly InputAction m_Player_Left;
         private readonly InputAction m_Player_Right;
+        private readonly InputAction m_Player_MainAction;
         public struct PlayerActions
         {
             private @ComputerActions m_Wrapper;
@@ -441,6 +463,7 @@ namespace Player
             public InputAction @Backward => m_Wrapper.m_Player_Backward;
             public InputAction @Left => m_Wrapper.m_Player_Left;
             public InputAction @Right => m_Wrapper.m_Player_Right;
+            public InputAction @MainAction => m_Wrapper.m_Player_MainAction;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -480,6 +503,9 @@ namespace Player
                     @Right.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRight;
                     @Right.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRight;
                     @Right.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRight;
+                    @MainAction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMainAction;
+                    @MainAction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMainAction;
+                    @MainAction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMainAction;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -514,6 +540,9 @@ namespace Player
                     @Right.started += instance.OnRight;
                     @Right.performed += instance.OnRight;
                     @Right.canceled += instance.OnRight;
+                    @MainAction.started += instance.OnMainAction;
+                    @MainAction.performed += instance.OnMainAction;
+                    @MainAction.canceled += instance.OnMainAction;
                 }
             }
         }
@@ -530,6 +559,7 @@ namespace Player
             void OnBackward(InputAction.CallbackContext context);
             void OnLeft(InputAction.CallbackContext context);
             void OnRight(InputAction.CallbackContext context);
+            void OnMainAction(InputAction.CallbackContext context);
         }
     }
 }

@@ -12,6 +12,11 @@ namespace Player
         {
             input.Enable();
         }
+
+        public bool LeftClick()
+        {
+            return input.Player.MainAction.ReadValue<float>() > 0.1f;
+        }
         
         public bool Top()
         {

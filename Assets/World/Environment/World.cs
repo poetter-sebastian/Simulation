@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using World.Agents;
@@ -9,9 +10,9 @@ namespace World.Environment
         public List<Agent> AgentList;
         public Vector2Int size;
 
-        private void Start()
+        private void OnDrawGizmos()
         {
-
+            
         }
 
         // Update is called once per frame

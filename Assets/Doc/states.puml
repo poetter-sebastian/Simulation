@@ -3,39 +3,67 @@
 [*] --> GetStatus
 
 GetStatus : Main state for the agent
+GetStatus --> GetFood
+GetStatus --> GetWater
+GetStatus --> GetSleepingPlace
+GetStatus --> GetPartner
+GetStatus --> GetGroup
+GetStatus --> Flee
 
-GetStatus --> SearchFood
-GetStatus --> SearchWater
-GetStatus --> SearchSleepingPlace
-GetStatus --> SearchPartner
-GetStatus --> SearchGroup
+Flee : Flees from predators
+Flee --> GetStatus
 
-SearchWater --> Drink
-SearchWater --> GetStatus
+GetWater : Search for water
+GetWater --> Drink
+GetWater --> GetStatus
+GetWater --> Flee
+
+Drink : Satisfying the thirst
 Drink -u> GetStatus
-Drink -u> SearchWater
+Drink -u> GetWater
+Drink --> Flee
 
-SearchFood --> Eat
-SearchFood --> GetStatus
+GetFood : Search or hunt for food
+GetFood --> Eat
+GetFood --> GetStatus
+GetFood --> Flee
+Eat : Satisfying the hunger
 Eat -u> GetStatus
-Eat -u> SearchFood
+Eat -u> GetFood
+Eat --> Flee
 
-SearchSleepingPlace --> GetStatus
-SearchSleepingPlace --> Sleep
-Sleep --> GetStatus
-Sleep --> SearchSleepingPlace
+GetSleepingPlace : Search a sleep place
+GetSleepingPlace --> GetStatus
+GetSleepingPlace --> Sleep
+GetSleepingPlace --> Flee
+Sleep : Sleeps until awake
+Sleep --> Awake
+Awake : Time to get awake form sleep
+Awake --> GetStatus
 
-SearchPartner --> GetStatus
-SearchPartner --> Breeding
-SearchPartner --> SocialInteractions
+GetPartner : Search for other gender
+GetPartner --> GetStatus
+GetPartner --> Breeding
+GetPartner --> Socialize
+GetPartner --> Flee
+Breeding : Produces offspring 
 Breeding --> GetStatus
-Breeding --> SearchPartner
+Breeding --> GetPartner
+Breeding --> Flee
 
-SearchGroup --> GetStatus
-SearchGroup --> SocialInteractions
-SearchGroup --> SearchPartner
-SocialInteractions --> GetStatus
-SocialInteractions --> SocialInteractions
-SocialInteractions --> SearchGroup
+GetGroup : Search conspecific members
+GetGroup --> GetStatus
+GetGroup --> Socialize
+GetGroup --> GetPartner
+GetGroup --> Flee
+GetGroup --> FightAsPack
+FightAsPack : Hunt as a Pack
+FightAsPack --> Eat
+FightAsPack --> Flee
+Socialize : Interact with conspecific members
+Socialize --> GetStatus
+Socialize --> Socialize
+Socialize --> GetGroup
+Socialize --> Flee
 
 @enduml

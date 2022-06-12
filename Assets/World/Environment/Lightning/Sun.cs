@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
+using static World.Environment.TimeHandler;
 
 namespace World.Environment.Lightning
 {
@@ -12,25 +14,27 @@ namespace World.Environment.Lightning
 
         [SerializeField]
         private float latitude;
-        
-        private Light sunlight;
 
         public TimeHandler timeHandler;
+        public Light moon;
+        private Light sun;
 
         private void Start()
         {
-            sunlight = GetComponent<Light>();
+            sun = GetComponent<Light>();
+            timeHandler.TimeChangedToDawn += OnDawn;
+            timeHandler.TimeChangedToNight += OnNight;
         }
 
         /// <summary>
         /// Sets the location on earth
         /// </summary>
-        /// <param name="longitude">Longitude of the location</param>
-        /// <param name="latitude">Latitude of the location</param>
-        public void SetLocation(float longitude, float latitude)
+        /// <param name="lon">Longitude of the location</param>
+        /// <param name="lat">Latitude of the location</param>
+        public void SetLocation(float lon, float lat)
         {
-            this.longitude = longitude;
-            this.latitude = latitude;
+            longitude = lon;
+            latitude = lat;
         }
         
         /// <summary>
@@ -42,12 +46,30 @@ namespace World.Environment.Lightning
             SunPosition.CalculateSunPosition(timeHandler.LocalTime, latitude, longitude, out var azi, out var alt);
             angles.x = (float)alt * Mathf.Rad2Deg;
             angles.y = (float)azi * Mathf.Rad2Deg;
+            
             //UnityEngine.Debug.Log(angles);
             transform.localRotation = Quaternion.Euler(angles);
+            angles.x = (angles.x + 180) % 360;
+            angles.y = (angles.y + 180) % 360;
+            moon.transform.localRotation = Quaternion.Euler(angles);
             //light.intensity = Mathf.InverseLerp(-12, 0, angles.x);
         }
+        
+        private void OnDawn(object sender, EventArgs e)
+        {
+            sun.shadows = LightShadows.Soft;
+            GetComponent<LensFlareComponentSRP>().enabled = true;
+            moon.shadows = LightShadows.None;
+        }
+
+        private void OnNight(object sender, EventArgs e)
+        {
+            sun.shadows = LightShadows.None;
+            GetComponent<LensFlareComponentSRP>().enabled = false;
+            moon.shadows = LightShadows.Soft;
+        }
     }
-    
+
     /// <summary>
     /// The following source came from this blog:
     /// http://guideving.blogspot.co.uk/2010/08/sun-position-in-c.html

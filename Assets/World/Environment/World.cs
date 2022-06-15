@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using World.Agents;
+using World.Structure;
 
 namespace World.Environment
 {
@@ -9,6 +10,14 @@ namespace World.Environment
     {
         public List<Agent> AgentList;
         public Vector2Int size;
+
+        public Graph Graph = new Graph();
+
+        public World()
+        {
+            Graph.AddNode(Vector3.zero);
+            Graph.AddNode(Vector3.up);
+        }
 
         private void OnDrawGizmos()
         {

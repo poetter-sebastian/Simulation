@@ -1,4 +1,4 @@
-namespace World.Agents.Animals
+namespace World.Agents.Animals.Rabbit
 {
     public class Rabbit : FaunaAgent
     {
@@ -12,12 +12,13 @@ namespace World.Agents.Animals
             family = "Leporidae";
             genus = "Lepus";
             species = "Lepus europaeus";
-            
+            behaviour = new RabbitBehavior();
+            maxPossibleSpeed = 5;
         }
 
         public override void Handle()
         {
-            throw new System.NotImplementedException();
+            behaviour.Next();
         }
     }
 }

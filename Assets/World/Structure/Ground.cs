@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace World.Environment.Ground
+namespace World.Structure
 {
     public class Ground : MonoBehaviour
     {

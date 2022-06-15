@@ -40,20 +40,20 @@ namespace World.Agents
         [Tooltip("Methane modifier of agent")]
         public float ch4Modifier;
         /// <summary>
-        /// Body weight value of the agent
+        /// Body weight value of the agent in m
         /// </summary>
         [Tooltip("Body weight of agent")]
         public float weight;
         /// <summary>
-        /// Body temperature value of the agent
+        /// Body temperature value of the agent in °C
         /// </summary>
         [Tooltip("Body temperature of agent")]
-        public float temperature;
+        public float temperature = 24.5f;
         public float maxPossibleSpeed;
-        public float smellRadius;
-        public float listingRadius;
-        public float visionRadius;
-        public bool cannibalism;
+        public float smellRadius = 1;
+        public float listingRadius = 1;
+        public float visionRadius = 1;
+        public bool cannibalism = false;
 
         protected FaunaAgent()
         {
@@ -68,7 +68,7 @@ namespace World.Agents
 
         private void Update()
         {
-            nav.destination = target.position;
+            //nav.destination = target.position;
         }
     }
 }

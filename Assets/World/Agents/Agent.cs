@@ -85,7 +85,7 @@ namespace World.Agents
         /// Behaviour of the agent
         /// </summary>
         [Tooltip("Behaviour of the agent")]
-        public AgentBehaviour behaviour;
+        public IAgentBehaviour behaviour;
         
         /// <summary>
         ///  Function to handle the agent and check the states

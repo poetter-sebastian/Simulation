@@ -231,7 +231,7 @@ Material:
     m_Floats:
     - _AORemapMax: 1
     - _AORemapMin: 0
-    - _AO_Strengh: 1
+    - _AO_Strengh: 0.35
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
     - _AlbedoAffectEmissive: 0
@@ -311,7 +311,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Roughness_Strengh: 0
+    - _Roughness_Strengh: 0.2
     - _Smoothness: 0
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0

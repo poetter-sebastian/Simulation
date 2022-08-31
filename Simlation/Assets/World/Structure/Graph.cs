@@ -8,7 +8,7 @@ namespace World.Structure
     public class Graph
     {
         //increment the id number for identify the node
-        private int nodeID = 0;
+        protected int NodeID = 0;
         //dict of nodes
         public Dictionary<Vector2?, Node> Nodes { get; } = new();
         //collection of nodes
@@ -21,7 +21,7 @@ namespace World.Structure
         public Dictionary<(Vector2, Vector2), Edge>.KeyCollection EdgeKeys => edges.Keys;
         public Dictionary<(Vector2, Vector2), Edge>.ValueCollection EdgeValues => edges.Values;
 
-        public int NextID() => nodeID++;
+        public int NextID() => NodeID++;
 
         public bool AddNode(Vector3 pos)
         {
@@ -30,7 +30,7 @@ namespace World.Structure
         
         public bool AddNode(Vector3 pos, out Node node, Node.NodeType type = Node.NodeType.Graph)
         {
-            node = new Node(nodeID++, pos, type);
+            node = new Node(NodeID++, pos, type);
             var ret = Nodes.TryAdd(new Vector2(pos.x, pos.z), node);
             if (!ret)
             {

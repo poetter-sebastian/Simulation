@@ -5,7 +5,7 @@ namespace World.Environment
 {
     public interface ISpawner
     {
-        public void Spawn();
+        public void Spawn(Vector2Int size);
 
         public class NoSpawnerException : Exception
         {

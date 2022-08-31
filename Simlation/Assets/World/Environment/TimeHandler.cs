@@ -6,6 +6,8 @@ namespace World.Environment
 {
     public class TimeHandler : MonoBehaviour
     {
+        public static TimeHandler Instance;
+        
         public Sun sun;
         [SerializeField]
         DateTime date;
@@ -38,9 +40,7 @@ namespace World.Environment
         private DateTime localTime;
         
         public TimeEvents currentState;
-        
-        public static TimeHandler Instance;
-        
+
         public event EventHandler TimeChangedToDawn;
         public event EventHandler TimeChangedToNoon;
         public event EventHandler TimeChangedToAfternoon;
@@ -48,6 +48,7 @@ namespace World.Environment
         public event EventHandler TimeChangedToNight;
         public event EventHandler TimeChangedToMidnight;
         public event EventHandler TimeChangedToAfternight;
+        public event EventHandler<HourElapsedEventArgs> TimeHourElapsed;
         
         public DateTime LocalTime => localTime;
         
@@ -59,7 +60,7 @@ namespace World.Environment
                 localTime = d;
                 //Debug.Log(d);
                 sun.SetPosition();
-                CalcStateFromTime(hour);
+                CallEventsFromTime(hour, hour);
             }
             catch(ArgumentOutOfRangeException e)
             {
@@ -81,6 +82,7 @@ namespace World.Environment
 
         private void Start()
         {
+            //Settings
             if (!realTime)
             {
                 localTime = new DateTime(year,month,day,hour,minutes,0);
@@ -95,6 +97,7 @@ namespace World.Environment
                 minutes = localTime.Minute;
                 date = localTime.Date;
             }
+            //Events
             TimeChangedToDawn += OnDawn;
             TimeChangedToNoon += OnNoon;
             TimeChangedToAfternoon += OnAfternoon;
@@ -108,19 +111,20 @@ namespace World.Environment
         
         private void Update()
         {
-            //localTime = localTime.AddSeconds(timeSpeed * Time.deltaTime);
-            //if (frameStep == 0) 
-            //{
-            //    //set time
-            //    hour = localTime.Hour;
-            //    minutes = localTime.Minute;
-            //    date = localTime.Date;
-            //    //set sun
-            //    sun.SetPosition();
-            //    //set state
-            //    CalcStateFromTime(hour);
-            //}
-            //frameStep = (frameStep + 1) % frameSteps;
+            localTime = localTime.AddSeconds(timeSpeed * Time.deltaTime);
+            if (frameStep == 0) 
+            {
+                //set time
+                var oldHour = hour;
+                hour = localTime.Hour;
+                minutes = localTime.Minute;
+                date = localTime.Date;
+                //set sun
+                sun.SetPosition();
+                //set state
+                CallEventsFromTime(oldHour, hour);
+            }
+            frameStep = (frameStep + 1) % frameSteps;
         }
         
         public void SetTime(int hour, int minutes) 
@@ -176,7 +180,46 @@ namespace World.Environment
         private void OnAfternight(object sender, EventArgs e)
         {
             Debug.Log("Its after night!");
-        }       
+        }
+
+        public void CallEventsFromTime(int oldTime, int time)
+        {
+            var oldState = currentState;
+            currentState = (time) switch
+            {
+                (>= 6 and < 11) => TimeEvents.Dawn,
+                (>= 11 and < 13) => TimeEvents.Noon,
+                (>= 13 and < 17) => TimeEvents.Afternoon,
+                (>= 17 and < 21) => TimeEvents.Dusk,
+                (>= 21 and < 23) => TimeEvents.Night,
+                (>= 23) => TimeEvents.Midnight,
+                (>= 1 and < 6) => TimeEvents.Afternight,
+                _ => TimeEvents.Afternight,
+            };
+            if (time > oldTime)
+            {
+                TimeHourElapsed?.Invoke(this, new HourElapsedEventArgs(time));
+            }
+            if (oldState != currentState)
+            {
+                CallEventFromStatus(currentState)?.Invoke(this, EventArgs.Empty);
+            }
+        }
+        
+        public EventHandler CallEventFromStatus(TimeEvents events)
+        {
+            return events switch
+            {
+                TimeEvents.Dawn => TimeChangedToDawn,
+                TimeEvents.Noon => TimeChangedToNoon,
+                TimeEvents.Afternoon => TimeChangedToAfternoon,
+                TimeEvents.Dusk => TimeChangedToDusk,
+                TimeEvents.Night => TimeChangedToNight,
+                TimeEvents.Midnight => TimeChangedToMidnight,
+                TimeEvents.Afternight => TimeChangedToAfternight,
+                _ => null,
+            };
+        }
         
         [Serializable]
         public enum Seasons
@@ -203,52 +246,33 @@ namespace World.Environment
             Afternight,
         }
         
-        public void CalcStateFromTime(int time)
+        [Serializable]
+        public enum Months
         {
-            var oldState = currentState;
-            currentState = (time) switch
-            {
-                (>= 6 and < 11) => TimeEvents.Dawn,
-                (>= 11 and < 13) => TimeEvents.Noon,
-                (>= 13 and < 17) => TimeEvents.Afternoon,
-                (>= 17 and < 21) => TimeEvents.Dusk,
-                (>= 21 and < 23) => TimeEvents.Night,
-                (>= 23) => TimeEvents.Midnight,
-                (>= 1 and < 6) => TimeEvents.Afternight,
-                _ => TimeEvents.Afternight,
-            };
-            if (oldState != currentState)
-            {
-                CallEventFromStatus(currentState)?.Invoke(this, EventArgs.Empty);
-            }
+            January = 1, //to start at 1 for dateTime
+            February,
+            March,
+            April,
+            May,
+            June,
+            July,
+            August,
+            September,
+            October,
+            November,
+            December,
         }
+    }
+    
+    public class HourElapsedEventArgs : EventArgs
+    {
+        public int Hour { get; }
+        public bool OverNoon { get; }
         
-        public EventHandler CallEventFromStatus(TimeEvents events)
+        public HourElapsedEventArgs(int overNoon)
         {
-            return events switch
-            {
-                TimeEvents.Dawn => TimeChangedToDawn,
-                TimeEvents.Noon => TimeChangedToNoon,
-                TimeEvents.Afternoon => TimeChangedToAfternoon,
-                TimeEvents.Dusk => TimeChangedToDusk,
-                TimeEvents.Night => TimeChangedToNight,
-                TimeEvents.Midnight => TimeChangedToMidnight,
-                TimeEvents.Afternight => TimeChangedToAfternight,
-                _ => null,
-            };
-        }
-        
-        public TimeEvents CalcStateFromLong(float lon)
-        {
-            return (lon, currentState) switch
-            {
-                (> -0, TimeEvents.Midnight) => TimeEvents.Dawn,
-                (> 50, TimeEvents.Dawn) => TimeEvents.Noon,
-                (< 20, TimeEvents.Noon) => TimeEvents.Dusk,
-                (< 0, TimeEvents.Dusk) => TimeEvents.Night,
-                (< -50, TimeEvents.Night) => TimeEvents.Midnight,
-                _ => currentState
-            };
+            Hour = overNoon;
+            OverNoon = Hour >= 12;
         }
     }
 }

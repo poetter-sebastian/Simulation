@@ -5,6 +5,7 @@ using NaughtyAttributes;
 using Unity.AI.Navigation;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utility;
 using World.Agents;
 using World.Structure;
@@ -27,20 +28,22 @@ namespace World.Environment
         
         public Graph MeshGraph;
         public Graph MovementGraph;
+        public Dictionary<Node, Ground> Grounds;
 
         public GameObject[] spawner;
 
-        public Gradient groundColors;
-        public Gradient heightColors;
-        public Gradient waterLevel;
-        public Gradient aridity;
-        
-        public Color[] colors;
+        public Gradient groundGradient;
+        public Gradient heightGradient;
+        public Gradient aridityGradient;
+
+        public Color[] textureColors;
+        public Color[] groundTypeColors;
+        public Color[] heightColors;
+        public Color[] aridityColors;
 
         [Header("Noise Settings")]
-        public int randomizer = 10000;
         [Range(0, 10000000)]
-        public int seed = 0;
+        public int seed = 1;
         [Range(0, 50)]
         public float scale = 8;
         [Range(1, 8)] 
@@ -64,14 +67,27 @@ namespace World.Environment
             minHeight = float.MaxValue;
 
             MeshGraph = new Graph();
+            Grounds = new Dictionary<Node, Ground>();
             MovementGraph = new Graph();
 
             var mesh = new Mesh();
             mesh.Clear();
             vertices = new Vector3[size.x * size.y];
             var noiseMap =
-                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, 1, scale, octave, persistence, lacunarity, Vector3.zero);
+                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed, scale, octave, persistence, lacunarity, Vector3.zero);
+            
+            var noiseMapSand =
+                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed+1, scale, octave, persistence, lacunarity, Vector3.zero);
+            
+            var noiseMaSilt =
+                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed+2, scale, octave, persistence, lacunarity, Vector3.zero);
+            
+            var noiseMapClay =
+                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed+3, scale, octave, persistence, lacunarity, Vector3.zero);
 
+            var noiseMapLoam =
+                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed+4, scale, octave, persistence, lacunarity, Vector3.zero);
+            
             Node meshNode = null, graphNode = null;
             int x;
             for (x = 0; x < size.x; x++)
@@ -79,11 +95,13 @@ namespace World.Environment
                 int z;
                 for (z = 0; z < size.y; z++)
                 {
-                    var y = noiseMap[x, z] * test.Evaluate(noiseMap[x, z]) * highScale;
+                    //high scale
+                    var y = noiseMap[x, z] * test.Evaluate(noiseMap[x, z]) * highScale; 
                     //graph for mesh
                     //origin
-                    MeshGraph.AddNode(new Vector3(x * pointScale, y, (float)z * pointScale), out var newNode,
-                        Node.NodeType.Mesh);
+                    // ReSharper disable once SuggestVarOrType_SimpleTypes
+                    MeshGraph.AddNode(new Vector3(x * pointScale, y, (float)z * pointScale), out var newNode);
+                    Grounds.Add(newNode, new Ground(newNode, noiseMapSand[x, z], noiseMaSilt[x, z], noiseMapClay[x, z], noiseMapLoam[x, z]));
                     vertices[newNode.ID] = new Vector3(newNode.Pos.x, newNode.Pos.y, newNode.Pos.z);
                     if (meshNode is not null)
                     {
@@ -150,22 +168,31 @@ namespace World.Environment
             return mesh;
         }
 
-        private Color[] GenerateColor(Gradient gradient)
+        private void GenerateColor(Mesh mesh)
         {
-            int x;
             //vertex-color
-            var color = new Color[MeshGraph.Nodes.Count];
+            var texture = new Color[MeshGraph.Nodes.Count];
+            var groundType = new Color[MeshGraph.Nodes.Count];
+            var aridity = new Color[MeshGraph.Nodes.Count];
+            var heights = new Color[MeshGraph.Nodes.Count]; 
+
             var i = 0;
-            for (x = 0; x < size.x; x++)
+            for (var x = 0; x < size.x; x++)
             {
                 for (var z = 0; z < size.y; z++)
                 {
                     var height = MeshGraph.Nodes[new Vector2((float)x * pointScale, (float)z * pointScale)].Pos.y;
-                    color[i] = gradient.Evaluate(Mathf.InverseLerp(minHeight, maxHeight, height));
+                    texture[i] = groundGradient.Evaluate(Mathf.InverseLerp(minHeight, maxHeight, height));
+                    heights[i] = heightGradient.Evaluate(Mathf.InverseLerp(minHeight, maxHeight, height));
+                    //groundType[i] = Grounds[];
+                    aridity[i] = aridityGradient.Evaluate(0.5f);
                     i++;
                 }
             }
-            return color;
+            heightColors = heights;
+            aridityColors = aridity;
+            textureColors = texture;
+            mesh.colors = texture;
         }
         
 
@@ -219,24 +246,15 @@ namespace World.Environment
         
         private IEnumerator ChangeGradientColor(Gradient gradient)
         {
-            int x;
-            //vertex-color
-            var i = 0;
-            
-            for (x = 0; x < size.x; x++)
-            {
-                for (var z = 0; z < size.y; z++)
-                {
-                    var height = MeshGraph.Nodes[new Vector2((float)x * pointScale, (float)z * pointScale)].Pos.y;
-                    colors[i] = gradient.Evaluate(Mathf.InverseLerp(minHeight, maxHeight, height));
-                    i++;
-                }
-                //yield return null;
-            }
-            GetComponent<MeshFilter>().sharedMesh.colors = colors;
+            GetComponent<MeshFilter>().sharedMesh.colors = textureColors;
             yield break;
         }
-        
+
+        private void ActivateGroundTypeColors()
+        {
+            
+        }
+
         [Button("Generate")]
         private void Generate()
         {
@@ -246,8 +264,8 @@ namespace World.Environment
             
             mesh.triangles = GenerateTriangles();
 
-            mesh.colors = GenerateColor(groundColors);
-            colors = mesh.colors;
+            GenerateColor(mesh);
+            
             mesh.RecalculateNormals();
             mesh.RecalculateBounds();
 
@@ -263,7 +281,7 @@ namespace World.Environment
                 {
                     throw new ISpawner.NoSpawnerException();
                 }
-                spawn.Spawn();
+                spawn.Spawn(size);
             }
 #if UNITY_EDITOR
             UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
@@ -271,18 +289,18 @@ namespace World.Environment
             GetComponent<NavMeshSurface>().BuildNavMesh();
         }
 
-        [Button("Change Gradient")]
+        [Button("Show soil types")]
         private void ChangeGradient()
         {
             if (currentGradient == 0)
             {
                 currentGradient++;
-                StartCoroutine(ChangeGradientColor(groundColors));
+                StartCoroutine(ChangeGradientColor(groundGradient));
             }
             else
             {
                 currentGradient = 0;
-                StartCoroutine(ChangeGradientColor(heightColors));
+                StartCoroutine(ChangeGradientColor(heightGradient));
             }
         }
 
@@ -317,9 +335,9 @@ namespace World.Environment
             }
         }
 
-        public void Spawn(GameObject grass)
+        public void Spawn(GameObject obj)
         {
-            var center = grass.transform.position;
+            var center = obj.transform.position;
             var x = Random.Range(center.x - 3, center.x + 3);
             var z = Random.Range(center.z - 3, center.z + 3);
             
@@ -330,7 +348,7 @@ namespace World.Environment
             {
                 return;
             }
-            Instantiate(grass, hit.point, grass.transform.rotation, grass.transform.parent);
+            Instantiate(obj, hit.point, obj.transform.rotation, obj.transform.parent);
         }
         
 #if UNITY_EDITOR

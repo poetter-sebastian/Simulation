@@ -1,30 +1,28 @@
 using System;
 using UnityEngine;
-using Rand = System.Random;
 using Random = UnityEngine.Random;
 
 namespace World.Environment.Spawn
 {
     public class TreeSpawner : MonoBehaviour, ISpawner
     {
-        public GameObject[] trees;
-        
-        public void Spawn()
+        public GameObject[] plants;
+        public int spawnAttempts = 550;
+        public float minHeight = 3.5f;
+        public float maxHeight = 7.5f;
+
+        public void Spawn(Vector2Int size)
         {
             foreach (Transform child in transform)
             {
                 DestroyImmediate(child.gameObject);
             }
-            var rand = new Rand();
-            for (var i = 0; i < 550; i++)
+            for (var i = 0; i < spawnAttempts; i++)
             {
-                var x = Random.Range(1, 99);
-                var z = Random.Range(1, 99);
-                
-                var start = new Vector3(x, 50, z);
-                var end = new Vector3(x, 50-200, z);
+                var x = Random.Range(1f, size.x-1f);
+                var z = Random.Range(1f, size.y-1f);
 
-                var ray = new Ray(start, end);
+                var ray = new Ray(new Vector3(x, 50, z), new Vector3(x, 50-200, z));
 
                 Physics.Raycast(ray, out var hit, 200, LayerMask.GetMask("World", "Water"));
 
@@ -33,18 +31,13 @@ namespace World.Environment.Spawn
                     continue;
                 }
                 
-                switch (hit.point.y)
-                {
-                    case < 3.5f:
-                    case > 7.6f:
-                        continue;
-                    default:
-                    {
-                        var obj = rand.Next(0, trees.Length);
-                        Instantiate(trees[obj], hit.point, Quaternion.identity, transform);
-                        break;
-                    }
-                }
+                if (hit.point.y < minHeight || hit.point.y > maxHeight) continue;
+
+                var obj = Random.Range(0, plants.Length);
+                var el = Instantiate(plants[obj], hit.point, new Quaternion(0f, Random.Range(0f, 360f), 0f, 0f), transform);
+
+                var scale = Random.Range(0.5f, 1);
+                el.transform.localScale = new Vector3(scale, scale, scale);
             }
         }
     }

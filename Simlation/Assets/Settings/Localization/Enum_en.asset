@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Enum_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 91ddf9ff9bc2f6440af6cff2c6860550, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 237480435712
+    m_Localized: Drizzle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9377406976
+    m_Localized: Rainy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 244304568320
+    m_Localized: Snowy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 251871092736
+    m_Localized: Clear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 483191152640
+    m_Localized: Stormy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 500190666752
+    m_Localized: Blizzard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 516586201088
+    m_Localized: Foggy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 543773679616
+    m_Localized: Hail storm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 561779826688
+    m_Localized: Heat wave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3585902370816
+    m_Localized: N
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3615598043136
+    m_Localized: NE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3635151888384
+    m_Localized: E
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3679234023424
+    m_Localized: S
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3714793332736
+    m_Localized: W
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3732442963968
+    m_Localized: NW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3699995828224
+    m_Localized: SW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3654068199424
+    m_Localized: SE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17477344944128
+    m_Localized: Sand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17457363279872
+    m_Localized: Loam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17405190332416
+    m_Localized: Silt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17395820257280
+    m_Localized: Clay
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Enum Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Enum
+  m_TableCollectionNameGuidString: 91ddf9ff9bc2f6440af6cff2c6860550
+  m_Entries:
+  - m_Id: 9377406976
+    m_Key: Weather.Rain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 237480435712
+    m_Key: Weather.Drizzle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 244304568320
+    m_Key: Weather.Snow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 251871092736
+    m_Key: Weather.Clear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 483191152640
+    m_Key: Weather.Stormy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 500190666752
+    m_Key: Weather.Blizzard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 516586201088
+    m_Key: Weather.Foggy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 543773679616
+    m_Key: Weather.HailStorm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 561779826688
+    m_Key: Weather.HeatWave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3585902370816
+    m_Key: Direction.North
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3615598043136
+    m_Key: Direction.NorthEast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3635151888384
+    m_Key: Direction.East
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3654068199424
+    m_Key: Direction.SouthEast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3679234023424
+    m_Key: Direction.South
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3699995828224
+    m_Key: Direction.SouthWest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3714793332736
+    m_Key: Direction.West
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3732442963968
+    m_Key: Direction.NorthWest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17395820257280
+    m_Key: GroundTypes.Clay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17405190332416
+    m_Key: GroundTypes.Silt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17457363279872
+    m_Key: GroundTypes.Loam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17477344944128
+    m_Key: GroundTypes.Sand
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 9032294683924496437
+  references:
+    version: 2
+    RefIds:
+    - rid: 9032294683924496437
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1662575727273

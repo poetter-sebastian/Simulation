@@ -288,8 +288,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   localClouds:
-    m_OverrideState: 1
-    m_Value: 0
+    m_OverrideState: 0
+    m_Value: 1
   earthCurvature:
     m_OverrideState: 0
     m_Value: 0.826
@@ -534,31 +534,31 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 0.1
   globalWindSpeed:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value:
       mode: 0
-      customValue: 3000
+      customValue: 752.23
       additiveValue: 0
       multiplyValue: 1
   orientation:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value:
-      mode: 1
+      mode: 0
       customValue: 0
       additiveValue: 0
-      multiplyValue: 1
+      multiplyValue: 0
   altitudeDistortion:
     m_OverrideState: 0
-    m_Value: 0.5
+    m_Value: -0.153
   cloudMapSpeedMultiplier:
     m_OverrideState: 0
     m_Value: 0.5
   shapeSpeedMultiplier:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0.597
   erosionSpeedMultiplier:
     m_OverrideState: 0
-    m_Value: 0.25
+    m_Value: 0.035
   verticalShapeWindSpeed:
     m_OverrideState: 0
     m_Value: 0
@@ -575,7 +575,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   shadows:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   shadowResolution:
     m_OverrideState: 0

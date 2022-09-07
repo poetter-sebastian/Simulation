@@ -1,4 +1,8 @@
 
+using System;
+using UnityEngine;
+using UnityEngine.Localization;
+
 namespace World.Structure
 {
     public class Ground 
@@ -37,10 +41,46 @@ namespace World.Structure
             this.silt = (int)(silt / sum * 100);
             this.loam = (int)(loam / sum * 100);
             
+            //if no values
             if (sand == 0 && clay == 0 && silt == 0 && loam == 0)
             {
                 this.loam = 100;
             }
+        }
+
+        public Color CalcTypeColor()
+        {
+            if (sand > clay)
+            {
+                return sand > silt ? GroundColor(sand > loam ? GroundTypes.Sand : GroundTypes.Loam) : GroundColor(silt > loam ? GroundTypes.Silt : GroundTypes.Loam);
+            }
+            return clay > silt ? GroundColor(clay > loam ? GroundTypes.Clay : GroundTypes.Loam) : GroundColor(silt > loam ? GroundTypes.Silt : GroundTypes.Loam);
+        }
+
+        public static Color GroundColor(GroundTypes type) => type switch
+        {
+            GroundTypes.Clay => new Color32(131, 126, 123, 255),
+            GroundTypes.Silt => new Color32(222, 169, 127, 255),
+            GroundTypes.Loam => new Color32(51, 49, 52, 255),
+            GroundTypes.Sand => new Color32(228, 174, 41, 255),
+            _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+        };
+        
+        public static string GroundTypeToString(GroundTypes type) => type switch
+        {
+            GroundTypes.Clay => new LocalizedString("Enum", "GroundTypes.Clay").GetLocalizedString(),
+            GroundTypes.Silt => new LocalizedString("Enum", "GroundTypes.Silt").GetLocalizedString(),
+            GroundTypes.Loam => new LocalizedString("Enum", "GroundTypes.Loam").GetLocalizedString(),
+            GroundTypes.Sand => new LocalizedString("Enum", "GroundTypes.Sand").GetLocalizedString(),
+            _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+        };
+        
+        public enum GroundTypes
+        {
+            Clay,
+            Silt,
+            Loam,
+            Sand,
         }
     }
 }

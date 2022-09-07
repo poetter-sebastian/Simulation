@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Localization;
 
 namespace World.Structure
 {
@@ -98,6 +99,32 @@ namespace World.Structure
                 AddEdge(edge);
             }
         }
+        
+        public static Direction DegreeToDirection(float dir) => dir switch
+        {
+            < 0 or > 315 => Direction.North,
+            > 0 and <= 45 => Direction.NorthWest,
+            > 45 and <= 90 => Direction.East,
+            > 90 and <= 135 => Direction.SouthEast,
+            > 135 and <= 180 => Direction.South,
+            > 180 and <= 225 => Direction.SouthWest,
+            > 225 and <= 270 => Direction.West,
+            > 270 and <= 315 => Direction.NorthWest,
+            _ => throw new ArgumentOutOfRangeException(nameof(dir), dir, null)
+        };
+        
+        public static string DirectionToAbbr(Direction dir) => dir switch
+        {
+            Direction.North => new LocalizedString("Enum", "Direction.North").GetLocalizedString(),
+            Direction.NorthEast => new LocalizedString("Enum", "Direction.NorthEast").GetLocalizedString(),
+            Direction.East => new LocalizedString("Enum", "Direction.East").GetLocalizedString(),
+            Direction.SouthEast => new LocalizedString("Enum", "Direction.SouthEast").GetLocalizedString(),
+            Direction.South => new LocalizedString("Enum", "Direction.South").GetLocalizedString(),
+            Direction.SouthWest => new LocalizedString("Enum", "Direction.SouthWest").GetLocalizedString(),
+            Direction.West => new LocalizedString("Enum", "Direction.West").GetLocalizedString(),
+            Direction.NorthWest => new LocalizedString("Enum", "Direction.NorthWest").GetLocalizedString(),
+            _ => throw new ArgumentOutOfRangeException(nameof(dir), dir, null)
+        };
         
         public enum Direction
         {

@@ -28,8 +28,11 @@ namespace World.Environment
         
         public Graph MeshGraph;
         public Graph MovementGraph;
-        public Dictionary<Node, Ground> Grounds;
+        public Dictionary<Vector2, Ground> Grounds;
 
+        public GameObject water;
+        public GameObject plants;
+        public GameObject border;
         public GameObject[] spawner;
 
         public Gradient groundGradient;
@@ -59,7 +62,6 @@ namespace World.Environment
         
         private float maxHeight = 0;
         private float minHeight = float.MaxValue;
-        private int currentGradient = 0;
 
         private Mesh GenerateGraph(out Vector3[] vertices)
         {
@@ -67,7 +69,7 @@ namespace World.Environment
             minHeight = float.MaxValue;
 
             MeshGraph = new Graph();
-            Grounds = new Dictionary<Node, Ground>();
+            Grounds = new Dictionary<Vector2, Ground>();
             MovementGraph = new Graph();
 
             var mesh = new Mesh();
@@ -100,8 +102,9 @@ namespace World.Environment
                     //graph for mesh
                     //origin
                     // ReSharper disable once SuggestVarOrType_SimpleTypes
-                    MeshGraph.AddNode(new Vector3(x * pointScale, y, (float)z * pointScale), out var newNode);
-                    Grounds.Add(newNode, new Ground(newNode, noiseMapSand[x, z], noiseMaSilt[x, z], noiseMapClay[x, z], noiseMapLoam[x, z]));
+                    var vec = new Vector3(x * pointScale, y, (float)z * pointScale);
+                    MeshGraph.AddNode(vec, out var newNode);
+                    Grounds.Add(new Vector2(vec.x, vec.z), new Ground(newNode, noiseMapSand[x, z], noiseMaSilt[x, z], noiseMapClay[x, z], noiseMapLoam[x, z]));
                     vertices[newNode.ID] = new Vector3(newNode.Pos.x, newNode.Pos.y, newNode.Pos.z);
                     if (meshNode is not null)
                     {
@@ -184,14 +187,18 @@ namespace World.Environment
                     var height = MeshGraph.Nodes[new Vector2((float)x * pointScale, (float)z * pointScale)].Pos.y;
                     texture[i] = groundGradient.Evaluate(Mathf.InverseLerp(minHeight, maxHeight, height));
                     heights[i] = heightGradient.Evaluate(Mathf.InverseLerp(minHeight, maxHeight, height));
-                    //groundType[i] = Grounds[];
-                    aridity[i] = aridityGradient.Evaluate(0.5f);
+                    
+                    var vec = new Vector2(x * pointScale, (float)z * pointScale);
+                    var ground = Grounds[vec];
+                    groundType[i] = ground.CalcTypeColor();
+                    aridity[i] = aridityGradient.Evaluate(Mathf.InverseLerp(minHeight, maxHeight, height));
                     i++;
                 }
             }
             heightColors = heights;
             aridityColors = aridity;
             textureColors = texture;
+            groundTypeColors = groundType;
             mesh.colors = texture;
         }
         
@@ -243,17 +250,6 @@ namespace World.Environment
             }
             mesh.uv = uv;
         }
-        
-        private IEnumerator ChangeGradientColor(Gradient gradient)
-        {
-            GetComponent<MeshFilter>().sharedMesh.colors = textureColors;
-            yield break;
-        }
-
-        private void ActivateGroundTypeColors()
-        {
-            
-        }
 
         [Button("Generate")]
         private void Generate()
@@ -283,28 +279,12 @@ namespace World.Environment
                 }
                 spawn.Spawn(size);
             }
-#if UNITY_EDITOR
-            UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
-#endif
-            GetComponent<NavMeshSurface>().BuildNavMesh();
+//#if UNITY_EDITOR
+//            UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
+//#endif
+//            GetComponent<NavMeshSurface>().BuildNavMesh();
         }
-
-        [Button("Show soil types")]
-        private void ChangeGradient()
-        {
-            if (currentGradient == 0)
-            {
-                currentGradient++;
-                StartCoroutine(ChangeGradientColor(groundGradient));
-            }
-            else
-            {
-                currentGradient = 0;
-                StartCoroutine(ChangeGradientColor(heightGradient));
-            }
-        }
-
-
+        
         private void Start()
         {
             Generate();
@@ -334,6 +314,46 @@ namespace World.Environment
                 agent.Handle();
             }
         }
+        
+        [Button("Show Ground")]
+        public void ActivateGroundTypeColors()
+        {
+            water.SetActive(false);
+            plants.SetActive(false);
+            border.SetActive(false);
+            GetComponent<Renderer>().sharedMaterial.shader = Shader.Find("Shader Graphs/NodeColor");
+            GetComponent<MeshFilter>().sharedMesh.colors = groundTypeColors;
+        }
+
+        [Button("Show humidity")]
+        public void ActivateHumidity()
+        {
+            water.SetActive(true);
+            plants.SetActive(false);
+            border.SetActive(false);
+            GetComponent<Renderer>().sharedMaterial.shader = Shader.Find("Shader Graphs/NodeColor");
+            GetComponent<MeshFilter>().sharedMesh.colors = aridityColors;
+        }
+
+        [Button("Show height map")]
+        public void ActivateHeight()
+        {
+            water.SetActive(false);
+            plants.SetActive(false);
+            border.SetActive(false);
+            GetComponent<Renderer>().sharedMaterial.shader = Shader.Find("Shader Graphs/NodeColor");
+            GetComponent<MeshFilter>().sharedMesh.colors = heightColors;
+        }
+        
+        [Button("Show textures")]
+        public void ActivateTextures()
+        {
+            water.SetActive(true);
+            plants.SetActive(true);
+            border.SetActive(true);
+            GetComponent<Renderer>().sharedMaterial.shader = Shader.Find("Shader Graphs/TerrainColor");
+            GetComponent<MeshFilter>().sharedMesh.colors = textureColors;
+        }
 
         public void Spawn(GameObject obj)
         {
@@ -349,6 +369,11 @@ namespace World.Environment
                 return;
             }
             Instantiate(obj, hit.point, obj.transform.rotation, obj.transform.parent);
+        }
+        
+        private void ChangeShader()
+        {
+            GetComponent<Renderer>().material.shader = Shader.Find("Shader Graphs/NodeColor");
         }
         
 #if UNITY_EDITOR

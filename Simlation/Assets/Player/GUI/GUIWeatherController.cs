@@ -1,9 +1,13 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using Utility;
 
 namespace Player.GUI
 {
+    /// <summary>
+    /// Controller for the GUI elements of the popup for weather data. The whole 
+    /// </summary>
     [RequireComponent(typeof(CanvasRenderer))]
     public class GUIWeatherController : MonoBehaviour
     {
@@ -17,39 +21,39 @@ namespace Player.GUI
         public TextMeshProUGUI cloudCoverValue;
         public TextMeshProUGUI rainPosValue;
 
-        public void OnTempChange(GUIEventArgs e)
+        public void OnTempChange(GenEventArgs<string> e)
         {
             tempValue.text = "" + e.Value + " °C";
         }
-        public void OnTempFeelChange(GUIEventArgs e)
+        public void OnTempFeelChange(GenEventArgs<string> e)
         {
             tempFeelValue.text = "" + e.Value + " °C";
         }
-        public void OnHumChange(GUIEventArgs e)
+        public void OnHumChange(GenEventArgs<string> e)
         {
             humValue.text = "" + e.Value + " %";
         }
-        public void OnPressChange(GUIEventArgs e)
+        public void OnPressChange(GenEventArgs<string> e)
         {
             pressValue.text = "" + e.Value + " hPa";
         }
-        public void OnWeatherChange(GUIEventArgs e)
+        public void OnWeatherChange(GenEventArgs<string> e)
         {
             weatherValue.text = "" + e.Value;
         }
-        public void OnWindSpChange(GUIEventArgs e)
+        public void OnWindSpChange(GenEventArgs<string> e)
         {
-            windSpValue.text = "" + e.Value + " m/s";
+            windSpValue.text = "" + e.Value + " km/h";
         }
-        public void OnWindDirChange(GUIEventArgs e)
+        public void OnWindDirChange(GenEventArgs<string> e)
         {
             windDirValue.text = "" + e.Value;
         }
-        public void OnCloudCoverChange(GUIEventArgs e)
+        public void OnCloudCoverChange(GenEventArgs<string> e)
         {
             cloudCoverValue.text = "" + e.Value + " %";
         }
-        public void OnRainPosChange(GUIEventArgs e)
+        public void OnRainPosChange(GenEventArgs<string> e)
         {
             rainPosValue.text = "" + e.Value + " %";
         }

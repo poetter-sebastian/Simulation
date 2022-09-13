@@ -289,7 +289,7 @@ MonoBehaviour:
     m_Value: 1
   localClouds:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
   earthCurvature:
     m_OverrideState: 0
     m_Value: 0.826
@@ -333,7 +333,7 @@ MonoBehaviour:
     m_Value: 0
   cloudPreset:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 3
   cumulusMap:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -544,7 +544,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value:
       mode: 0
-      customValue: 0
+      customValue: 203.1218
       additiveValue: 0
       multiplyValue: 0
   altitudeDistortion:

@@ -1,38 +1,55 @@
-
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
+using World.Environment;
 
 namespace World.Structure
 {
-    public class Ground 
+    public class Ground
     {
         /// <summary>
-        /// Percentage of sand in ground from 0% to 100%
+        /// Percentage of sand in ground from 0 to 1
         /// </summary>
         private readonly int sand;
         /// <summary>
-        /// Percentage of silt in ground from 0% to 100%
+        /// Percentage of silt in ground from 0 to 1
         /// </summary>
         private readonly int silt;
         /// <summary>
-        /// Percentage of clay in ground from 0% to 100%
+        /// Percentage of clay in ground from 0 to 1
         /// </summary>
         private readonly int clay;
         /// <summary>
-        /// Percentage of loam in ground from 0% to 100%
+        /// Percentage of loam in ground from 0 to 1
         /// </summary>
         private readonly int loam;
-
+        /// <summary>
+        /// Percentage of the humidity from 0 to 1
+        /// </summary>
+        private float aridity;
+        private WorldController world;
+        
         private Node node;
         
         public int Sand => sand;
         public int Silt => silt;
         public int Clay => clay;
         public int Loam => loam;
-
-        public Ground(Node node, float sand, float clay, float silt, float loam)
+        public float Aridity => aridity;
+        
+        public void SetAridity(float value, bool preset = false)
         {
+            if (!preset)
+            {
+                world.ChangeValueOnColorArray(world.aridityColors, world.aridityGradient, node.ID, value);
+            }
+            aridity = value;
+        }
+
+        public Ground(WorldController world, Node node, float sand, float clay, float silt, float loam)
+        {
+            this.world = world;
             this.node = node;
             
             var sum = sand + clay + silt + loam;

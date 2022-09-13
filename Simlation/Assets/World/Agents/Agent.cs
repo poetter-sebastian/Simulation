@@ -1,8 +1,10 @@
+using System;
+using Game.Utility;
 using UnityEngine;
 
 namespace World.Agents
 {
-    public abstract class Agent : WorldObject
+    public abstract class Agent : WorldObject, IMouseListener
     {
         /// <summary>
         /// If the Agent can move
@@ -87,9 +89,19 @@ namespace World.Agents
         [Tooltip("Behaviour of the agent")]
         public IAgentBehaviour behaviour;
         
+        public abstract void OnDeath(object s, EventArgs e);
+
+        public abstract void OnConsumption(object s, EventArgs e);
+
         /// <summary>
         ///  Function to handle the agent and check the states
         /// </summary>
-        public abstract void Handle();
+        public abstract void OnHandle();
+
+        public abstract void MouseClick();
+
+        public abstract void MouseOver();
+
+        public abstract void MouseExit();
     }
 }

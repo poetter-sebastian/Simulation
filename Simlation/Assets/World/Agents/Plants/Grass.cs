@@ -1,14 +1,17 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using World.Agents;
+using World.Structure;
 using Random = UnityEngine.Random;
 
 public class Grass : FloraAgent
 {
+    public Grass(Ground ground) : base(ground)
+    {
+        
+    }
+    
     private void Start()
     {
         StartCoroutine(SpawnGrass());
@@ -19,7 +22,7 @@ public class Grass : FloraAgent
         while (health > 0)
         {
             yield return new WaitForSeconds(Random.Range(15, 60));
-            World.Environment.World.Instance.Spawn(gameObject);
+            World.Environment.WorldController.Instance.Spawn(gameObject);
         }
     }
 
@@ -31,7 +34,18 @@ public class Grass : FloraAgent
         }
     }
 
-    public override void Handle()
+
+    public override void OnDeath(object s, EventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void OnConsumption(object s, EventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void OnHandle()
     {
         throw new System.NotImplementedException();
     }

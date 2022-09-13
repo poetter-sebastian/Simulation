@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using Utility;
 
 namespace Player.GUI
 {
@@ -10,11 +11,11 @@ namespace Player.GUI
         public TextMeshProUGUI monValue;
         public TextMeshProUGUI qualValue;
 
-        public void OnMoneyChange(GUIEventArgs e)
+        public void OnMoneyChange(GenEventArgs<string> e)
         {
-            monValue.text = "" + e.Value + " °C";
+            monValue.text = "" + e.Value + " ¤";
         }
-        public void OnQualityChange(GUIEventArgs e)
+        public void OnQualityChange(GenEventArgs<string> e)
         {
             qualValue.text = "" + e.Value + " °C";
         }

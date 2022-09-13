@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -40,7 +38,17 @@ namespace World.Agents.Animals.Rabbit
             }
         }
 
-        public override void Handle()
+        public override void OnDeath(object s, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void OnConsumption(object s, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void OnHandle()
         {
             behaviour.Next();
         }

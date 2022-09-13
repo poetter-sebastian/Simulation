@@ -62,6 +62,30 @@ MonoBehaviour:
     m_Localized: 'Geld:'
     m_Metadata:
       m_Items: []
+  - m_Id: 2058724578418688
+    m_Localized: "CO\xB2 Verbrauch:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2059698952986624
+    m_Localized: 'Wasserverbrauch:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2061461533745152
+    m_Localized: 'Verschmutzungsgrad:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2062863521800192
+    m_Localized: "\xD6ffentliche Zustimmung:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2065861677408256
+    m_Localized: 'Niedrigste Temperatur: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2065961908690944
+    m_Localized: "H\xF6chste Temperatur:"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

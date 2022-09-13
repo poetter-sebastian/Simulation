@@ -94,5 +94,20 @@ namespace World.Agents
         protected abstract void OnSmellRadius(GameObject obj);
         protected abstract void OnSmellRadiusExit(GameObject obj);
         protected abstract void OnFoodFood(GameObject obj);
+        
+        public override void MouseClick()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void MouseOver()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void MouseExit()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

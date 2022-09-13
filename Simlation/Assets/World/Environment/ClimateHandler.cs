@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
+using Utility;
 using World.Structure;
 using Random = UnityEngine.Random;
 
@@ -22,7 +23,7 @@ namespace World.Environment
         public float humidity = 0.5f; //%
         [Range(980, 1060)]
         public float airPressure = 1005; //hPa
-        [Range(0, 5)]
+        [Range(0, 3)]
         [OnValueChanged("SetWindSpeed")]
         public float windSpeed = 1; //meter per second
         [Range(0, 360)]
@@ -66,9 +67,9 @@ namespace World.Environment
             time = TimeHandler.Instance;
             time.TimeChangedToMidnight += OnDayChange;
             time.TimeHourElapsed += OnHourElapsed;
-
-            var uiObject = ui.transform.Find("Weather").gameObject;
             
+            OnDayChange(this, EventArgs.Empty);
+            OnHourElapsed(this, new HourElapsedEventArgs(time.LocalTime.Hour));
         }
 
         private void OnDayChange(object sender, EventArgs e)
@@ -92,8 +93,9 @@ namespace World.Environment
             Debug.Log("hour has elapsed");
             
             //wind speed
-            //from 0 to 5
-            SetWindSpeed(Mathf.Lerp(0, 5, Mathf.PerlinNoise(Time.time * 0.015f, 0.0f)));
+            //from 0 to 3
+            var spee = Mathf.Lerp(0, 3, Mathf.PerlinNoise(Time.time * 0.015f, 0.0f));
+            SetWindSpeed(spee);
             
             //wind direction
             //from 0 to 360
@@ -104,7 +106,8 @@ namespace World.Environment
             SetCloudCover(Mathf.PerlinNoise(Time.time * 0.015f, 0.0f));
             
             //humidity
-            SetHumidity(0.5f + WeatherToHumidityMultiplier(weather) * Random.Range(0, 0.75f));
+            var humid = 0.3f + WeatherToHumidityMultiplier(weather) * Random.Range(0.1f, 0.75f);
+            SetHumidity(humid);
             
             //air pressure
             //from 980 to 1060
@@ -118,65 +121,71 @@ namespace World.Environment
                 Mathf.Lerp(minDayTemperature, maxDayTemperature, e.Hour / 12f));
         }
 
-        public void SetWindSpeed(float speed)
+        public void SetWindSpeed(float value = -1)
         {
-            windSpeed = speed switch
+            windSpeed = value switch
             {
+                -1 => windSpeed,
                 < 0 => 0,
+                >= 0 and <= 5 => value,
                 > 5 => 5,
                 _ => windSpeed
             };
             wind.windMain = windSpeed;
-            ui.guiWeatherController.OnWindSpChange(new GUIEventArgs(windSpeed.ToString("0.00")));
+            ui.guiWeatherController.OnWindSpChange(new GenEventArgs<string>((windSpeed * 3.6f).ToString("0.00")));
             //TODO cloud wind speed
         }
         
-        public void SetCloudCover(float cover)
+        public void SetCloudCover(float value = -1)
         {
-            cloudCover = cover;
-            ui.guiWeatherController.OnCloudCoverChange(new GUIEventArgs((cloudCover * 100).ToString("0")));
+            cloudCover = value == -1 ? cloudCover : value;
+            ui.guiWeatherController.OnCloudCoverChange(new GenEventArgs<string>((cloudCover * 100).ToString("0")));
         }
         
-        public void SetWindDirection(float direction)
+        public void SetWindDirection(float value = -1)
         {
-            windDirection = direction % 360;
+            windDirection = value == -1 ? windDirection : value % 360;
             clouds.sharedProfile.TryGet<VolumetricClouds>(typeof(VolumetricClouds), out var cloudComp);
             var cloud = new WindParameter.WindParamaterValue
             {
-                customValue = direction
+                customValue = value
             };
             cloudComp.orientation.value = cloud;
             //because of https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@12.0/manual/Override-Volumetric-Clouds.html#wind orientation!
-            wind.transform.rotation = Quaternion.Euler(0, -((direction + 270) % 360), 0);
-            ui.guiWeatherController.OnWindDirChange(new GUIEventArgs(Graph.DirectionToAbbr(Graph.DegreeToDirection(direction))));
+            wind.transform.rotation = Quaternion.Euler(0, -((value + 270) % 360), 0);
+            ui.guiWeatherController.OnWindDirChange(new GenEventArgs<string>(Graph.DirectionToAbbr(Graph.DegreeToDirection(value))));
         }
 
-        public void SetWaterLevel()
+        public void SetWaterLevel(float value = -1)
         {
             waterLevel = waterLevel switch
             {
+                -1 => waterLevel,
                 < -0.5f => -0.5f,
+                >= -0.5f and <= 8 => value,
                 > 8 => 8,
                 _ => waterLevel
             };
             water.transform.position = new Vector3(0, waterLevel, 0);
         }
         
-        public void SetAirPressure(float pressure)
+        public void SetAirPressure(float value = -1)
         {
-            airPressure = pressure switch
+            airPressure = value switch
             {
+                -1 => airPressure,
                 < 980 => 980,
+                >= 980 and <= 1060 => value,
                 > 1060 => 1060,
-                _ => pressure
+                _ => value
             };
-            ui.guiWeatherController.OnPressChange(new GUIEventArgs(airPressure.ToString("0.00")));
+            ui.guiWeatherController.OnPressChange(new GenEventArgs<string>(airPressure.ToString("0.00")));
         }
         
-        public void SetHumidity(float humidityCalc)
+        public void SetHumidity(float value = -1)
         {
-            humidity = humidityCalc > 1 ? 1 : humidityCalc;
-            ui.guiWeatherController.OnHumChange(new GUIEventArgs((humidity * 100).ToString("0")));
+            humidity = value == -1 ? humidity : value > 1 ? 1 : value;
+            ui.guiWeatherController.OnHumChange(new GenEventArgs<string>((humidity * 100).ToString("0")));
         }
 
         public void SetWeather()
@@ -184,13 +193,13 @@ namespace World.Environment
             SetWeather(weather);
         }
 
-        public void SetTemperature(float temp)
+        public void SetTemperature(float value = -1)
         {
             //temperature
-            temperature = temp + temp * WeatherToTemperatureMultiplier(weather);
-            ui.guiWeatherController.OnTempChange(new GUIEventArgs(temperature.ToString("0.00")));
+            temperature = value == -1 ? temperature : value + value * WeatherToTemperatureMultiplier(weather);
+            ui.guiWeatherController.OnTempChange(new GenEventArgs<string>(temperature.ToString("0.00")));
             //windchill
-            ui.guiWeatherController.OnTempFeelChange(new GUIEventArgs((
+            ui.guiWeatherController.OnTempFeelChange(new GenEventArgs<string>((
                 13.12f + 0.6215f * temperature + (0.3965f * temperature - 11.37f) * MathF.Pow(windSpeed * 3.6f, 0.16f)
             ).ToString("0.00")));
         }
@@ -229,7 +238,10 @@ namespace World.Environment
                 default:
                     throw new ArgumentOutOfRangeException(nameof(weather), weather, null);
             }
-            ui.guiWeatherController.OnWeatherChange(new GUIEventArgs(WeatherToString(weather)));
+            //update the whole values because of the weather multiplier
+            OnDayChange(this, EventArgs.Empty);
+            OnHourElapsed(this, new HourElapsedEventArgs(time.LocalTime.Hour));
+            ui.guiWeatherController.OnWeatherChange(new GenEventArgs<string>(WeatherToString(weather)));
         }
         
         /// <summary>
@@ -275,7 +287,7 @@ namespace World.Environment
             Weather.Rain => 0.5f,
             Weather.Drizzle => 0.35f,
             Weather.Snow => 0.25f,
-            Weather.Clear => 0,
+            Weather.Clear => 0.2f,
             Weather.Stormy => 0.55f,
             Weather.Blizzard => 0.4f,
             Weather.Foggy => 0.8f,

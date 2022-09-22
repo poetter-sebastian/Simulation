@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3595504062150790849}
   - component: {fileID: 3595504062164245091}
   - component: {fileID: 2429945896314422227}
+  - component: {fileID: 4591816682489925691}
   m_Layer: 0
   m_Name: Thick_Grass_Desktop_1
   m_TagString: Untagged
@@ -85,6 +86,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4591816682489925691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3595504062151217889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51a4ae2eb0bbc6846a3258a933d3bb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAble: 0
+  alive: 0
+  domain: 
+  kingdom: 
+  phylum: 
+  agentClass: 
+  order: 
+  family: 
+  genus: 
+  species: 
+  o2Modifier: 0
+  co2Modifier: 0
+  size: 0
+  age: 0
+  diurnal: 0
+  health: 0
+  thirst: 0
+  injuries: 
+  diseases: 
+  waterConsumption: 5
+  preferredGround: 0
+  heatResistance: 0
+  dryResistance: 0
+  xerophyt: 0
 --- !u!1 &3595504062151217891
 GameObject:
   m_ObjectHideFlags: 0

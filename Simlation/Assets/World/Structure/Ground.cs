@@ -11,60 +11,101 @@ namespace World.Structure
         /// <summary>
         /// Percentage of sand in ground from 0 to 1
         /// </summary>
-        private readonly int sand;
+        private readonly float sand;
         /// <summary>
         /// Percentage of silt in ground from 0 to 1
         /// </summary>
-        private readonly int silt;
+        private readonly float silt;
         /// <summary>
         /// Percentage of clay in ground from 0 to 1
         /// </summary>
-        private readonly int clay;
+        private readonly float clay;
         /// <summary>
         /// Percentage of loam in ground from 0 to 1
         /// </summary>
-        private readonly int loam;
+        private readonly float loam;
         /// <summary>
-        /// Percentage of the humidity from 0 to 1
+        /// Percentage of the aridity from 0 to 1
         /// </summary>
         private float aridity;
+        /// <summary>
+        /// Value of the current water in the ground
+        /// </summary>
+        private float currentWater = 0;
+        /// <summary>
+        /// Maximum capacity of water from 1000 to 0
+        /// </summary>
+        private int waterCapacity = 0;
+
         private WorldController world;
         
         private Node node;
+        public Color typColor;
+
+        public float Sand => sand;
+        public float Silt => silt;
+        public float Clay => clay;
+        public float Loam => loam;
         
-        public int Sand => sand;
-        public int Silt => silt;
-        public int Clay => clay;
-        public int Loam => loam;
         public float Aridity => aridity;
         
-        public void SetAridity(float value, bool preset = false)
-        {
-            if (!preset)
-            {
-                world.ChangeValueOnColorArray(world.aridityColors, world.aridityGradient, node.ID, value);
-            }
-            aridity = value;
-        }
-
         public Ground(WorldController world, Node node, float sand, float clay, float silt, float loam)
         {
             this.world = world;
             this.node = node;
             
             var sum = sand + clay + silt + loam;
-            this.sand = (int)(sand / sum * 100);
-            this.clay = (int)(clay / sum * 100);
-            this.silt = (int)(silt / sum * 100);
-            this.loam = (int)(loam / sum * 100);
-            
-            //if no values
+            this.sand = sand / sum;
+            this.clay = clay / sum;
+            this.silt = silt / sum;
+            this.loam = loam / sum;
+
+            //TODO find a better way to perform this
+            waterCapacity += (int)(Sand * WaterCapacity(GroundTypes.Sand));
+            waterCapacity += (int)(Clay *  WaterCapacity(GroundTypes.Clay));
+            waterCapacity += (int)(Loam * WaterCapacity(GroundTypes.Loam));
+            waterCapacity += (int)(Silt * WaterCapacity(GroundTypes.Silt));
+            currentWater = (float)waterCapacity / 2;
+                
+            //if no values (rare case if all is 0)
             if (sand == 0 && clay == 0 && silt == 0 && loam == 0)
             {
-                this.loam = 100;
+                this.silt = 100;
             }
+            
+            typColor = CalcTypeColor();
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value">Aridity value between 0 and 1</param>
+        /// <param name="preset"></param>
+        public void SetAridity(float value, bool preset = false)
+        {
+            if (!preset)
+            {
+                world.aridityColors[node.ID] = world.aridityGradient.Evaluate(value);
+            }
+            aridity = value;
+        }
+        
+        /// <summary>
+        /// Get water out of the ground and returns false if there is no water
+        /// </summary>
+        /// <param name="consume">Negative number to reduce the current water value</param>
+        /// <returns>True if there is enough water in ground</returns>
+        public bool GetWater(float consume)
+        {
+            if ((currentWater += consume) < 0)
+            {
+                currentWater = 0;
+            }
+            SetAridity(Mathf.InverseLerp(waterCapacity, 0, currentWater));
+            
+            return currentWater > 0;
+        }
+        
         public Color CalcTypeColor()
         {
             if (sand > clay)
@@ -73,8 +114,23 @@ namespace World.Structure
             }
             return clay > silt ? GroundColor(clay > loam ? GroundTypes.Clay : GroundTypes.Loam) : GroundColor(silt > loam ? GroundTypes.Silt : GroundTypes.Loam);
         }
+        
+        /// <summary>
+        /// Get the water capacity value for each ground type
+        /// </summary>
+        /// <param name="type">Ground type</param>
+        /// <returns>Water capacity</returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public static int WaterCapacity(GroundTypes type) => type switch
+        {
+            GroundTypes.Clay => 1000,
+            GroundTypes.Silt => 600,
+            GroundTypes.Loam => 1000,
+            GroundTypes.Sand => 50,
+            _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+        };
 
-        public static Color GroundColor(GroundTypes type) => type switch
+        public static Color32 GroundColor(GroundTypes type) => type switch
         {
             GroundTypes.Clay => new Color32(131, 126, 123, 255),
             GroundTypes.Silt => new Color32(222, 169, 127, 255),

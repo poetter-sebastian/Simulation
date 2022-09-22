@@ -133,6 +133,48 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1d2ed9cc10dda1245b29dcdf4fa052bf, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e76989194570e246acc05a8d2697af2, type: 3}
+--- !u!1 &7172827424096391821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100006, guid: 5e76989194570e246acc05a8d2697af2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7172827424096490539}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1181608842244867254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7172827424096391821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51a4ae2eb0bbc6846a3258a933d3bb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAble: 0
+  alive: 0
+  domain: 
+  kingdom: 
+  phylum: 
+  agentClass: 
+  order: 
+  family: 
+  genus: 
+  species: 
+  o2Modifier: 0
+  co2Modifier: 0
+  size: 0
+  age: 0
+  diurnal: 0
+  health: 0
+  thirst: 0
+  injuries: 
+  diseases: 
+  waterConsumption: 5
+  preferredGround: 0
+  heatResistance: 0
+  dryResistance: 0
+  xerophyt: 0
 --- !u!4 &7172827424096620205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: 5e76989194570e246acc05a8d2697af2,

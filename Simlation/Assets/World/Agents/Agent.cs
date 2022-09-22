@@ -1,6 +1,8 @@
 using System;
 using Game.Utility;
 using UnityEngine;
+using Utility;
+using World.Environment;
 
 namespace World.Agents
 {
@@ -89,8 +91,18 @@ namespace World.Agents
         [Tooltip("Behaviour of the agent")]
         public IAgentBehaviour behaviour;
         
-        public abstract void OnDeath(object s, EventArgs e);
+        /// <summary>
+        /// Event gets fired when the agents loses health
+        /// </summary>
+        /// <param name="s">Sender of the event</param>
+        /// <param name="e">Parameter of the event</param>
+        public abstract void OnDamage(object s,  GenEventArgs<int> e);
 
+        /// <summary>
+        /// Event gets fired when the agents consumes
+        /// </summary>
+        /// <param name="s">Sender of the event</param>
+        /// <param name="e">Parameter of the event</param>
         public abstract void OnConsumption(object s, EventArgs e);
 
         /// <summary>
@@ -103,5 +115,25 @@ namespace World.Agents
         public abstract void MouseOver();
 
         public abstract void MouseExit();
+        
+        /// <summary>
+        /// Event gets fired when the agents has no health
+        /// </summary>
+        /// <param name="s">Sender of the event</param>
+        /// <param name="e">Parameter of the event</param>
+        public void OnDeath(object s, EventArgs e)
+        {
+            WorldController.Instance.RemoveAgent(this);
+        }
+        
+        /// <summary>
+        /// Event gets fired when the agents is died
+        /// </summary>
+        /// <param name="s">Sender of the event</param>
+        /// <param name="e">Parameter of the event</param>
+        public void OnAfterDeath(object s, EventArgs e)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

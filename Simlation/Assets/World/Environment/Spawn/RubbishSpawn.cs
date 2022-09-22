@@ -11,7 +11,7 @@ namespace World.Environment.Spawn
         public float minHeight = 3.5f;
         public float maxHeight = 7.5f;
 
-        public void Spawn(Vector2Int size)
+        public void Spawn(Vector2Int size, WorldController world)
         {
             foreach (Transform child in transform)
             {

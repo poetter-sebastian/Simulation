@@ -1,4 +1,5 @@
 using UnityEngine;
+using World.Agents;
 
 namespace World.Environment.Spawn
 {
@@ -9,7 +10,7 @@ namespace World.Environment.Spawn
         public float minHeight = 2.5f;
         public float maxHeight = 10f;
         
-        public void Spawn(Vector2Int size)
+        public void Spawn(Vector2Int size, WorldController worldController)
         {
             foreach (Transform child in transform)
             {
@@ -32,7 +33,8 @@ namespace World.Environment.Spawn
                 if (hit.point.y < minHeight || hit.point.y > maxHeight) continue;
 
                 var obj = Random.Range(0, plants.Length);
-                Instantiate(plants[obj], hit.point, new Quaternion(0f, Random.Range(0f, 360f), 0f, 0f), transform);
+                var plant = Instantiate(plants[obj], hit.point, new Quaternion(0f, Random.Range(0f, 360f), 0f, 0f), transform);
+                worldController.RegisterFloraAgent(plant.GetComponent<FloraAgent>());
             }
         }
     }

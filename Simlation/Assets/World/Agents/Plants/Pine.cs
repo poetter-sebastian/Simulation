@@ -1,7 +1,6 @@
 using System;
 using World.Agents;
 using World.Structure;
-using Object = UnityEngine.Object;
 
 public class Pine : FloraAgent
 {
@@ -16,25 +15,11 @@ public class Pine : FloraAgent
         genus = "";
         species = "";
         health = 200;
+        waterConsumption = 10;
     }
     
     private void Start()
     {
         
-    }
-
-    public override void OnDeath(object s, EventArgs e)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override void OnConsumption(object s, EventArgs e)
-    {
-        throw new NotImplementedException();
-    }
-
-    public override void OnHandle()
-    {
-        OnConsumption(this, EventArgs.Empty);
     }
 }

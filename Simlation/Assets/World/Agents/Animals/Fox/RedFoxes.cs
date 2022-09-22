@@ -17,11 +17,6 @@ namespace World.Agents.Animals.Fox
             species = "Vuples Vulpes";
         }
 
-        public override void OnDeath(object s, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void OnConsumption(object s, EventArgs e)
         {
             throw new NotImplementedException();

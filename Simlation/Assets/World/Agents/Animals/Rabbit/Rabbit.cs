@@ -38,11 +38,6 @@ namespace World.Agents.Animals.Rabbit
             }
         }
 
-        public override void OnDeath(object s, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void OnConsumption(object s, EventArgs e)
         {
             throw new NotImplementedException();

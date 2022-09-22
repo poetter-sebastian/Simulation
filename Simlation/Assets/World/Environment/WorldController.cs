@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -9,20 +10,22 @@ using UnityEngine.Serialization;
 using Utility;
 using World.Agents;
 using World.Structure;
+using Random = UnityEngine.Random;
 
 namespace World.Environment
 {
     public class WorldController : MonoBehaviour
     {
         [Header("Simulation Settings")]
-        public List<Agent> AgentList;
+        public List<Agent> agentList;
+        public List<Agent> removeList;
         public Vector2Int size;
         [Min(0.15f)]
         public uint pointScale = 1;
         [Min(1)]
         public uint highScale = 1;
 
-        public AnimationCurve test;
+        public AnimationCurve highMultiplier;
         
         public static WorldController Instance;
         
@@ -98,7 +101,7 @@ namespace World.Environment
                 for (z = 0; z < size.y; z++)
                 {
                     //high scale
-                    var y = noiseMap[x, z] * test.Evaluate(noiseMap[x, z]) * highScale; 
+                    var y = noiseMap[x, z] * highMultiplier.Evaluate(noiseMap[x, z]) * highScale; 
                     //graph for mesh
                     //origin
                     // ReSharper disable once SuggestVarOrType_SimpleTypes
@@ -194,7 +197,7 @@ namespace World.Environment
                     var vec = new Vector2((float)x * pointScale, (float)z * pointScale);
                     var ground = Grounds[vec];
                     ground.SetAridity(arid, true);
-                    groundType[i] = ground.CalcTypeColor();
+                    groundType[i] = ground.typColor;
                     i++;
                 }
             }
@@ -280,15 +283,8 @@ namespace World.Environment
                 {
                     throw new ISpawner.NoSpawnerException();
                 }
-                spawn.Spawn(size);
+                spawn.Spawn(size, this);
             }
-            
-            Grounds[new Vector2((float)1 * pointScale, (float)1 * pointScale)].SetAridity(1);
-            Grounds[new Vector2((float)2 * pointScale, (float)1 * pointScale)].SetAridity(1);
-            Grounds[new Vector2((float)2 * pointScale, (float)2 * pointScale)].SetAridity(1);
-            Grounds[new Vector2((float)2 * pointScale, (float)3 * pointScale)].SetAridity(1);
-            Grounds[new Vector2((float)3 * pointScale, (float)2 * pointScale)].SetAridity(1);
-            Grounds[new Vector2((float)2 * pointScale, (float)4 * pointScale)].SetAridity(1);
             GetComponent<MeshFilter>().sharedMesh.colors = aridityColors;
 //#if UNITY_EDITOR
 //            UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
@@ -299,6 +295,7 @@ namespace World.Environment
         private void Start()
         {
             Generate();
+            StartCoroutine(HandleAgents());
         }
         
         private void Awake()
@@ -312,25 +309,25 @@ namespace World.Environment
                 Debug.LogError("World instance already set!");
             }
         }
-        
-        private void Update()
-        {
-            //HandleAgents();
-        }
 
-        private void HandleAgents()
+        private IEnumerator HandleAgents()
         {
-            foreach (var agent in AgentList)
+            while (Application.isPlaying)
             {
-                agent.OnHandle();
+                foreach (var agent in agentList)
+                {
+                    agent.OnHandle();
+                }
+                foreach (var rAgent in removeList)
+                {
+                    agentList.Remove(rAgent);
+                    rAgent.OnAfterDeath(this, EventArgs.Empty);
+                }
+                removeList.Clear();
+                yield return new WaitForSeconds(0.5f);
             }
         }
 
-        public void ChangeValueOnColorArray(Color[] worldAridityColors, Gradient worldAridityGradient, int id, float value)
-        {
-            worldAridityColors[id] = worldAridityGradient.Evaluate(value);
-        }
-        
         [Button("Show Ground")]
         public void ActivateGroundTypeColors()
         {
@@ -387,13 +384,31 @@ namespace World.Environment
             Instantiate(obj, hit.point, obj.transform.rotation, obj.transform.parent);
         }
         
-        private void ChangeShader()
+        /// <summary>
+        /// Register new plant agent to the handler system
+        /// </summary>
+        /// <param name="agent">agent to add</param>
+        public void RegisterFloraAgent(FloraAgent agent)
         {
-            GetComponent<Renderer>().material.shader = Shader.Find("Shader Graphs/NodeColor");
+            var pos = agent.transform.position;
+            //round variables to full numbers
+            //TODO works only with a pointScale of 1!!!!
+            var vec = new Vector2(
+                MathF.Round(pos.x, MidpointRounding.AwayFromZero), 
+                MathF.Round(pos.z, MidpointRounding.AwayFromZero));
+            //TODO maybe improvement or perform earlier
+            agent.ground = Grounds[vec]; //connects the agent with the ground value
+            agentList.Add(agent);
         }
         
-        
-        
+        /// <summary>
+        /// Removes an agent from the handler system
+        /// </summary>
+        public void RemoveAgent(Agent agent)
+        {
+            removeList.Add(agent);
+        }
+
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {

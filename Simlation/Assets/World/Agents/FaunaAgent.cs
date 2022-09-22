@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
+using Utility;
 using World.Agents.Animals;
 
 namespace World.Agents
@@ -106,6 +107,11 @@ namespace World.Agents
         }
 
         public override void MouseExit()
+        {
+            throw new NotImplementedException();
+        }
+        
+        public override void OnDamage(object s, GenEventArgs<int> e)
         {
             throw new NotImplementedException();
         }

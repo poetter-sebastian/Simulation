@@ -12,7 +12,7 @@ if (multithread?) then (yes)
   fork again
     :handle agent n;
   end fork
-else (monoproc)
+else (no)
   :handle agent 1;
   :...;
   :handle agent n;

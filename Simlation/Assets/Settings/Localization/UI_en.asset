@@ -86,6 +86,14 @@ MonoBehaviour:
     m_Localized: 'Highest temperature:'
     m_Metadata:
       m_Items: []
+  - m_Id: 6476093912506368
+    m_Localized: XXX g/Day
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6476144571310080
+    m_Localized: XXX l/Day
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

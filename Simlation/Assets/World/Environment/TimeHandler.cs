@@ -1,4 +1,5 @@
 using System;
+using NaughtyAttributes;
 using UnityEngine;
 using World.Environment.Lightning;
 
@@ -29,6 +30,8 @@ namespace World.Environment
         private int minutes;
 
         [SerializeField]
+        [OnValueChanged("SetTimeSpeed")]
+        [Range(1, 1200)]
         private float timeSpeed = 1;
 
         [SerializeField]
@@ -40,7 +43,7 @@ namespace World.Environment
         private DateTime localTime;
         
         public TimeEvents currentState;
-
+        
         public event EventHandler TimeChangedToDawn;
         public event EventHandler TimeChangedToNoon;
         public event EventHandler TimeChangedToAfternoon;
@@ -51,6 +54,7 @@ namespace World.Environment
         public event EventHandler<HourElapsedEventArgs> TimeHourElapsed;
         
         public DateTime LocalTime => localTime;
+        public float TimeSpeed => timeSpeed;
         
         private void OnValidate()
         {
@@ -147,9 +151,9 @@ namespace World.Environment
             frameSteps = i;
         }
 
-        public void SetTimeSpeed(float speed) 
+        public void SetTimeSpeed(float speed = -1) 
         {
-            timeSpeed = speed;
+            timeSpeed = (speed < 1)? timeSpeed : speed;
         }
 
         private void OnDawn(object sender, EventArgs e)

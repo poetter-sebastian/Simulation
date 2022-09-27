@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using World.Environment;
 using Random = UnityEngine.Random;
 
 namespace World.Agents.Animals.Rabbit
@@ -43,7 +44,7 @@ namespace World.Agents.Animals.Rabbit
             throw new NotImplementedException();
         }
 
-        public override void OnHandle()
+        public override void OnHandle(WorldController world)
         {
             behaviour.Next();
         }

@@ -17,8 +17,6 @@ namespace World.Environment
     public class WorldController : MonoBehaviour
     {
         [Header("Simulation Settings")]
-        public List<Agent> agentList;
-        public List<Agent> removeList;
         public Vector2Int size;
         [Min(0.15f)]
         public uint pointScale = 1;
@@ -33,6 +31,8 @@ namespace World.Environment
         public Graph MovementGraph;
         public Dictionary<Vector2, Ground> Grounds;
 
+        public List<Agent> removeList;
+        
         public GameObject water;
         public GameObject plants;
         public GameObject border;
@@ -42,6 +42,8 @@ namespace World.Environment
         public Gradient heightGradient;
         public Gradient aridityGradient;
 
+        public ActiveColor currentColor = ActiveColor.Texture;
+        
         public Color[] textureColors;
         public Color[] groundTypeColors;
         public Color[] heightColors;
@@ -65,6 +67,8 @@ namespace World.Environment
         
         private float maxHeight = 0;
         private float minHeight = float.MaxValue;
+
+        private TimeHandler timeHandler;
 
         private Mesh GenerateGraph(out Vector3[] vertices)
         {
@@ -285,7 +289,7 @@ namespace World.Environment
                 }
                 spawn.Spawn(size, this);
             }
-            GetComponent<MeshFilter>().sharedMesh.colors = aridityColors;
+            GetComponent<MeshFilter>().sharedMesh.colors = textureColors;
 //#if UNITY_EDITOR
 //            UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
 //#endif
@@ -294,8 +298,9 @@ namespace World.Environment
         
         private void Start()
         {
+            timeHandler = GetComponent<TimeHandler>();
+            timeHandler.TimeHourElapsed += HandleAgents;
             Generate();
-            StartCoroutine(HandleAgents());
         }
         
         private void Awake()
@@ -310,27 +315,46 @@ namespace World.Environment
             }
         }
 
-        private IEnumerator HandleAgents()
+        public void HandleAgents(object sender, HourElapsedEventArgs e)
         {
-            while (Application.isPlaying)
+            foreach (Transform plants in plants.transform)
             {
-                foreach (var agent in agentList)
+                //trees, bushes, grass
+                foreach (Transform plant in plants.transform)
                 {
-                    agent.OnHandle();
+                    plant.GetComponent<FloraAgent>().OnHandle(this);
                 }
-                foreach (var rAgent in removeList)
-                {
-                    agentList.Remove(rAgent);
-                    rAgent.OnAfterDeath(this, EventArgs.Empty);
-                }
-                removeList.Clear();
-                yield return new WaitForSeconds(0.5f);
             }
+            foreach (var rAgent in removeList)
+            {
+                rAgent.OnAfterDeath(this, EventArgs.Empty);
+            }
+            removeList.Clear();
+            if (currentColor == ActiveColor.Arid)
+            {
+                GetComponent<MeshFilter>().sharedMesh.colors = aridityColors;
+            }
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="consume"></param>
+        /// <param name="ground"></param>
+        public void CalcWaterArea(float consume, Ground ground)
+        {
+            //var sum = ground
+        }
+        
+        public void UpdateGroundColor(int id, float value)
+        {
+            aridityColors[id] = aridityGradient.Evaluate(value);
         }
 
         [Button("Show Ground")]
         public void ActivateGroundTypeColors()
         {
+            currentColor = ActiveColor.Type;
             water.SetActive(false);
             plants.SetActive(false);
             border.SetActive(false);
@@ -338,9 +362,10 @@ namespace World.Environment
             GetComponent<MeshFilter>().sharedMesh.colors = groundTypeColors;
         }
 
-        [Button("Show humidity")]
+        [Button("Show aridity")]
         public void ActivateHumidity()
         {
+            currentColor = ActiveColor.Arid;
             water.SetActive(true);
             plants.SetActive(false);
             border.SetActive(false);
@@ -351,6 +376,7 @@ namespace World.Environment
         [Button("Show height map")]
         public void ActivateHeight()
         {
+            currentColor = ActiveColor.Height;
             water.SetActive(false);
             plants.SetActive(false);
             border.SetActive(false);
@@ -361,6 +387,7 @@ namespace World.Environment
         [Button("Show textures")]
         public void ActivateTextures()
         {
+            currentColor = ActiveColor.Texture;
             water.SetActive(true);
             plants.SetActive(true);
             border.SetActive(true);
@@ -383,7 +410,7 @@ namespace World.Environment
             }
             Instantiate(obj, hit.point, obj.transform.rotation, obj.transform.parent);
         }
-        
+
         /// <summary>
         /// Register new plant agent to the handler system
         /// </summary>
@@ -394,13 +421,12 @@ namespace World.Environment
             //round variables to full numbers
             //TODO works only with a pointScale of 1!!!!
             var vec = new Vector2(
-                MathF.Round(pos.x, MidpointRounding.AwayFromZero), 
+                MathF.Round(pos.x, MidpointRounding.AwayFromZero),
                 MathF.Round(pos.z, MidpointRounding.AwayFromZero));
             //TODO maybe improvement or perform earlier
             agent.ground = Grounds[vec]; //connects the agent with the ground value
-            agentList.Add(agent);
         }
-        
+
         /// <summary>
         /// Removes an agent from the handler system
         /// </summary>
@@ -449,5 +475,12 @@ namespace World.Environment
             }
         }
 #endif
+        public enum ActiveColor
+        {
+            Texture,
+            Arid,
+            Type,
+            Height
+        }
     }
 }

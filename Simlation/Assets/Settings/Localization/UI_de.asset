@@ -86,6 +86,14 @@ MonoBehaviour:
     m_Localized: "H\xF6chste Temperatur:"
     m_Metadata:
       m_Items: []
+  - m_Id: 6476093912506368
+    m_Localized: XXX g/Tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6476144571310080
+    m_Localized: XXX l/Tag
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

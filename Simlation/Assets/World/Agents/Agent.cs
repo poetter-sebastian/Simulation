@@ -3,6 +3,7 @@ using Game.Utility;
 using UnityEngine;
 using Utility;
 using World.Environment;
+using World.Structure;
 
 namespace World.Agents
 {
@@ -85,6 +86,9 @@ namespace World.Agents
         [Tooltip("List of diseases of agent")]
         public int[] diseases;
 
+        public Ground ground;
+        public WorldController world;
+        
         /// <summary>
         /// Behaviour of the agent
         /// </summary>
@@ -108,7 +112,7 @@ namespace World.Agents
         /// <summary>
         ///  Function to handle the agent and check the states
         /// </summary>
-        public abstract void OnHandle();
+        public abstract void OnHandle(WorldController world);
 
         public abstract void MouseClick();
 
@@ -123,9 +127,17 @@ namespace World.Agents
         /// <param name="e">Parameter of the event</param>
         public void OnDeath(object s, EventArgs e)
         {
-            WorldController.Instance.RemoveAgent(this);
+            try
+            {
+                world.RemoveAgent(this);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
         }
-        
+
         /// <summary>
         /// Event gets fired when the agents is died
         /// </summary>

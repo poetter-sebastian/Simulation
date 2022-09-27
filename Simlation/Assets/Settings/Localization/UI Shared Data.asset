@@ -83,6 +83,14 @@ MonoBehaviour:
     m_Key: Simulation/Player/GUI/Statistic/MaxTemperature
     m_Metadata:
       m_Items: []
+  - m_Id: 6476093912506368
+    m_Key: Simulation/Player/GUI/Statistic/CO2ConsumptionValue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6476144571310080
+    m_Key: Simulation/Player/GUI/Statistic/WaterConsumptionValue
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

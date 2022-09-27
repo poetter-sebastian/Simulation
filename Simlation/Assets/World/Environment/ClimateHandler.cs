@@ -132,7 +132,7 @@ namespace World.Environment
                 _ => windSpeed
             };
             wind.windMain = windSpeed;
-            ui.guiWeatherController.OnWindSpChange(new GenEventArgs<string>((windSpeed * 3.6f).ToString("0.00")));
+            ui.guiWeatherController.OnWindSpChange(new GenEventArgs<string>((windSpeed * 3.6f * time.TimeSpeed).ToString("0.00")));
             //TODO cloud wind speed
         }
         
@@ -323,6 +323,9 @@ namespace World.Environment
             HeatWave,
         }
         
+        /// <summary>
+        /// simplified Köppen climate classification https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6207062/
+        /// </summary>
         public enum ClimateZone
         {
             TropicalRainforest,

@@ -11,5 +11,11 @@ namespace Player.GUI
     {
         public GUIWeatherController guiWeatherController;
         public GUIResourcesController guiResourcesController;
+        public GUIStatisticsController guiStatisticsController;
+
+        public static void CloseGame()
+        {
+            Application.Quit();
+        }
     }
 }

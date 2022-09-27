@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using World.Environment;
 
 namespace World.Agents.Animals.Fox
 {
@@ -22,7 +23,7 @@ namespace World.Agents.Animals.Fox
             throw new NotImplementedException();
         }
 
-        public override void OnHandle()
+        public override void OnHandle(WorldController world)
         {
             throw new System.NotImplementedException();
         }

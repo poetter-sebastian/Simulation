@@ -9,7 +9,7 @@ namespace Player.GUI
     /// Controller for the GUI elements of the popup for weather data. The whole 
     /// </summary>
     [RequireComponent(typeof(CanvasRenderer))]
-    public class GUIWeatherController : MonoBehaviour
+    public class GUIWeatherController : PopupBehaviour
     {
         public TextMeshProUGUI tempValue;
         public TextMeshProUGUI tempFeelValue;

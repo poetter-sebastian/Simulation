@@ -59,6 +59,7 @@ namespace World.Environment.Lightning
         {
             sun.shadows = LightShadows.Soft;
             GetComponent<LensFlareComponentSRP>().enabled = true;
+            sun.enabled = false;
             moon.shadows = LightShadows.None;
             moon.enabled = false;
         }
@@ -67,6 +68,7 @@ namespace World.Environment.Lightning
         {
             sun.shadows = LightShadows.None;
             GetComponent<LensFlareComponentSRP>().enabled = false;
+            sun.enabled = false;
             moon.shadows = LightShadows.Soft;
             moon.enabled = true;
         }

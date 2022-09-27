@@ -1,13 +1,13 @@
 ﻿using System;
+using UnityEngine;
 using Utility;
+using World.Environment;
 using World.Structure;
 
 namespace World.Agents
 {
     public abstract class FloraAgent: Agent
     {
-        public Ground ground;
-        
         public float waterConsumption = 1;
         public Ground.GroundTypes preferredGround = Ground.GroundTypes.Silt;
         public float heatResistance = 1;
@@ -17,9 +17,10 @@ namespace World.Agents
         protected FloraAgent(Ground ground)
         {
             this.ground = ground;
+            world = ground.RefWorld();
         }
 
-        public override void OnHandle()
+        public override void OnHandle(WorldController world)
         {
             OnConsumption(this, EventArgs.Empty);
         }
@@ -37,6 +38,8 @@ namespace World.Agents
             health += e.Value;
             if (health <= 0)
             {
+                //TODO try to define world on spawn!
+                world = ground.RefWorld();
                 OnDeath(this, EventArgs.Empty);
             }
         }

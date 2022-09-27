@@ -40,6 +40,10 @@ namespace World.Structure
         private WorldController world;
         
         private Node node;
+
+        public int WaterCapacity => waterCapacity;
+        public float CurrentWater => currentWater;
+        
         public Color typColor;
 
         public float Sand => sand;
@@ -61,10 +65,10 @@ namespace World.Structure
             this.loam = loam / sum;
 
             //TODO find a better way to perform this
-            waterCapacity += (int)(Sand * WaterCapacity(GroundTypes.Sand));
-            waterCapacity += (int)(Clay *  WaterCapacity(GroundTypes.Clay));
-            waterCapacity += (int)(Loam * WaterCapacity(GroundTypes.Loam));
-            waterCapacity += (int)(Silt * WaterCapacity(GroundTypes.Silt));
+            waterCapacity += (int)(Sand * GroundWaterCapacity(GroundTypes.Sand));
+            waterCapacity += (int)(Clay *  GroundWaterCapacity(GroundTypes.Clay));
+            waterCapacity += (int)(Loam * GroundWaterCapacity(GroundTypes.Loam));
+            waterCapacity += (int)(Silt * GroundWaterCapacity(GroundTypes.Silt));
             currentWater = (float)waterCapacity / 2;
                 
             //if no values (rare case if all is 0)
@@ -74,6 +78,11 @@ namespace World.Structure
             }
             
             typColor = CalcTypeColor();
+        }
+
+        public WorldController RefWorld()
+        {
+            return world;
         }
         
         /// <summary>
@@ -85,7 +94,7 @@ namespace World.Structure
         {
             if (!preset)
             {
-                world.aridityColors[node.ID] = world.aridityGradient.Evaluate(value);
+                world.UpdateGroundColor(node.ID, value);
             }
             aridity = value;
         }
@@ -121,7 +130,7 @@ namespace World.Structure
         /// <param name="type">Ground type</param>
         /// <returns>Water capacity</returns>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public static int WaterCapacity(GroundTypes type) => type switch
+        public static int GroundWaterCapacity(GroundTypes type) => type switch
         {
             GroundTypes.Clay => 1000,
             GroundTypes.Silt => 600,

@@ -5,6 +5,10 @@
 		+Climate()
 	}
 	
+	class Graph {
+	    
+	}
+	
 	class WorldGenerator {
 	    +modifier:Modifier[]
 	

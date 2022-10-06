@@ -13,11 +13,8 @@ namespace Player
             input.Enable();
         }
 
-        public bool LeftClick()
-        {
-            return input.Player.MainAction.ReadValue<float>() > 0.1f;
-        }
-        
+        public InputAction OnLeftClick => input.Player.MainAction;
+
         public bool Top()
         {
             return input.Player.Forward.ReadValue<float>() > 0.1f;

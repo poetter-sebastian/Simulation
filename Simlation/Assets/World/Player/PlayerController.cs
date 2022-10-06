@@ -60,7 +60,7 @@ namespace Player
                     ""name"": ""Position"",
                     ""type"": ""Value"",
                     ""id"": ""ebfef70e-036f-4aa8-96b5-eb20b6279bbe"",
-                    ""expectedControlType"": ""Vector3"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -123,7 +123,7 @@ namespace Player
                     ""name"": ""MainAction"",
                     ""type"": ""Value"",
                     ""id"": ""ff29dd6c-2a3a-4798-9f56-63e397ff769c"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true

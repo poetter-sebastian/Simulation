@@ -59,7 +59,7 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 6483654922597040140}
-  - screenRelativeHeight: 0.01
+  - screenRelativeHeight: 0.0011138854
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8047736112921766929}
@@ -95,6 +95,7 @@ MonoBehaviour:
   thirst: 0
   injuries: 
   diseases: 
+  world: {fileID: 0}
   waterConsumption: 5
   preferredGround: 0
   heatResistance: 0

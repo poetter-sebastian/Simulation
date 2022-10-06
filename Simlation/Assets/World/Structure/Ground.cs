@@ -25,11 +25,7 @@ namespace World.Structure
         /// </summary>
         private readonly float loam;
         /// <summary>
-        /// Percentage of the aridity from 0 to 1
-        /// </summary>
-        private float aridity;
-        /// <summary>
-        /// Value of the current water in the ground
+        /// Value of the current water in the ground from 0 to waterCapacity
         /// </summary>
         private float currentWater = 0;
         /// <summary>
@@ -50,8 +46,8 @@ namespace World.Structure
         public float Silt => silt;
         public float Clay => clay;
         public float Loam => loam;
-        
-        public float Aridity => aridity;
+
+        public Node Node => node;
         
         public Ground(WorldController world, Node node, float sand, float clay, float silt, float loam)
         {
@@ -84,19 +80,24 @@ namespace World.Structure
         {
             return world;
         }
+
+        /// <summary>
+        /// Init the water value 
+        /// </summary>
+        /// <param name="value">Water from 0 to 1</param>
+        public void InitWater(float value)
+        {
+            currentWater = Mathf.Lerp(0, waterCapacity, value);
+        }
         
         /// <summary>
-        /// 
+        /// Sets the water value and update the node color of the ground
         /// </summary>
-        /// <param name="value">Aridity value between 0 and 1</param>
-        /// <param name="preset"></param>
-        public void SetAridity(float value, bool preset = false)
+        /// <param name="value">Water from 0 to 1000</param>
+        public void SetWater(float value)
         {
-            if (!preset)
-            {
-                world.UpdateGroundColor(node.ID, value);
-            }
-            aridity = value;
+            currentWater = value > waterCapacity ? waterCapacity : value;
+            world.UpdateGroundColor(node.ID, Mathf.InverseLerp(waterCapacity, 0, currentWater));
         }
         
         /// <summary>
@@ -106,12 +107,11 @@ namespace World.Structure
         /// <returns>True if there is enough water in ground</returns>
         public bool GetWater(float consume)
         {
-            if ((currentWater += consume) < 0)
+            world.CalcWaterArea(this, consume);
+            if (currentWater < 1)
             {
                 currentWater = 0;
             }
-            SetAridity(Mathf.InverseLerp(waterCapacity, 0, currentWater));
-            
             return currentWater > 0;
         }
         

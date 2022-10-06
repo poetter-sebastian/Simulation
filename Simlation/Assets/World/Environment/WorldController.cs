@@ -64,11 +64,12 @@ namespace World.Environment
         [Header("Utility")]
         public bool showMesh = false;
         public bool showGraph = false;
-        
+
         private float maxHeight = 0;
         private float minHeight = float.MaxValue;
 
         private TimeHandler timeHandler;
+        private ClimateHandler climateHandler;
 
         private Mesh GenerateGraph(out Vector3[] vertices)
         {
@@ -200,7 +201,7 @@ namespace World.Environment
                     
                     var vec = new Vector2((float)x * pointScale, (float)z * pointScale);
                     var ground = Grounds[vec];
-                    ground.SetAridity(arid, true);
+                    ground.InitWater(arid);
                     groundType[i] = ground.typColor;
                     i++;
                 }
@@ -212,7 +213,6 @@ namespace World.Environment
             mesh.colors = texture;
         }
         
-
         private int[] GenerateTriangles()
         {
             var triangles = new int[size.x * size.y * 6];
@@ -298,8 +298,25 @@ namespace World.Environment
         
         private void Start()
         {
+            //loads the time handler
             timeHandler = GetComponent<TimeHandler>();
             timeHandler.TimeHourElapsed += HandleAgents;
+            timeHandler.TimeChangedToMidnight += delegate(object sender, EventArgs args)
+            {
+                for (var i = 0; i < size.x; i++)
+                {
+                    for (var j = 0; j < size.y; j++)
+                    {
+                        var vec = new Vector2(i * pointScale, j * pointScale);
+                        var selGround = Grounds[vec];
+                        CalcWaterArea(selGround ,0);
+                    }
+                }
+            };
+            
+            //loads the climate handler
+            climateHandler = GetComponentInChildren<ClimateHandler>();
+            
             Generate();
         }
         
@@ -315,16 +332,14 @@ namespace World.Environment
             }
         }
 
-        public void HandleAgents(object sender, HourElapsedEventArgs e)
+        /// <summary>
+        /// Handle all agents who are active per elapsed hour.
+        /// </summary>
+        /// <param name="sender">TimeHandler caller</param>
+        /// <param name="e">Event data</param>
+        public void HandleAgents(object sender, EventArgs e)
         {
-            foreach (Transform plants in plants.transform)
-            {
-                //trees, bushes, grass
-                foreach (Transform plant in plants.transform)
-                {
-                    plant.GetComponent<FloraAgent>().OnHandle(this);
-                }
-            }
+            StartCoroutine(IteratePlants());
             foreach (var rAgent in removeList)
             {
                 rAgent.OnAfterDeath(this, EventArgs.Empty);
@@ -335,17 +350,87 @@ namespace World.Environment
                 GetComponent<MeshFilter>().sharedMesh.colors = aridityColors;
             }
         }
+
+        /// <summary>
+        /// Iterate over all plants and do one plant per update.
+        /// </summary>
+        /// <returns>Null yield because there is no waiting time.</returns>
+        public IEnumerator IteratePlants()
+        {
+            foreach (Transform plantTypes in plants.transform)
+            {
+                //trees, bushes, grass
+                foreach (Transform plant in plantTypes.transform)
+                {
+                    if (plant.gameObject.activeSelf)
+                    {
+                        plant.GetComponent<FloraAgent>().OnHandle(this);
+                        yield return null;
+                    }
+                }
+            }
+        }
         
         /// <summary>
         /// 
         /// </summary>
         /// <param name="consume"></param>
         /// <param name="ground"></param>
-        public void CalcWaterArea(float consume, Ground ground)
+        public void CalcWaterArea(Ground ground, float consume)
         {
-            //var sum = ground
+            var pos = new Vector2(ground.Node.Pos.x, ground.Node.Pos.z);
+
+            var sumWater = 0f;
+
+            //plant root length
+            var area = 5;
+
+            //to ignore the border elements to prevent desiccation from the border
+            var runner = 0;
+            
+            for (var i = -area; i < area; i++)
+            {
+                for (var j = -area; j < area; j++)
+                {
+                    //TODO fix this for float pointscale
+                    var vec = new Vector2(pos.x + i * pointScale, pos.y + j * pointScale);
+                    if (vec.x < 0 || vec.y < 0 || vec.x >= size.x * pointScale || vec.y >= size.y * pointScale)
+                    {
+                        continue;
+                    }
+                    runner++;
+                    var selGround = Grounds[vec];
+                    sumWater += selGround.CurrentWater;
+                }
+            }
+
+            sumWater += consume;
+            sumWater /= runner;
+            //to prevent infinite small numbers
+            sumWater = sumWater < 1 ? 0 : sumWater;
+
+            for (var i = -area; i < area; i++)
+            {
+                for (var j = -area; j < area; j++)
+                {
+                    //TODO fix this for float pointscale
+                    var vec = new Vector2(pos.x + i * pointScale, pos.y + j * pointScale);
+                    if (vec.x < 0 || vec.y < 0 || vec.x >= size.x * pointScale || vec.y >= size.y * pointScale)
+                    {
+                        continue;
+                    }
+                    var selGround = Grounds[vec];
+                    //if the ground is under water
+                    selGround.SetWater(selGround.Node.Pos.y - 0.5f < climateHandler.waterLevel ? selGround.WaterCapacity : sumWater);
+                }
+            }
         }
         
+        /// <summary>
+        /// Set the node color of the aridity
+        /// </summary>
+        /// <param name="id">Id of the node</param>
+        /// <param name="value">Value from 0 to 1</param>
         public void UpdateGroundColor(int id, float value)
         {
             aridityColors[id] = aridityGradient.Evaluate(value);

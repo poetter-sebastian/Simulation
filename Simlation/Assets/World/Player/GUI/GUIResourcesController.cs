@@ -10,6 +10,7 @@ namespace Player.GUI
     {
         public TextMeshProUGUI monValue;
         public TextMeshProUGUI qualValue;
+        public TextMeshProUGUI timeDate;
 
         public void OnMoneyChange(GenEventArgs<string> e)
         {
@@ -18,6 +19,10 @@ namespace Player.GUI
         public void OnQualityChange(GenEventArgs<string> e)
         {
             qualValue.text = "" + e.Value + " °C";
+        }
+        public void OnTimeChange(GenEventArgs<string> e)
+        {
+            timeDate.text = "" + e.Value + "";
         }
     }
 }

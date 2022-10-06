@@ -1,5 +1,6 @@
 ﻿using System;
 using Cinemachine;
+using Game.Utility;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.Camera;
@@ -11,7 +12,7 @@ namespace Player.Camera
     public class FreeLookUserInput : MonoBehaviour
     {
         public Transform target = default;
-
+        
         [Header("Functions")]
         public bool borderScroll;
         public bool orbitY = true;
@@ -55,11 +56,13 @@ namespace Player.Camera
         {
             input = new InputProvider();
             input.FasterMovement += FasterMovement;
+            input.OnLeftClick.performed += OnLeftClick;
         }
 
         private void OnDisable()
         {
             input.FasterMovement -= FasterMovement;
+            input.OnLeftClick.performed -= OnLeftClick;
         }
 
         private void Update()
@@ -86,6 +89,44 @@ namespace Player.Camera
             }
         }
 
+        private void OnMiddleClickHold()
+        {
+            freeLookActive = true;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            mousePosition = input.PointerPosition();
+        }
+        
+        private void OnMiddleCLickLeft()
+        {
+            freeLookActive = false;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        private void OnLeftClick(InputAction.CallbackContext e)
+        {
+            Debug.Log("LeftMouseClicked");
+            var ray = main.ScreenPointToRay(input.PointerPosition());
+            if (Physics.Raycast(ray, out var hit))
+            {
+                var selectedComponent = hit.collider.GetComponentInChildren<IMouseListener>() ?? hit.collider.GetComponentInParent<IMouseListener>();
+                if (selectedComponent == null) return;
+                //collider was hit and it's a world object and the function is called
+                selectedComponent.MouseClick();
+            }
+        }
+        
+        private void OnRightClick()
+        {
+            
+        }
+
+        public void OnESC()
+        {
+            
+        }
+        
         private float GetInputAxis(string axisName)
         {
             if(inWindow)

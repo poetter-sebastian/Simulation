@@ -5,7 +5,6 @@ using static World.Environment.TimeHandler;
 
 namespace World.Environment.Lightning
 {
-    [RequireComponent(typeof(Light))]
     [ExecuteInEditMode]
     public class Sun : MonoBehaviour
     {
@@ -16,12 +15,11 @@ namespace World.Environment.Lightning
         private float latitude;
 
         public TimeHandler timeHandler;
+        public Light sun;
         public Light moon;
-        private Light sun;
 
         private void Start()
         {
-            sun = GetComponent<Light>();
             timeHandler.TimeChangedToDawn += OnDawn;
             timeHandler.TimeChangedToNight += OnNight;
         }
@@ -48,29 +46,48 @@ namespace World.Environment.Lightning
             angles.y = (float)azi * Mathf.Rad2Deg;
             
             //UnityEngine.Debug.Log(angles);
-            transform.localRotation = Quaternion.Euler(angles);
+            sun.transform.localRotation = Quaternion.Euler(angles);
             angles.x = (angles.x + 180) % 360;
             angles.y = (angles.y + 180) % 360;
             moon.transform.localRotation = Quaternion.Euler(angles);
             //light.intensity = Mathf.InverseLerp(-12, 0, angles.x);
         }
+
+        public void EnableSun()
+        {
+            sun.gameObject.SetActive(true);
+            moon.gameObject.SetActive(false);
+        }
+
+        public void EnableMoon()
+        {
+            sun.gameObject.SetActive(false);
+            moon.gameObject.SetActive(true);
+        }
+        
+        public Action SetLightSource(TimeEvents events)
+        {
+            return events switch
+            {
+                TimeEvents.Dawn => EnableSun,
+                TimeEvents.Noon => EnableSun,
+                TimeEvents.Afternoon => EnableSun,
+                TimeEvents.Dusk => EnableSun,
+                TimeEvents.Night => EnableMoon,
+                TimeEvents.Midnight => EnableMoon,
+                TimeEvents.Afternight => EnableMoon,
+                _ => null,
+            };
+        }
         
         private void OnDawn(object sender, EventArgs e)
         {
-            sun.shadows = LightShadows.Soft;
-            GetComponent<LensFlareComponentSRP>().enabled = true;
-            sun.enabled = false;
-            moon.shadows = LightShadows.None;
-            moon.enabled = false;
+            EnableSun();
         }
 
         private void OnNight(object sender, EventArgs e)
         {
-            sun.shadows = LightShadows.None;
-            GetComponent<LensFlareComponentSRP>().enabled = false;
-            sun.enabled = false;
-            moon.shadows = LightShadows.Soft;
-            moon.enabled = true;
+            EnableMoon();
         }
     }
 

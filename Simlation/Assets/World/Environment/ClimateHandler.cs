@@ -156,11 +156,15 @@ namespace World.Environment
             ui.guiWeatherController.OnWindDirChange(new GenEventArgs<string>(Graph.DirectionToAbbr(Graph.DegreeToDirection(value))));
         }
 
-        public void SetWaterLevel(float value = -1)
+        public void SetWaterLevel()
+        {
+            SetWaterLevel(waterLevel);
+        }
+
+        public void SetWaterLevel(float value)
         {
             waterLevel = waterLevel switch
             {
-                -1 => waterLevel,
                 < -0.5f => -0.5f,
                 >= -0.5f and <= 8 => value,
                 > 8 => 8,

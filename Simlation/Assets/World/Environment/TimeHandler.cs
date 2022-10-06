@@ -1,6 +1,8 @@
 using System;
 using NaughtyAttributes;
+using Player.GUI;
 using UnityEngine;
+using Utility;
 using World.Environment.Lightning;
 
 namespace World.Environment
@@ -11,7 +13,7 @@ namespace World.Environment
         
         public Sun sun;
         [SerializeField]
-        DateTime date;
+        public DateTime date;
         
         [Range(1900, 2100)]
         public int year = 2022;
@@ -23,26 +25,30 @@ namespace World.Environment
         
         [SerializeField]
         [Range(0, 24)]
-        private int hour;
+        public int hour;
 
         [SerializeField]
         [Range(0, 60)]
-        private int minutes;
+        public int minutes;
 
         [SerializeField]
         [OnValueChanged("SetTimeSpeed")]
         [Range(1, 1200)]
-        private float timeSpeed = 1;
+        public float timeSpeed = 1;
 
+        [Range(1, 64)]
         [SerializeField]
-        private int frameSteps = 1;
-        private int frameStep;
+        public int frameSteps = 1;
 
         public bool realTime = false;
         
-        private DateTime localTime;
+        public GUIController ui;
         
         public TimeEvents currentState;
+        
+        public DateTime LocalTime => localTime;
+        
+        public float TimeSpeed => timeSpeed;
         
         public event EventHandler TimeChangedToDawn;
         public event EventHandler TimeChangedToNoon;
@@ -52,9 +58,9 @@ namespace World.Environment
         public event EventHandler TimeChangedToMidnight;
         public event EventHandler TimeChangedToAfternight;
         public event EventHandler<HourElapsedEventArgs> TimeHourElapsed;
-        
-        public DateTime LocalTime => localTime;
-        public float TimeSpeed => timeSpeed;
+
+        private DateTime localTime;
+        private int frameStep;
         
         private void OnValidate()
         {
@@ -110,7 +116,14 @@ namespace World.Environment
             TimeChangedToMidnight += OnMidnight;
             TimeChangedToAfternight += OnAfternight;
             
+            //init call of time event 
+            CallEventsFromTime(hour-1, hour);
+            
+            //init event call
             CallEventFromStatus(currentState)?.Invoke(this, EventArgs.Empty);
+            
+            //set light source
+            sun.SetLightSource(currentState)?.Invoke();
         }
         
         private void Update()
@@ -127,6 +140,7 @@ namespace World.Environment
                 sun.SetPosition();
                 //set state
                 CallEventsFromTime(oldHour, hour);
+                ui.guiResourcesController.OnTimeChange(new GenEventArgs<string>(localTime.ToString("f")));
             }
             frameStep = (frameStep + 1) % frameSteps;
         }
@@ -186,10 +200,10 @@ namespace World.Environment
             Debug.Log("Its after night!");
         }
 
-        public void CallEventsFromTime(int oldTime, int time)
+        public void CallEventsFromTime(int oldHourTime, int hourTime)
         {
             var oldState = currentState;
-            currentState = (time) switch
+            currentState = (hourTime) switch
             {
                 (>= 6 and < 11) => TimeEvents.Dawn,
                 (>= 11 and < 13) => TimeEvents.Noon,
@@ -200,9 +214,9 @@ namespace World.Environment
                 (>= 1 and < 6) => TimeEvents.Afternight,
                 _ => TimeEvents.Afternight,
             };
-            if (time > oldTime)
+            if (hourTime > oldHourTime)
             {
-                TimeHourElapsed?.Invoke(this, new HourElapsedEventArgs(time));
+                TimeHourElapsed?.Invoke(this, new HourElapsedEventArgs(hourTime));
             }
             if (oldState != currentState)
             {

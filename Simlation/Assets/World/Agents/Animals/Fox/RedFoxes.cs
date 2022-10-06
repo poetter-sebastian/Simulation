@@ -77,5 +77,10 @@ namespace World.Agents.Animals.Fox
         {
             throw new System.NotImplementedException();
         }
+
+        public override string LN()
+        {
+            return "Red fox";
+        }
     }
 }

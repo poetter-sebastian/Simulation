@@ -17,4 +17,9 @@ public class Oak : FloraAgent
         health = 200;
         waterConsumption = 10;
     }
+
+    public override string LN()
+    {
+        return "Oak";
+    }
 }

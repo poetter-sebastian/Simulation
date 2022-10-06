@@ -21,7 +21,7 @@ namespace Player.GUI
         }
         public void OnWaterConsumptionChange(GenEventArgs<string> e)
         {
-            waterConsumptionValue.text = "" + e.Value + " l/d";
+            waterConsumptionValue.text = "" + e.Value + " LN/d";
         }
         public void OnPollutionChange(GenEventArgs<string> e)
         {

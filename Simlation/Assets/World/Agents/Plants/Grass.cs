@@ -11,4 +11,9 @@ public class Grass : FloraAgent
     {
         
     }
+
+    public override string LN()
+    {
+        return "Grass";
+    }
 }

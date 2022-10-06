@@ -136,5 +136,10 @@ namespace World.Agents.Animals.Rabbit
                 health -= 1;
             }
         }
+        
+        public override string LN()
+        {
+            return "rabbit";
+        }
     }
 }

@@ -14,7 +14,7 @@ using Random = UnityEngine.Random;
 
 namespace World.Environment
 {
-    public class WorldController : MonoBehaviour
+    public class WorldController : MonoBehaviour, ILog
     {
         [Header("Simulation Settings")]
         public Vector2Int size;
@@ -328,7 +328,7 @@ namespace World.Environment
             }
             else
             {
-                Debug.LogError("World instance already set!");
+                ILog.LE(LN, "World instance already set!");
             }
         }
 
@@ -560,6 +560,12 @@ namespace World.Environment
             }
         }
 #endif
+        
+        public string LN()
+        {
+            return "Time handler";
+        }
+        
         public enum ActiveColor
         {
             Texture,

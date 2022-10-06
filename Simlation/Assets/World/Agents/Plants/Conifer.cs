@@ -22,4 +22,10 @@ public class Conifer : FloraAgent
     {
         
     }
+
+
+    public override string LN()
+    {
+        return "Conifer";
+    }
 }

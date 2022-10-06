@@ -7,7 +7,7 @@ using World.Environment.Lightning;
 
 namespace World.Environment
 {
-    public class TimeHandler : MonoBehaviour
+    public class TimeHandler : MonoBehaviour, ILog
     {
         public static TimeHandler Instance;
         
@@ -68,13 +68,12 @@ namespace World.Environment
             {
                 var d = new DateTime(year,month,day,hour,minutes,0);
                 localTime = d;
-                //Debug.Log(d);
                 sun.SetPosition();
                 CallEventsFromTime(hour, hour);
             }
             catch(ArgumentOutOfRangeException e)
             {
-                Debug.LogWarning("bad date"+e.Message);
+                ILog.LE(LN, "bad date"+e.Message);
             }
         }
 
@@ -86,7 +85,7 @@ namespace World.Environment
             }
             else
             {
-                Debug.LogError("World instance already set!");
+                ILog.L(LN, "TimeHandler instance already set!", LogType.Exception);
             }
         }
 
@@ -145,6 +144,11 @@ namespace World.Environment
             frameStep = (frameStep + 1) % frameSteps;
         }
         
+        public string LN()
+        {
+            return "Time handler";
+        }
+        
         public void SetTime(int hour, int minutes) 
         {
             this.hour = hour;
@@ -172,32 +176,32 @@ namespace World.Environment
 
         private void OnDawn(object sender, EventArgs e)
         {
-            Debug.Log("Its dawn!");
+            ILog.L(LN, "Its dawn!");
         }
         private void OnNoon(object sender, EventArgs e)
         {
-            Debug.Log("Its noon!");
+            ILog.L(LN, "Its noon!");
         }
         private void OnAfternoon(object sender, EventArgs e)
         {
-            Debug.Log("Its after noon!");
+            ILog.L(LN, "Its after noon!");
         }
         private void OnDusk(object sender, EventArgs e)
         {
-            Debug.Log("Its dusk!");
+            ILog.L(LN, "Its dusk!");
         }
         private void OnNight(object sender, EventArgs e)
         {
-            Debug.Log("Its night!");
+            ILog.L(LN, "Its night!");
         }
         private void OnMidnight(object sender, EventArgs e)
         {
-            Debug.Log("Its midnight!");
+            ILog.L(LN, "Its midnight!");
         }
         
         private void OnAfternight(object sender, EventArgs e)
         {
-            Debug.Log("Its after night!");
+            ILog.L(LN, "Its after night!");
         }
 
         public void CallEventsFromTime(int oldHourTime, int hourTime)

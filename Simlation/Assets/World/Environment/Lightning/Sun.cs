@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Utility;
 using static World.Environment.TimeHandler;
 
 namespace World.Environment.Lightning
 {
     [ExecuteInEditMode]
-    public class Sun : MonoBehaviour
+    public class Sun : MonoBehaviour, ILog
     {
         [SerializeField]
         private float longitude;
@@ -45,7 +46,7 @@ namespace World.Environment.Lightning
             angles.x = (float)alt * Mathf.Rad2Deg;
             angles.y = (float)azi * Mathf.Rad2Deg;
             
-            //UnityEngine.Debug.Log(angles);
+            ILog.L(LN, angles);
             sun.transform.localRotation = Quaternion.Euler(angles);
             angles.x = (angles.x + 180) % 360;
             angles.y = (angles.y + 180) % 360;
@@ -88,6 +89,11 @@ namespace World.Environment.Lightning
         private void OnNight(object sender, EventArgs e)
         {
             EnableMoon();
+        }
+
+        public string LN()
+        {
+            return "Sun";
         }
     }
 

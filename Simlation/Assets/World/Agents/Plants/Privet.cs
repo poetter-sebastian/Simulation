@@ -22,4 +22,9 @@ public class Privet : FloraAgent
     {
         
     }
+
+    public override string LN()
+    {
+        return "Privet";
+    }
 }

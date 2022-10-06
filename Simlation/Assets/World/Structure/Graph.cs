@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Localization;
+using Utility;
 
 namespace World.Structure
 {
-    public class Graph
+    public class Graph : ILog
     {
         //increment the id number for identify the node
         protected int NodeID = 0;
@@ -35,7 +36,7 @@ namespace World.Structure
             var ret = Nodes.TryAdd(new Vector2(pos.x, pos.z), node);
             if (!ret)
             {
-                Debug.LogError("Doubled node on position: " + pos);
+                ILog.LER(LN, "Doubled node on position: " + pos);
             }
             return ret;
         }
@@ -163,6 +164,11 @@ namespace World.Structure
         {
             // ReSharper disable once InconsistentNaming
             public new string Message = "The nodes have different types and should not be connected.";
+        }
+
+        public string LN()
+        {
+            return "Graph";
         }
     }
 

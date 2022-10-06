@@ -13,7 +13,7 @@ using Random = UnityEngine.Random;
 
 namespace World.Environment
 {
-    public class ClimateHandler : MonoBehaviour
+    public class ClimateHandler : MonoBehaviour, ILog
     {
         public static ClimateHandler Instance;
         public WindZone wind;
@@ -58,7 +58,7 @@ namespace World.Environment
             }
             else
             {
-                Debug.LogError("World instance already set!");
+                ILog.LE(LN, "World instance already set!");
             }
         }
 
@@ -74,7 +74,7 @@ namespace World.Environment
 
         private void OnDayChange(object sender, EventArgs e)
         {
-            Debug.Log("Day has elapsed");
+            ILog.L(LN, "Day has elapsed");
 
             var tempPair = MonthToTemperature((TimeHandler.Months)time.month);
 
@@ -90,7 +90,7 @@ namespace World.Environment
         
         private void OnHourElapsed(object sender, HourElapsedEventArgs e)
         {
-            Debug.Log("hour has elapsed");
+            ILog.L(LN, "hour has elapsed");
             
             //wind speed
             //from 0 to 3
@@ -121,6 +121,11 @@ namespace World.Environment
                 Mathf.Lerp(minDayTemperature, maxDayTemperature, e.Hour / 12f));
         }
 
+        public string LN()
+        {
+            return "Climate handler";
+        }
+        
         public void SetWindSpeed(float value = -1)
         {
             windSpeed = value switch

@@ -3,13 +3,14 @@ using Cinemachine;
 using Game.Utility;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Utility;
 using static UnityEngine.Camera;
 using Cursor = UnityEngine.Cursor;
 
 namespace Player.Camera
 {
     [RequireComponent(typeof(CinemachineFreeLook))]
-    public class FreeLookUserInput : MonoBehaviour
+    public class FreeLookUserInput : MonoBehaviour, ILog
     {
         public Transform target = default;
         
@@ -106,7 +107,7 @@ namespace Player.Camera
 
         private void OnLeftClick(InputAction.CallbackContext e)
         {
-            Debug.Log("LeftMouseClicked");
+            ILog.L(LN, "LeftMouseClicked");
             var ray = main.ScreenPointToRay(input.PointerPosition());
             if (Physics.Raycast(ray, out var hit))
             {
@@ -190,6 +191,11 @@ namespace Player.Camera
         private void OnApplicationFocus(bool changedFocus)
         {
             hasFocus = changedFocus;
+        }
+
+        public string LN()
+        {
+            return "Camera controller";
         }
     }
 }

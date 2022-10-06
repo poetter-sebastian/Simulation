@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using Utility;
 
 namespace World.Environment.Lightning 
 {
-  public class SetSunLocation : MonoBehaviour 
+  public class SetSunLocation : MonoBehaviour, ILog
   {
     [SerializeField]
     private Sun sun;
@@ -17,7 +18,7 @@ namespace World.Environment.Lightning
     {
       if (!Input.location.isEnabledByUser)
       {
-        //Debug.LogWarning("location disabled by user");
+        ILog.L(LN, "location disabled by user");
         yield break;
       }
       Input.location.Start();
@@ -29,17 +30,22 @@ namespace World.Environment.Lightning
 
       if (Input.location.status == LocationServiceStatus.Failed)
       {
-          Debug.LogWarning("Unable to determine device location");
-          yield break;
+        ILog.LER(LN, "Unable to determine device location");
+        yield break;
       }
       
       if(Input.location.status==LocationServiceStatus.Running)
       {
         var locInfo = Input.location.lastData;
-        Debug.LogFormat("long={0} lat={1}",locInfo.longitude,locInfo.latitude);
+        ILog.L(LN, "long="+locInfo.longitude+" lat=+"+locInfo.latitude);
         sun.SetLocation( locInfo.longitude, locInfo.latitude );
       }
       Input.location.Stop();
-    }    
+    }
+
+    public string LN()
+    {
+      return "Sun location";
+    }
   }
 }

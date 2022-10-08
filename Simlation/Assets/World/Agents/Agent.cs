@@ -7,7 +7,7 @@ using World.Structure;
 
 namespace World.Agents
 {
-    public abstract class Agent : WorldObject, IMouseListener
+    public abstract class Agent : WorldObject
     {
         /// <summary>
         /// If the Agent can move
@@ -86,9 +86,6 @@ namespace World.Agents
         [Tooltip("List of diseases of agent")]
         public int[] diseases;
 
-        public Ground ground;
-        public WorldController world;
-        
         /// <summary>
         /// Behaviour of the agent
         /// </summary>
@@ -113,12 +110,6 @@ namespace World.Agents
         ///  Function to handle the agent and check the states
         /// </summary>
         public abstract void OnHandle(WorldController world);
-
-        public abstract void MouseClick();
-
-        public abstract void MouseOver();
-
-        public abstract void MouseExit();
         
         /// <summary>
         /// Event gets fired when the agents has no health

@@ -295,6 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6842454541039620494}
   - component: {fileID: 1778736652439676671}
+  - component: {fileID: -5665279295091033051}
   m_Layer: 0
   m_Name: cypress_1
   m_TagString: Untagged
@@ -352,6 +353,43 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5099109017947224896}
   m_Enabled: 1
+--- !u!114 &-5665279295091033051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6178543459098200884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 358038450e8c28647b05c8450c9d0837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  world: {fileID: 0}
+  moveAble: 0
+  alive: 0
+  domain: 
+  kingdom: 
+  phylum: 
+  agentClass: 
+  order: 
+  family: 
+  genus: 
+  species: 
+  o2Modifier: 0
+  co2Modifier: 0
+  size: 0
+  age: 0
+  diurnal: 0
+  health: 200
+  thirst: 0
+  injuries: 
+  diseases: 
+  waterConsumption: 20
+  preferredGround: 0
+  heatResistance: 0
+  dryResistance: 0
+  xerophyt: 0
 --- !u!1 &6244353329413190158
 GameObject:
   m_ObjectHideFlags: 0

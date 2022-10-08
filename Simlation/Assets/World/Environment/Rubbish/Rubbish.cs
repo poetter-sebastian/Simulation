@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
+using UnityEngine.Playables;
+using Utility;
+using World.Agents;
 
-public class Rubbish : MonoBehaviour
+public class Rubbish : WorldObject
 {
-    // Start is called before the first frame update
-    void Start()
+    public PlayerHandler player;
+
+    public override string LN()
     {
-        
+        return "Rubbish";
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void MouseClick()
     {
+        ILog.L(LN, "CASH!");
+        Destroy(gameObject);
+    }
         
+    public override void MouseOver()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void MouseExit()
+    {
+        throw new System.NotImplementedException();
     }
 }

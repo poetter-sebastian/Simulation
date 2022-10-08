@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Globalization;
 using NaughtyAttributes;
 using Player.GUI;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Rendering;

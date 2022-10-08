@@ -5,44 +5,22 @@ using Random = UnityEngine.Random;
 
 namespace World.Environment.Spawn
 {
-    public class TreeSpawner : MonoBehaviour, ISpawner
+    public class TreeSpawner : Spawner
     {
-        public GameObject[] plants;
-        public int spawnAttempts = 550;
-        public float minHeight = 3.5f;
-        public float maxHeight = 7.5f;
-
-        public void Spawn(Vector2Int size, WorldController worldController)
+        public TreeSpawner()
         {
-            foreach (Transform child in transform)
-            {
-                DestroyImmediate(child.gameObject);
-            }
-            for (var i = 0; i < spawnAttempts; i++)
-            {
-                //1 and -1 because of the map border
-                var x = Random.Range(1, size.x-1); 
-                var z = Random.Range(1, size.y-1);
+            spawnAttempts = 550;
+            minHeight = 3.5f;
+            maxHeight = 7.5f;
+        }
 
-                //TODO maybe smaller ray
-                var ray = new Ray(new Vector3(x, 50, z), new Vector3(x, 50-200, z));
+        public override void SpawnOptions(GameObject newPrefab, RaycastHit hit)
+        {
+            var plant = Instantiate(newPrefab, hit.point, new Quaternion(0f, Random.Range(0f, 360f), 0f, 0f), transform);
+            world.RegisterFloraAgent(plant.GetComponent<FloraAgent>());
 
-                Physics.Raycast(ray, out var hit, 200, LayerMask.GetMask("World", "Water"));
-
-                if (hit.point == Vector3.zero || hit.transform.gameObject.layer == 4)
-                {
-                    continue;
-                }
-                
-                if (hit.point.y < minHeight || hit.point.y > maxHeight) continue;
-
-                var obj = Random.Range(0, plants.Length);
-                var plant = Instantiate(plants[obj], hit.point, new Quaternion(0f, Random.Range(0f, 360f), 0f, 0f), transform);
-                worldController.RegisterFloraAgent(plant.GetComponent<FloraAgent>());
-
-                var scale = Random.Range(0.5f, 1);
-                plant.transform.localScale = new Vector3(scale, scale, scale);
-            }
+            var scale = Random.Range(0.4f, 1);
+            plant.transform.localScale = new Vector3(scale, scale, scale);
         }
     }
 }

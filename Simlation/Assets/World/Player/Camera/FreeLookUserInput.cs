@@ -111,7 +111,7 @@ namespace Player.Camera
             var ray = main.ScreenPointToRay(input.PointerPosition());
             if (Physics.Raycast(ray, out var hit))
             {
-                var selectedComponent = hit.collider.GetComponentInChildren<IMouseListener>() ?? hit.collider.GetComponentInParent<IMouseListener>();
+                var selectedComponent = hit.rigidbody.GetComponent<IMouseListener>();
                 if (selectedComponent == null) return;
                 //collider was hit and it's a world object and the function is called
                 selectedComponent.MouseClick();

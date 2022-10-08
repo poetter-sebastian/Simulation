@@ -36,7 +36,9 @@ namespace World.Environment
         public GameObject water;
         public GameObject plants;
         public GameObject border;
-        public GameObject[] spawner;
+        public GameObject[] plantSpawner;
+        public GameObject[] otherSpawner;
+        
 
         public Gradient groundGradient;
         public Gradient heightGradient;
@@ -64,6 +66,7 @@ namespace World.Environment
         [Header("Utility")]
         public bool showMesh = false;
         public bool showGraph = false;
+        public bool spawnPlants = false;
 
         private float maxHeight = 0;
         private float minHeight = float.MaxValue;
@@ -280,15 +283,32 @@ namespace World.Environment
             GetComponent<MeshCollider>().sharedMesh = mesh;
             GetComponent<MeshFilter>().mesh = mesh;
 
-            foreach (var obj in spawner)
+            //spawn plants
+            if (spawnPlants)
             {
-                var spawn = obj.GetComponent<ISpawner>();
+                foreach (var obj in plantSpawner)
+                {
+                    var spawn = obj.GetComponent<Spawner>();
+                    if (spawn is null)
+                    {
+                        throw new Spawner.NoSpawnerException();
+                    }
+                    spawn.Spawn(this);
+                }
+            }
+            
+            //spawn others
+            foreach (var obj in otherSpawner)
+            {
+                var spawn = obj.GetComponent<Spawner>();
                 if (spawn is null)
                 {
-                    throw new ISpawner.NoSpawnerException();
+                    throw new Spawner.NoSpawnerException();
                 }
-                spawn.Spawn(size, this);
+                spawn.Spawn(this);
             }
+            
+            
             GetComponent<MeshFilter>().sharedMesh.colors = textureColors;
 //#if UNITY_EDITOR
 //            UnityEditor.AI.NavMeshBuilder.ClearAllNavMeshes();
@@ -504,7 +524,7 @@ namespace World.Environment
         {
             var pos = agent.transform.position;
             //round variables to full numbers
-            //TODO works only with a pointScale of 1!!!!
+            //TODO works only with a pointScale of 1!
             var vec = new Vector2(
                 MathF.Round(pos.x, MidpointRounding.AwayFromZero),
                 MathF.Round(pos.z, MidpointRounding.AwayFromZero));

@@ -46,7 +46,7 @@ namespace World.Environment.Lightning
             angles.x = (float)alt * Mathf.Rad2Deg;
             angles.y = (float)azi * Mathf.Rad2Deg;
             
-            ILog.L(LN, angles);
+            //ILog.L(LN, angles);
             sun.transform.localRotation = Quaternion.Euler(angles);
             angles.x = (angles.x + 180) % 360;
             angles.y = (angles.y + 180) % 360;

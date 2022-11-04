@@ -46,6 +46,18 @@ namespace World.Environment
         public float weatherMinMultiplier = 0.25f; //%
         public float weatherMaxMultiplier = 0.35f; //%
 
+        //Events
+        public event EventHandler<GenEventArgs<Weather>> WeatherChanged;
+        public event EventHandler<GenEventArgs<Weather>> ChangedToRain;
+        public event EventHandler<GenEventArgs<Weather>> ChangedToDrizzle;
+        public event EventHandler<GenEventArgs<Weather>> ChangedToSnow;
+        public event EventHandler<GenEventArgs<Weather>> ChangedToClear;
+        public event EventHandler<GenEventArgs<Weather>> ChangedToStormy;
+        public event EventHandler<GenEventArgs<Weather>> ChangedToBlizzard;
+        public event EventHandler<GenEventArgs<Weather>> ChangedToFoggy;
+        public event EventHandler<GenEventArgs<Weather>> ChangedToHailstorm;
+        public event EventHandler<GenEventArgs<Weather>> ChangedToHeatWave;
+        
         private TimeHandler time;
         
         private void Awake()
@@ -211,36 +223,53 @@ namespace World.Environment
             ).ToString("0.00")));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         private void SetWeather(Weather value)
         {
-            weather = value;
+            
             clouds.sharedProfile.TryGet<VolumetricClouds>(typeof(VolumetricClouds), out var cloudComp);
+           
+            //call linked functions
+            WeatherChanged?.Invoke(this, new GenEventArgs<Weather>(weather));
             switch (weather)
             {
                 case Weather.Rain:
                     cloudComp.cloudPreset.value = VolumetricClouds.CloudPresets.Stormy;
+                    ChangedToRain?.Invoke(this, new GenEventArgs<Weather>(weather));
                     break;
                 case Weather.Drizzle:
                     cloudComp.cloudPreset.value = VolumetricClouds.CloudPresets.Stormy;
+                    ChangedToDrizzle?.Invoke(this, new GenEventArgs<Weather>(weather));
                     break;
                 case Weather.Snow:
+                    ChangedToSnow?.Invoke(this, new GenEventArgs<Weather>(weather));
                     break;
                 case Weather.Clear:
                     cloudComp.cloudPreset.value = VolumetricClouds.CloudPresets.Sparse;
+                    ChangedToClear?.Invoke(this, new GenEventArgs<Weather>(weather));
                     break;
                 case Weather.Stormy:
                     cloudComp.cloudPreset.value = VolumetricClouds.CloudPresets.Stormy;
+                    ChangedToStormy?.Invoke(this, new GenEventArgs<Weather>(weather));
                     break;
                 case Weather.Blizzard:
                     cloudComp.cloudPreset.value = VolumetricClouds.CloudPresets.Stormy;
+                    ChangedToBlizzard?.Invoke(this, new GenEventArgs<Weather>(weather));
                     break;
                 case Weather.Foggy:
+                    ChangedToFoggy?.Invoke(this, new GenEventArgs<Weather>(weather));
                     break;
                 case Weather.HailStorm:
                     cloudComp.cloudPreset.value = VolumetricClouds.CloudPresets.Stormy;
+                    ChangedToHailstorm?.Invoke(this, new GenEventArgs<Weather>(weather));
                     break;
                 case Weather.HeatWave:
                     cloudComp.cloudPreset.value = VolumetricClouds.CloudPresets.Sparse;
+                    ChangedToHeatWave?.Invoke(this, new GenEventArgs<Weather>(weather));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(weather), weather, null);
@@ -248,6 +277,9 @@ namespace World.Environment
             //update the whole values because of the weather multiplier
             OnDayChange(this, EventArgs.Empty);
             OnHourElapsed(this, new HourElapsedEventArgs(time.LocalTime.Hour));
+            
+            weather = value;
+            
             ui.guiWeatherController.OnWeatherChange(new GenEventArgs<string>(WeatherToString(weather)));
         }
         
@@ -316,7 +348,7 @@ namespace World.Environment
             Weather.HeatWave => new LocalizedString("Enum", "Weather.HeatWave").GetLocalizedString(),
             _ => throw new ArgumentOutOfRangeException(nameof(current), current, null)
         };
-                
+
         public enum Weather
         {
             Rain,

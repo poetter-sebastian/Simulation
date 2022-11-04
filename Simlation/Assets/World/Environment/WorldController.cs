@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using NaughtyAttributes;
+using Player;
 using Unity.AI.Navigation;
 using UnityEditor;
 using UnityEngine;
@@ -16,6 +18,8 @@ namespace World.Environment
 {
     public class WorldController : MonoBehaviour, ILog
     {
+        public PlayerHandler player;
+        
         [Header("Simulation Settings")]
         public Vector2Int size;
         [Min(0.15f)]
@@ -67,12 +71,18 @@ namespace World.Environment
         public bool showMesh = false;
         public bool showGraph = false;
         public bool spawnPlants = false;
+        public string LN() => "Time handler";
 
         private float maxHeight = 0;
         private float minHeight = float.MaxValue;
 
         private TimeHandler timeHandler;
         private ClimateHandler climateHandler;
+        
+        //debug
+        private FileWriter comp;
+        private FileWriter compHandle;
+        private readonly Stopwatch timer = new Stopwatch();
 
         private Mesh GenerateGraph(out Vector3[] vertices)
         {
@@ -267,18 +277,55 @@ namespace World.Environment
         [Button("Generate")]
         private void Generate()
         {
+            //#if UNITY_EDITOR
+            timer.Start();
+            //#endif
+            
             var mesh = GenerateGraph(out var vertices);
+            
+            //#if UNITY_EDITOR
+            timer.Stop();
+            comp.WriteData("GenerateGraph", timer.ElapsedTicks.ToString());
+            timer.Reset();
+            //#endif
 
             mesh.vertices = vertices;
             
+            //#if UNITY_EDITOR
+            timer.Start();
+            //#endif
+            
             mesh.triangles = GenerateTriangles();
 
+            //#if UNITY_EDITOR
+            timer.Stop();
+            comp.WriteData("GenerateTriangles", timer.ElapsedTicks.ToString());
+            timer.Reset();
+            timer.Start();
+            //#endif
+            
             GenerateColorArray(mesh);
+            
+            //#if UNITY_EDITOR
+            timer.Stop();
+            comp.WriteData("GenerateColorArray", timer.ElapsedTicks.ToString());
+            timer.Reset();
+            //#endif
             
             mesh.RecalculateNormals();
             mesh.RecalculateBounds();
 
+            //#if UNITY_EDITOR
+            timer.Start();
+            //#endif
+            
             GenerateUV(mesh);
+            
+            //#if UNITY_EDITOR
+            timer.Stop();
+            comp.WriteData("GenerateUV", timer.ElapsedTicks.ToString());
+            timer.Reset();
+            //#endif
             
             GetComponent<MeshCollider>().sharedMesh = mesh;
             GetComponent<MeshFilter>().mesh = mesh;
@@ -286,6 +333,9 @@ namespace World.Environment
             //spawn plants
             if (spawnPlants)
             {
+                //#if UNITY_EDITOR
+                timer.Start();
+                //#endif
                 foreach (var obj in plantSpawner)
                 {
                     var spawn = obj.GetComponent<Spawner>();
@@ -295,17 +345,30 @@ namespace World.Environment
                     }
                     spawn.Spawn(this);
                 }
+                //#if UNITY_EDITOR
+                timer.Stop();
+                comp.WriteData("SpawnPlants", timer.ElapsedTicks.ToString());
+                timer.Reset();
+                //#endif
             }
             
             //spawn others
             foreach (var obj in otherSpawner)
             {
+                //#if UNITY_EDITOR
+                timer.Start();
+                //#endif
                 var spawn = obj.GetComponent<Spawner>();
                 if (spawn is null)
                 {
                     throw new Spawner.NoSpawnerException();
                 }
                 spawn.Spawn(this);
+                //#if UNITY_EDITOR
+                timer.Stop();
+                comp.WriteData("SpawnObjects", timer.ElapsedTicks.ToString());
+                timer.Reset();
+                //#endif
             }
             
             
@@ -318,11 +381,19 @@ namespace World.Environment
         
         private void Start()
         {
+            //init file logger for comp measurements
+            comp = new FileWriter("complexity");
+            compHandle = new FileWriter("complexityAgentHandle");
+
             //loads the time handler
             timeHandler = GetComponent<TimeHandler>();
             timeHandler.TimeHourElapsed += HandleAgents;
+            //TODO do this with coroutine!
             timeHandler.TimeChangedToMidnight += delegate(object sender, EventArgs args)
             {
+                //#if UNITY_EDITOR
+                timer.Start();
+                //#endif
                 for (var i = 0; i < size.x; i++)
                 {
                     for (var j = 0; j < size.y; j++)
@@ -332,6 +403,11 @@ namespace World.Environment
                         CalcWaterArea(selGround ,0);
                     }
                 }
+                //#if UNITY_EDITOR
+                timer.Stop();
+                comp.WriteData("CalcWater", timer.ElapsedTicks.ToString());
+                timer.Reset();
+                //#endif
             };
             
             //loads the climate handler
@@ -359,6 +435,9 @@ namespace World.Environment
         /// <param name="e">Event data</param>
         public void HandleAgents(object sender, EventArgs e)
         {
+            //#if UNITY_EDITOR
+            timer.Start();
+            //#endif
             StartCoroutine(IteratePlants());
             foreach (var rAgent in removeList)
             {
@@ -369,6 +448,11 @@ namespace World.Environment
             {
                 GetComponent<MeshFilter>().sharedMesh.colors = aridityColors;
             }
+            //#if UNITY_EDITOR
+            timer.Stop();
+            compHandle.WriteData("HandleAgents", timer.ElapsedTicks.ToString());
+            timer.Reset();
+            //#endif
         }
 
         /// <summary>
@@ -580,12 +664,7 @@ namespace World.Environment
             }
         }
 #endif
-        
-        public string LN()
-        {
-            return "Time handler";
-        }
-        
+
         public enum ActiveColor
         {
             Texture,

@@ -9,9 +9,11 @@ Simlation/[Oo]bj/
 Simlation/[Bb]uild/
 Simlation/[Bb]uilds/
 Simlation/[Ll]ogs/
+Simlation/[Rr]ecords/
 Simlation/[Mm]emoryCaptures/
 Simlation/Assets/StandartAseets/
 Simlation/UserSettings/
+[Rr]elease
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta

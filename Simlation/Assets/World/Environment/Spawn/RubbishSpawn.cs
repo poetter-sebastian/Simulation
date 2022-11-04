@@ -19,6 +19,15 @@ namespace World.Environment.Spawn
             
             var scale = Random.Range(0.5f, 1);
             el.transform.localScale = new Vector3(scale, scale, scale);
+            var rub = el.GetComponent<Rubbish>();
+            if (rub != null)
+            {
+                rub.player = world.player;
+            }
+            else
+            {
+                throw new MissingComponentException("Rubbish component not found");
+            }
         }
     }
 }

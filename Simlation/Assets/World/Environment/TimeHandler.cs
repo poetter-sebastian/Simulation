@@ -50,6 +50,7 @@ namespace World.Environment
         
         public float TimeSpeed => timeSpeed;
         
+        //Events
         public event EventHandler TimeChangedToDawn;
         public event EventHandler TimeChangedToNoon;
         public event EventHandler TimeChangedToAfternoon;

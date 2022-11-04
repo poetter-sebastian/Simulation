@@ -18,6 +18,7 @@ public class Rubbish : WorldObject
     public override void MouseClick()
     {
         ILog.L(LN, "CASH!");
+        player.AddMoney(Random.Range(10, 100));
         Destroy(gameObject);
     }
         

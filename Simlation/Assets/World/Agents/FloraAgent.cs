@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Utility;
 using World.Environment;
 using World.Structure;
@@ -46,17 +47,17 @@ namespace World.Agents
         
         public override void MouseClick()
         {
-            throw new NotImplementedException();
+
         }
 
         public override void MouseOver()
         {
-            throw new NotImplementedException();
+
         }
 
         public override void MouseExit()
         {
-            throw new NotImplementedException();
+
         }
     }
 }

@@ -1,0 +1,26 @@
+(2560x1440)
+Performance: sehr gut
+CPU: i9-11900KF 3.50GHz
+RAM: DDR4-32GB
+GPU: GTX3800
+
+
+(1920x1080)
+Performance: okay
+CPU: i7-7600
+RAM: DDR4-24GB
+GPU: GTX1060 (6gb)
+
+
+(3840x2160)
+Performance: mäßig
+CPU: Ryzen 7 2700
+RAM: DDR4 - 16 gb
+GPU: GTX 1080
+
+
+(1920x1080)
+Performance: schlecht (14 FPS, 23 Uhr mehr als 15s lag)
+CPU: AMD Ryzen 5 2500U 2.00 GHz
+RAM: DDR3-8GB 
+GPU: Radeon Vega 8 Graphics

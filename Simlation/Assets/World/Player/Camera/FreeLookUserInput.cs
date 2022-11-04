@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using Utility;
 using static UnityEngine.Camera;
 using Cursor = UnityEngine.Cursor;
+using UnityEngine.EventSystems;
 
 namespace Player.Camera
 {
@@ -13,6 +14,7 @@ namespace Player.Camera
     public class FreeLookUserInput : MonoBehaviour, ILog
     {
         public Transform target = default;
+        public EventSystem UIEvents;
         
         [Header("Functions")]
         public bool borderScroll;
@@ -45,6 +47,7 @@ namespace Player.Camera
         private bool inWindow = true;
 
         private InputProvider input;
+        
         
         private void Awake()
         {

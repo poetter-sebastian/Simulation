@@ -1,8 +1,11 @@
-﻿using Player.GUI;
+﻿using System.Globalization;
+using Player.GUI;
+using UnityEngine;
+using Utility;
 
 namespace Player
 {
-    public class PlayerHandler
+    public class PlayerHandler : MonoBehaviour
     {
         public string PlayerName = "Jeff";
         public int money = 0;
@@ -17,5 +20,11 @@ namespace Player
         public float lowestQuality = 100;
         public float co2Consumptin = 0;
         public float waterConsumption = 0;
+
+        public void AddMoney(int amount)
+        {
+            money += amount;
+            ui.guiResourcesController.OnMoneyChange(new GenEventArgs<string>(money.ToString(CultureInfo.InvariantCulture)));
+        }
     }
 }

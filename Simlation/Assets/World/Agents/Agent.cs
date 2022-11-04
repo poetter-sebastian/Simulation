@@ -139,4 +139,10 @@ namespace World.Agents
             gameObject.SetActive(false);
         }
     }
+
+    class AgentNotFoundException : MissingComponentException
+    {
+        // ReSharper disable once InconsistentNaming
+        public new string Message = "The selected object has no agent component";
+    }
 }

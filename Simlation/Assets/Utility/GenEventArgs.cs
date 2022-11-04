@@ -8,7 +8,7 @@ namespace Utility
     public class GenEventArgs<T> : EventArgs
     {
         public T Value { get; }
-
+        
         public GenEventArgs(T value)
         {
             Value = value;

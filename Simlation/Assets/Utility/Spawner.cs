@@ -47,6 +47,15 @@ namespace World.Environment
             }
         }
 
+        protected void RegisterFloraAgent(FloraAgent agent)
+        {
+            if (agent == null)
+            {
+                throw new AgentNotFoundException();
+            }
+            world.RegisterFloraAgent(agent);
+        }
+
         public class NoSpawnerException : Exception
         {
             // ReSharper disable once InconsistentNaming

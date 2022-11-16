@@ -94,6 +94,13 @@ MonoBehaviour:
     m_Localized: XXX l/Day
     m_Metadata:
       m_Items: []
+  - m_Id: 24285468962054144
+    m_Localized: "Movement: \n\tWASD/Arrow keys - Camera movement\n\tMouse on the
+      borders - Camera movement\n\tMiddle mouse button - Camera tilt\nInteractions:
+      \n\tLeft click on rubbish - Money fot the recycling\n\tLeft click on  buttons
+      - Perform user interface functions\n\tLeft click on plants - Get plants information"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

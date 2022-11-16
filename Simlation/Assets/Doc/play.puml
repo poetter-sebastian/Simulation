@@ -1,0 +1,57 @@
+﻿@startuml
+
+(*) --> "Start introduction"
+
+partition Task#1 {
+    --> "Collect garbage to earn money"
+    If "Enough money" then
+        --> [Yes] "End task #1"
+    else
+        --> [no] "Collect garbage to earn money"
+    Endif
+}
+
+partition Task#2 {
+    "End task #1" -left> "taking soil samples (5x)"
+    If "Enough soil samples" then
+        --> [Yes] "End task #2"
+    else
+        --> [no] "taking soil samples (5x)"
+    Endif
+    note left: Unlock ground type view
+}
+
+partition Task#3 {
+    "End task #2" -right-> "Find and cut sick trees (5x)"
+    If "Found Enough trees" then
+        --> [Yes] "Plant new trees (5x)"
+        If "Enough new trees" then
+            --> [Yes] "End task #3"
+        else
+            --> [no] "Plant new trees (5x)"
+        Endif
+    else
+        --> [no] "Find and cut sick trees (5x)"
+    Endif
+    note right: Unlock ground type view
+}
+
+partition Task#4 {
+    "End task #3" -left-> "Collect money"
+    If "Enough money" then
+        --> [Yes] "Build a weather station"
+        note left: Unlock weather information
+        --> "Collect money again"
+        If "Enough money" then
+            --> [Yes] "Take satellite images"
+            note left: Unlock humidity/height view
+            --> "End task #4"
+        else
+            --> [no] "Collect money again"
+        Endif
+    else
+        --> [no] "Collect money"
+    Endif
+}
+
+@enduml

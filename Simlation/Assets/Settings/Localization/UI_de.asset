@@ -63,7 +63,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2058724578418688
-    m_Localized: "CO\xB2 Verbrauch:"
+    m_Localized: 'Pflanzenart:'
     m_Metadata:
       m_Items: []
   - m_Id: 2059698952986624
@@ -87,11 +87,18 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6476093912506368
-    m_Localized: XXX g/Tag
+    m_Localized: XXX
     m_Metadata:
       m_Items: []
   - m_Id: 6476144571310080
     m_Localized: XXX l/Tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24285468962054144
+    m_Localized: "Bewegung: \n\tWASD/Pfeiltasten - Kamera bewegung\n\tMaus an den
+      Rand des Bildes - Kamera bewegung\n\tMittlere Maustaste - Kameraneigung\nInteraktionen:
+      \n\tLinksklick auf M\xFCll - Geld f\xFCr Recycling\n\tLinksklick auf Icons
+      - Aktionen ausf\xFChren\n\tLicksklick auf Pflanzen - Information \xFCber Pflanze"
     m_Metadata:
       m_Items: []
   references:

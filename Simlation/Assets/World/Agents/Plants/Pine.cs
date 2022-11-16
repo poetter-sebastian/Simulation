@@ -2,7 +2,7 @@ using System;
 using World.Agents;
 using World.Structure;
 
-public class Pine : FloraAgent
+public class Pine : TreeAgent
 {
     public Pine(Ground ground) : base(ground)
     {

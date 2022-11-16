@@ -4,11 +4,7 @@
 		
 		+Climate()
 	}
-	
-	class Graph {
-	    
-	}
-	
+
 	class WorldGenerator {
 	    +modifier:Modifier[]
 	
@@ -25,13 +21,19 @@
     class World {
         #size:vector2
         #position:vector3
-        -climate:Climate
+        -climateHandler:Climate
         -worldGenerator:WorldGenerator
-        -timeManager:TimeManager
+        -timeHandler:TimeManager
         -objects:WorldObject[]
+        -graph:Graph
         
         +World()
         -HandleAgents()
+    }
+    
+    class Graph {
+        +Nodes:Dictionary<Vector2, Node>
+        +Edges:SymmetricVectorDict<Edge>
     }
 	
 	class WorldObject {
@@ -118,6 +120,8 @@
     Abstract class CarnivoreBehaviour {
         
     }
+    
+    World::graph *- Graph
 	
 	World::objects *- WorldObject
 	World::timeManager *- TimeManager

@@ -91,6 +91,10 @@ MonoBehaviour:
     m_Key: Simulation/Player/GUI/Statistic/WaterConsumptionValue
     m_Metadata:
       m_Items: []
+  - m_Id: 24285468962054144
+    m_Key: Simulation/Player/GUI/HelpShadow/Help/Text (TMP)
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -2,7 +2,7 @@ using System;
 using World.Agents;
 using World.Structure;
 
-public class Cypress : FloraAgent
+public class Cypress : TreeAgent
 {
     public Cypress(Ground ground) : base(ground)
     {

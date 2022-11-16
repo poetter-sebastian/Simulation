@@ -2,7 +2,7 @@ using System;
 using World.Agents;
 using World.Structure;
 
-public class Conifer : FloraAgent
+public class Conifer : TreeAgent
 {
     public Conifer(Ground ground) : base(ground)
     {

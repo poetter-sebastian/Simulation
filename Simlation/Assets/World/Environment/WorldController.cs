@@ -388,7 +388,9 @@ namespace World.Environment
             //loads the time handler
             timeHandler = GetComponent<TimeHandler>();
             timeHandler.TimeHourElapsed += HandleAgents;
+            
             //TODO do this with coroutine!
+            /*
             timeHandler.TimeChangedToMidnight += delegate(object sender, EventArgs args)
             {
                 //#if UNITY_EDITOR
@@ -408,7 +410,7 @@ namespace World.Environment
                 comp.WriteData("CalcWater", timer.ElapsedTicks.ToString());
                 timer.Reset();
                 //#endif
-            };
+            };*/
             
             //loads the climate handler
             climateHandler = GetComponentInChildren<ClimateHandler>();
@@ -614,6 +616,12 @@ namespace World.Environment
                 MathF.Round(pos.z, MidpointRounding.AwayFromZero));
             //TODO maybe improvement or perform earlier
             agent.ground = Grounds[vec]; //connects the agent with the ground value
+            
+            //add modifier to world numbers
+            player.AddTree();
+            player.o2production += agent.o2Modifier;
+            player.co2Consumptin += agent.co2Modifier;
+            player.waterConsumption += agent.waterConsumption;
         }
 
         /// <summary>
@@ -621,6 +629,11 @@ namespace World.Environment
         /// </summary>
         public void RemoveAgent(Agent agent)
         {
+            //TODO find a better way to deregister tree for the player statistics
+            if (agent.GetType() == typeof(TreeAgent))
+            {
+                player.RemoveTree();
+            }
             removeList.Add(agent);
         }
 

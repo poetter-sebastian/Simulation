@@ -39,6 +39,11 @@ namespace World.Environment
 
         public GUIController ui;
 
+        public AudioClip daySound;
+        public AudioClip nightSound;
+        public AudioClip stormSound;
+        public AudioClip rainSound;
+
         [Range(-40, 80)]
         public float temperature = 24.5f; //°C
         public float minDayTemperature = 20; //°C
@@ -74,9 +79,14 @@ namespace World.Environment
 
         private void Start()
         {
+            //
             time = TimeHandler.Instance;
             time.TimeChangedToMidnight += OnDayChange;
             time.TimeHourElapsed += OnHourElapsed;
+
+            //sound effects
+            time.TimeChangedToDawn += OnTimeChangedToDawn;
+            time.TimeChangedToNight += OnTimeChangedToDusk;
             
             OnDayChange(this, EventArgs.Empty);
             OnHourElapsed(this, new HourElapsedEventArgs(time.LocalTime.Hour));
@@ -131,6 +141,18 @@ namespace World.Environment
                 Mathf.Lerp(minDayTemperature, maxDayTemperature, e.Hour / 12f));
         }
 
+        private void OnTimeChangedToDusk(object sender, EventArgs e)
+        {
+            ILog.L(LN, "Play night sound");
+            ui.PlayBackgroundSound(nightSound);
+        }
+        
+        private void OnTimeChangedToDawn(object sender, EventArgs e)
+        {
+            ILog.L(LN, "Play day sound");
+            ui.PlayBackgroundSound(daySound);
+        }
+        
         public string LN()
         {
             return "Climate handler";
@@ -240,6 +262,7 @@ namespace World.Environment
                 case Weather.Rain:
                     cloudComp.cloudPreset.value = VolumetricClouds.CloudPresets.Stormy;
                     ChangedToRain?.Invoke(this, new GenEventArgs<Weather>(weather));
+                    ui.PlayBackgroundSound(rainSound);
                     break;
                 case Weather.Drizzle:
                     cloudComp.cloudPreset.value = VolumetricClouds.CloudPresets.Stormy;
@@ -255,10 +278,12 @@ namespace World.Environment
                 case Weather.Stormy:
                     cloudComp.cloudPreset.value = VolumetricClouds.CloudPresets.Stormy;
                     ChangedToStormy?.Invoke(this, new GenEventArgs<Weather>(weather));
+                    ui.PlayBackgroundSound(stormSound);
                     break;
                 case Weather.Blizzard:
                     cloudComp.cloudPreset.value = VolumetricClouds.CloudPresets.Stormy;
                     ChangedToBlizzard?.Invoke(this, new GenEventArgs<Weather>(weather));
+                    ui.PlayBackgroundSound(stormSound);
                     break;
                 case Weather.Foggy:
                     ChangedToFoggy?.Invoke(this, new GenEventArgs<Weather>(weather));
@@ -266,6 +291,7 @@ namespace World.Environment
                 case Weather.HailStorm:
                     cloudComp.cloudPreset.value = VolumetricClouds.CloudPresets.Stormy;
                     ChangedToHailstorm?.Invoke(this, new GenEventArgs<Weather>(weather));
+                    ui.PlayBackgroundSound(stormSound);
                     break;
                 case Weather.HeatWave:
                     cloudComp.cloudPreset.value = VolumetricClouds.CloudPresets.Sparse;

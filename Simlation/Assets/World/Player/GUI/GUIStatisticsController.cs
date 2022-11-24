@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using Utility;
 
 namespace Player.GUI
@@ -17,11 +18,11 @@ namespace Player.GUI
 
         public void OnCo2Change(GenEventArgs<string> e)
         {
-            co2Value.text = "" + e.Value + " g/d";
+            co2Value.text = "" + e.Value + " "+new LocalizedString("Units", "GramPerDay").GetLocalizedString();
         }
         public void OnWaterConsumptionChange(GenEventArgs<string> e)
         {
-            waterConsumptionValue.text = "" + e.Value + " LN/d";
+            waterConsumptionValue.text = "" + e.Value + " "+new LocalizedString("Units", "LitersPerDay").GetLocalizedString();
         }
         public void OnPollutionChange(GenEventArgs<string> e)
         {

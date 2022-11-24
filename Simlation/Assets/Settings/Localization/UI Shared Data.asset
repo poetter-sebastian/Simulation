@@ -95,6 +95,124 @@ MonoBehaviour:
     m_Key: Simulation/Player/GUI/HelpShadow/Help/Text (TMP)
     m_Metadata:
       m_Items: []
+  - m_Id: 26762046765785088
+    m_Key: MainMenu/Canvas/LanguageQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26762416795672576
+    m_Key: MainMenu/Canvas/English/ChooseEnglish/ChooseEnglishLabel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26762468398194688
+    m_Key: MainMenu/Canvas/German/ChooseGerman/ChooseGermanLabel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26776695586414592
+    m_Key: 'MainMenu/Graphics/GraphicPanel/Title
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26779193281863680
+    m_Key: MainMenu/Lang/NextButton/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26779360588455936
+    m_Key: MainMenu/Graphics/NextButton/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26779719742513152
+    m_Key: MainMenu/Graphics/PreviousButton/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26785563037130752
+    m_Key: MainMenu/Graphics/GraphicPanel/ResolutionTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26798973447561216
+    m_Key: MainMenu/Graphics/GraphicPanel/WindowTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26799977744293888
+    m_Key: MainMenu/Graphics/GraphicPanel/Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26800030919680000
+    m_Key: MainMenu/Graphics/GraphicPanel/Window 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26800078806048768
+    m_Key: MainMenu/Graphics/GraphicPanel/Window 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26808071333339136
+    m_Key: MainMenu/Graphics/GraphicPanel/QualityTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26808145975173120
+    m_Key: MainMenu/Graphics/GraphicPanel/Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26808156137971712
+    m_Key: MainMenu/Graphics/GraphicPanel/Quality 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26808207367200768
+    m_Key: MainMenu/Graphics/GraphicPanel/Quality 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26810311427219456
+    m_Key: MainMenu/Graphics/GraphicPanel/FPSTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26841855478980608
+    m_Key: MainMenu/Introduction/IntroPanel/Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27064227498811392
+    m_Key: MainMenu/Introduction/IntroPanel/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27076725501321216
+    m_Key: MainMenu/Tutorial/TutorialPanel/Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27076914878341120
+    m_Key: MainMenu/Tutorial/TutorialPanel/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27098148768833536
+    m_Key: MainMenu/LoadingScreen/LoadingPanel/Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27176913930805248
+    m_Key: Simulation/Player/GUI/Viewer/LocalWaterConsumption
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27176964602191872
+    m_Key: Simulation/Player/GUI/Viewer/LocalCo2Consumption
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27177010915696640
+    m_Key: Simulation/Player/GUI/Viewer/LocalO2Production
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27188490398588928
+    m_Key: Simulation/Player/GUI/Viewer/Illnes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27188577946296320
+    m_Key: Simulation/Player/GUI/Viewer/IllnesValue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27802908908052480
+    m_Key: Simulation/Player/GUI/Viewer/Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27915165981728768
+    m_Key: Simulation/Player/GUI/HelpShadow/Help/Title
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

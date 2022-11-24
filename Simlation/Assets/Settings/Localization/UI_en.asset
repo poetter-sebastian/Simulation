@@ -101,6 +101,135 @@ MonoBehaviour:
       - Perform user interface functions\n\tLeft click on plants - Get plants information"
     m_Metadata:
       m_Items: []
+  - m_Id: 26762046765785088
+    m_Localized: Choose your language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26762416795672576
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26762468398194688
+    m_Localized: Deutsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26779719742513152
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26779360588455936
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26779193281863680
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26776695586414592
+    m_Localized: Graphic Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26785563037130752
+    m_Localized: 'Resolution:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26798973447561216
+    m_Localized: 'Window Mode:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26799977744293888
+    m_Localized: Fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26800030919680000
+    m_Localized: Windowed Fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26800078806048768
+    m_Localized: Windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26808071333339136
+    m_Localized: 'Quality Preset:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26808145975173120
+    m_Localized: High
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26808156137971712
+    m_Localized: Balanced
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26808207367200768
+    m_Localized: Performance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26810311427219456
+    m_Localized: 'Refresh Rate:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26841855478980608
+    m_Localized: Introduction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27064227498811392
+    m_Localized: "Thank you for participating my survey.\r\n\r\nThis is a prototype
+      of an application to simulate an ecosystem. \r\n\r\nThe application is not
+      optimized, so it may has increased power consumption and visual bugs!\r\n\r\nIf
+      you encounter any bugs while using it, please report them to me via email,
+      GitHub-Issue, or any other communication channels. Any feedback and or participation
+      in the survey is valuable to me!\r\n\r\nYou can close the application at any
+      time by clicking the button (with the X) in the upper right corner or by pressing
+      ALT+F4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27076725501321216
+    m_Localized: Scenario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27076914878341120
+    m_Localized: "You are an owner of a plot of land with a grove. You have no information
+      about the soil or the plants that grow there. Therefore, you have done some
+      research and are now trying to discover your forest and learn from it.\r\n\r\nWithin
+      the application you will learn some basics about how people from forestry,
+      biology and geology do their work. For this you have to solve four tasks and
+      afterwards you can participate in a survey. \r\n\r\nThe time interval is maximum
+      30 minutes."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27098148768833536
+    m_Localized: Loading the scene...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27176913930805248
+    m_Localized: 'Water consumption:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27176964602191872
+    m_Localized: "CO\xB2 consumption:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27177010915696640
+    m_Localized: "O\xB2 production:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27188490398588928
+    m_Localized: 'Diseases:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27188577946296320
+    m_Localized: XXX g/Tag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27802908908052480
+    m_Localized: 'Plant name:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27915165981728768
+    m_Localized: Help
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

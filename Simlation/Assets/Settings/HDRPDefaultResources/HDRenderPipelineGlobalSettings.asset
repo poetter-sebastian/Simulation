@@ -97,8 +97,56 @@ MonoBehaviour:
   supportRuntimeDebugDisplay: 0
   apvScenesData:
     serializedBounds: []
-    serializedHasVolumes: []
-    serializedProfiles: []
-    serializedBakeSettings: []
-    serializedBakingSets: []
+    serializedHasVolumes:
+    - sceneGUID: c873c529fd0623b4c869ff334c249750
+      hasProbeVolumes: 0
+    - sceneGUID: 9fc0d4010bbf28b4594072e72b8655ab
+      hasProbeVolumes: 0
+    serializedProfiles:
+    - sceneGUID: c873c529fd0623b4c869ff334c249750
+      profile: {fileID: 11400000, guid: 1573fb67248392846908cd7a54bdfc2e, type: 2}
+    - sceneGUID: 9fc0d4010bbf28b4594072e72b8655ab
+      profile: {fileID: 11400000, guid: 1573fb67248392846908cd7a54bdfc2e, type: 2}
+    serializedBakeSettings:
+    - sceneGUID: c873c529fd0623b4c869ff334c249750
+      settings:
+        dilationSettings:
+          enableDilation: 1
+          dilationDistance: 1
+          dilationValidityThreshold: 0.25
+          dilationIterations: 1
+          squaredDistWeighting: 1
+        virtualOffsetSettings:
+          useVirtualOffset: 1
+          outOfGeoOffset: 0.01
+          searchMultiplier: 0.2
+    - sceneGUID: 9fc0d4010bbf28b4594072e72b8655ab
+      settings:
+        dilationSettings:
+          enableDilation: 1
+          dilationDistance: 1
+          dilationValidityThreshold: 0.25
+          dilationIterations: 1
+          squaredDistWeighting: 1
+        virtualOffsetSettings:
+          useVirtualOffset: 1
+          outOfGeoOffset: 0.01
+          searchMultiplier: 0.2
+    serializedBakingSets:
+    - name: Default
+      sceneGUIDs:
+      - c873c529fd0623b4c869ff334c249750
+      - 9fc0d4010bbf28b4594072e72b8655ab
+      settings:
+        dilationSettings:
+          enableDilation: 1
+          dilationDistance: 1
+          dilationValidityThreshold: 0.25
+          dilationIterations: 1
+          squaredDistWeighting: 1
+        virtualOffsetSettings:
+          useVirtualOffset: 1
+          outOfGeoOffset: 0.01
+          searchMultiplier: 0.2
+      profile: {fileID: 11400000, guid: 1573fb67248392846908cd7a54bdfc2e, type: 2}
   m_Version: 3

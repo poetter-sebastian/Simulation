@@ -18,7 +18,7 @@ namespace Player.GUI
         }
         public void OnQualityChange(GenEventArgs<string> e)
         {
-            qualValue.text = "" + e.Value + " °C";
+            qualValue.text = "" + e.Value + " %";
         }
         public void OnTimeChange(GenEventArgs<string> e)
         {

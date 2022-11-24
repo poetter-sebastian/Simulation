@@ -13,13 +13,10 @@ namespace Player.GUI
         public GUIWeatherController guiWeatherController;
         public GUIResourcesController guiResourcesController;
         public GUIStatisticsController guiStatisticsController;
+        public GUIButtonPanelController guiButtonPanelController;
+        
         public AudioSource click;
         public AudioSource background;
-
-        public static void CloseGame()
-        {
-            Application.Quit();
-        }
 
         public void PlayClick()
         {
@@ -32,37 +29,15 @@ namespace Player.GUI
             background.clip = clip;
             background.Play();
         }
-        
-        public static IEnumerator FadeOut(AudioSource audioSource, float fadeTime)
+
+        public void UnlockButtonPanel()
         {
-            var startVolume = audioSource.volume;
- 
-            while (audioSource.volume > 0)
-            {
-                audioSource.volume -= startVolume * Time.deltaTime / fadeTime;
- 
-                yield return null;
-            }
- 
-            audioSource.Stop();
-            audioSource.volume = startVolume;
+            guiButtonPanelController.gameObject.SetActive(true);
         }
- 
-        public static IEnumerator FadeIn(AudioSource audioSource, float fadeTime)
+        
+        public static void CloseGame()
         {
-            var startVolume = 0.2f;
- 
-            audioSource.volume = 0;
-            audioSource.Play();
- 
-            while (audioSource.volume < 1.0f)
-            {
-                audioSource.volume += startVolume * Time.deltaTime / fadeTime;
- 
-                yield return null;
-            }
- 
-            audioSource.volume = 1f;
+            Application.Quit();
         }
     }
 }

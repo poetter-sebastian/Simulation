@@ -619,8 +619,8 @@ namespace World.Environment
             
             //add modifier to world numbers
             player.AddTree();
-            player.o2production += agent.o2Modifier;
-            player.co2Consumptin += agent.co2Modifier;
+            player.o2Production += agent.o2Modifier;
+            player.co2Consumption += agent.co2Modifier;
             player.waterConsumption += agent.waterConsumption;
         }
 

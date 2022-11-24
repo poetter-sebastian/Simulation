@@ -25,6 +25,10 @@ MonoBehaviour:
     m_Address: Assets/Settings/Localization/Enum Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
+  - m_GUID: 19b3f233e13d1d24e8066382ac5ffeb9
+    m_Address: Assets/Settings/Localization/Units Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: ffe07a746f024e446906ed38eadc61e5, type: 2}
   m_SchemaSet:

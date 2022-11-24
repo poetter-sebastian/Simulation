@@ -63,7 +63,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2058724578418688
-    m_Localized: 'Pflanzenart:'
+    m_Localized: "CO\xB2 Verbrauch:"
     m_Metadata:
       m_Items: []
   - m_Id: 2059698952986624
@@ -87,7 +87,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6476093912506368
-    m_Localized: XXX
+    m_Localized: XXX g/Tag
     m_Metadata:
       m_Items: []
   - m_Id: 6476144571310080
@@ -98,7 +98,136 @@ MonoBehaviour:
     m_Localized: "Bewegung: \n\tWASD/Pfeiltasten - Kamera bewegung\n\tMaus an den
       Rand des Bildes - Kamera bewegung\n\tMittlere Maustaste - Kameraneigung\nInteraktionen:
       \n\tLinksklick auf M\xFCll - Geld f\xFCr Recycling\n\tLinksklick auf Icons
-      - Aktionen ausf\xFChren\n\tLicksklick auf Pflanzen - Information \xFCber Pflanze"
+      - Aktionen ausf\xFChren\n\tLicksklick auf Pflanzen - Pflanze \xFCberpr\xFCfen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26762046765785088
+    m_Localized: "W\xE4hlen Sie Ihre Sprache"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26762416795672576
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26762468398194688
+    m_Localized: Deutsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26776695586414592
+    m_Localized: Grafikeinstellungen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26779193281863680
+    m_Localized: "Best\xE4tigen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26779360588455936
+    m_Localized: Weiter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26779719742513152
+    m_Localized: "Zur\xFCck"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26785563037130752
+    m_Localized: "Aufl\xF6sung:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26798973447561216
+    m_Localized: 'Fenstereinstellungen:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26799977744293888
+    m_Localized: Vollbild
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26800030919680000
+    m_Localized: Randloses Fenster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26800078806048768
+    m_Localized: Fenstermodus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26808071333339136
+    m_Localized: "Grafikqualit\xE4t:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26808145975173120
+    m_Localized: Hoch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26808156137971712
+    m_Localized: Ausgewogen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26808207367200768
+    m_Localized: Leistung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26810311427219456
+    m_Localized: 'Aktualisierungsrate:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26841855478980608
+    m_Localized: Einleitung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27064227498811392
+    m_Localized: "Danke, dass Sie an meiner Evaluation teilnehmen.\r\n\r\nDies ist
+      ein Prototyp einer Anwendung zum Simulieren eines \xD6kosystems. \r\n\r\nDie
+      Anwendung ist nicht optimiert weswegen es zu einer erh\xF6hten Leistungsaufnahme
+      kommen kann!\r\n\r\nSollte es w\xE4hrend der Benutzung zu Fehlern kommen melden
+      Sie mir dies bitte per Email, GitHub-Issue, oder \xFCber andere Kommunikationsmittel.
+      Jede R\xFCckmeldung und oder die Teilnahme an der Umfrage ist f\xFCr mich wertvoll!\r\n\r\nSie
+      k\xF6nnen die Anwendung jederzeit \xFCber den Button (mit dem X) oben rechts
+      schlie\xDFen oder mit ALT+F4 beenden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27076725501321216
+    m_Localized: Beispielszenario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27076914878341120
+    m_Localized: "Sie sind ein Besitzer eines Grundst\xFCcks mit einem W\xE4ldchen.
+      Sie haben keine Information \xFCber den Boden oder die Pflanzen die dort wachsen.
+      Deswegen haben Sie sich schlau gemacht und versuchen nun Ihren Wald zu entdecken
+      und davon zu lernen.\n\nInnerhalb der Awendung lernen Sie ein paar Einblicke
+      kennen, wie  Personen aus der Forsterei, Biologie und Geologie arbeiten. Hierf\xFCr
+      sollen Sie vier Aufgaben l\xF6sen und k\xF6nnen danach an einer Umfrage dazu
+      teilnehmen. \n\nDer Zeitliche Umfang betr\xE4gt maximal 30 Minuten."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27098148768833536
+    m_Localized: Szeneario wird geladen...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27176913930805248
+    m_Localized: 'Wasserverbrauch:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27176964602191872
+    m_Localized: "CO\xB2 Verbrauch:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27177010915696640
+    m_Localized: "O\xB2 Produktion:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27188490398588928
+    m_Localized: 'Zustand:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27188577946296320
+    m_Localized: Gesund
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27802908908052480
+    m_Localized: 'Pflanzenart:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27915165981728768
+    m_Localized: Hilfe
     m_Metadata:
       m_Items: []
   references:

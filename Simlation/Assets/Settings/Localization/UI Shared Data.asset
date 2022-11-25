@@ -213,6 +213,54 @@ MonoBehaviour:
     m_Key: Simulation/Player/GUI/HelpShadow/Help/Title
     m_Metadata:
       m_Items: []
+  - m_Id: 28279199323119616
+    m_Key: Simulation/Player/Tasks/CollectRubbish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28279261939884032
+    m_Key: Simulation/Player/Tasks/CollectRubbish 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28284344379367424
+    m_Key: Simulation/Player/Tasks/TreeMission
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28284385143808000
+    m_Key: Simulation/Player/Tasks/TreeMission 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28286208441311232
+    m_Key: Simulation/Player/Tasks/SoilSamples
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28286241513398272
+    m_Key: Simulation/Player/Tasks/SoilSamples 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28286889705332736
+    m_Key: Simulation/Player/Tasks/MeasureWeather
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28287207302225920
+    m_Key: Simulation/Player/Tasks/MeasureWeather 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28634783121661952
+    m_Key: Simulation/Player/GUI/Task/Title_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28635323574509568
+    m_Key: Simulation/Player/GUI/Task/Title_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28635405531209728
+    m_Key: Simulation/Player/GUI/
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28638489527443456
+    m_Key: Simulation/Player/GUI/HelpShadow/Help/TaskHelp
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

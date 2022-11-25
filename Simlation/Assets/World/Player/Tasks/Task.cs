@@ -9,6 +9,7 @@ namespace World.Player.Tasks
     public abstract class Task : MonoBehaviour, ITask
     {
         public string title = "";
+        [TextArea(4, 10)]
         public string description = "";
         public event EventHandler TaskComplete;
 

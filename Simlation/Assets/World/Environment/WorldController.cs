@@ -79,9 +79,9 @@ namespace World.Environment
         private TimeHandler timeHandler;
         private ClimateHandler climateHandler;
         
-        //debug
-        private FileWriter comp;
-        private FileWriter compHandle;
+        //analytics
+        public FileWriter comp;
+        public FileWriter compHandle;
         private readonly Stopwatch timer = new Stopwatch();
 
         private Mesh GenerateGraph(out Vector3[] vertices)
@@ -285,7 +285,7 @@ namespace World.Environment
             
             //#if UNITY_EDITOR
             timer.Stop();
-            comp.WriteData("GenerateGraph", timer.ElapsedTicks.ToString());
+            comp.WriteData("GenerateGraph", timer.ElapsedTicks);
             timer.Reset();
             //#endif
 
@@ -299,7 +299,7 @@ namespace World.Environment
 
             //#if UNITY_EDITOR
             timer.Stop();
-            comp.WriteData("GenerateTriangles", timer.ElapsedTicks.ToString());
+            comp.WriteData("GenerateTriangles", timer.ElapsedTicks);
             timer.Reset();
             timer.Start();
             //#endif
@@ -308,7 +308,7 @@ namespace World.Environment
             
             //#if UNITY_EDITOR
             timer.Stop();
-            comp.WriteData("GenerateColorArray", timer.ElapsedTicks.ToString());
+            comp.WriteData("GenerateColorArray", timer.ElapsedTicks);
             timer.Reset();
             //#endif
             
@@ -323,7 +323,7 @@ namespace World.Environment
             
             //#if UNITY_EDITOR
             timer.Stop();
-            comp.WriteData("GenerateUV", timer.ElapsedTicks.ToString());
+            comp.WriteData("GenerateUV", timer.ElapsedTicks);
             timer.Reset();
             //#endif
             
@@ -347,7 +347,7 @@ namespace World.Environment
                 }
                 //#if UNITY_EDITOR
                 timer.Stop();
-                comp.WriteData("SpawnPlants", timer.ElapsedTicks.ToString());
+                comp.WriteData("SpawnPlants", timer.ElapsedTicks);
                 timer.Reset();
                 //#endif
             }
@@ -366,7 +366,7 @@ namespace World.Environment
                 spawn.Spawn(this);
                 //#if UNITY_EDITOR
                 timer.Stop();
-                comp.WriteData("SpawnObjects", timer.ElapsedTicks.ToString());
+                comp.WriteData("SpawnObjects", timer.ElapsedTicks);
                 timer.Reset();
                 //#endif
             }
@@ -452,7 +452,7 @@ namespace World.Environment
             }
             //#if UNITY_EDITOR
             timer.Stop();
-            compHandle.WriteData("HandleAgents", timer.ElapsedTicks.ToString());
+            compHandle.WriteData("HandleAgents", timer.ElapsedTicks);
             timer.Reset();
             //#endif
         }

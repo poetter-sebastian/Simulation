@@ -489,7 +489,7 @@ namespace World.Environment
             var sumWater = 0f;
 
             //plant root length
-            var area = 5;
+            var area = 3;
 
             //to ignore the border elements to prevent desiccation from the border
             var runner = 0;
@@ -600,6 +600,11 @@ namespace World.Environment
                 return;
             }
             Instantiate(obj, hit.point, obj.transform.rotation, obj.transform.parent);
+        }
+        
+        public void Spawn(GameObject obj, Vector3 pos)
+        {
+            Instantiate(obj, pos, obj.transform.rotation, transform);
         }
 
         /// <summary>

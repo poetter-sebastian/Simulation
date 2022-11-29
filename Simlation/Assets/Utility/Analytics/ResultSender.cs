@@ -71,7 +71,7 @@ namespace Utility.Analytics
         
         private void Completed(object s, HttpStatusCode code)
         {
-            ILog.L(LN, code == HttpStatusCode.OK ? "Send complete!" : "Send error!");
+            ILog.L(LN, code == HttpStatusCode.Accepted ? "Send complete!" : "Send error!");
             SendComplete -= Completed;
         }
         

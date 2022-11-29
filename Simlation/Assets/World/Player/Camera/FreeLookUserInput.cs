@@ -7,6 +7,8 @@ using Utility;
 using static UnityEngine.Camera;
 using Cursor = UnityEngine.Cursor;
 using UnityEngine.EventSystems;
+using UnityEngineInternal;
+using World.Environment;
 
 namespace Player.Camera
 {
@@ -19,6 +21,7 @@ namespace Player.Camera
         [Header("Functions")]
         public bool borderScroll;
         public bool orbitY = true;
+        public bool blockWorldInteractions = false;
 
         [Header("Scrolling")]
         public float scrollSpeed = 0.5f;
@@ -39,6 +42,12 @@ namespace Player.Camera
         [Header("Changeable")]
         public Vector2Int mapLimit;
 
+        public event EventHandler<GenEventArgs<bool>> CallW;
+        public event EventHandler<GenEventArgs<bool>> CallA;
+        public event EventHandler<GenEventArgs<bool>> CallS;
+        public event EventHandler<GenEventArgs<bool>> CallD;
+        public event EventHandler<GenEventArgs<bool>> CallRotation;
+        
         private Vector3 mousePosition;
         private Transform relativeTransform;
         private bool freeLookActive = false;
@@ -47,7 +56,16 @@ namespace Player.Camera
         private bool inWindow = true;
 
         private InputProvider input;
-        
+
+        private void OnApplicationFocus(bool changedFocus)
+        {
+            hasFocus = changedFocus;
+        }
+
+        public string LN()
+        {
+            return "Camera controller";
+        }
         
         private void Awake()
         {
@@ -61,12 +79,14 @@ namespace Player.Camera
             input = new InputProvider();
             input.FasterMovement += FasterMovement;
             input.OnLeftClick.performed += OnLeftClick;
+            input.OnMiddleClick.performed += OnMiddleClick;
         }
 
         private void OnDisable()
         {
             input.FasterMovement -= FasterMovement;
             input.OnLeftClick.performed -= OnLeftClick;
+            input.OnMiddleClick.performed -= OnMiddleClick;
         }
 
         private void Update()
@@ -112,13 +132,30 @@ namespace Player.Camera
         {
             ILog.L(LN, "LeftMouseClicked");
             var ray = main.ScreenPointToRay(input.PointerPosition());
-            if (Physics.Raycast(ray, out var hit))
+            if (!blockWorldInteractions)
             {
-                var selectedComponent = hit.rigidbody.GetComponent<IMouseListener>();
-                if (selectedComponent == null) return;
-                //collider was hit and it's a world object and the function is called
-                selectedComponent.MouseClick();
+                foreach (var hit in Physics.RaycastAll(ray, 600f))
+                {
+                    var selectedComponent = hit.rigidbody.GetComponent<IMouseListener>();
+                    //collider was hit and it's a world object and the function is called
+                    selectedComponent?.MouseClick();
+                }
             }
+            else
+            {
+                foreach (var hit in Physics.RaycastAll(ray, 600f))
+                {
+                    var selectedComponent = hit.rigidbody.GetComponent<WorldController>();
+                    //collider was hit and it's the world object
+                    selectedComponent?.player.SpawnObjOnWorld(hit.point);
+                }
+                blockWorldInteractions = false;
+            }
+        }
+
+        private void OnMiddleClick(InputAction.CallbackContext e)
+        {
+            CallRotation?.Invoke(this, new GenEventArgs<bool>(true));
         }
         
         private void OnRightClick()
@@ -128,7 +165,7 @@ namespace Player.Camera
 
         public void OnESC()
         {
-            
+            Application.Quit();
         }
         
         private float GetInputAxis(string axisName)
@@ -158,21 +195,25 @@ namespace Player.Camera
 
             if (input.Top() || (input.PointerPosition().y >= Screen.height - borderThickness && borderScroll))
             {
+                CallW?.Invoke(this, new GenEventArgs<bool>(true));
                 moveDirection += relativeTransform.forward;
             }
 
             if (input.Left() || (input.PointerPosition().x <= borderThickness && borderScroll))
             {
+                CallA?.Invoke(this, new GenEventArgs<bool>(true));
                 moveDirection += -relativeTransform.right;
             }
 
             if (input.Down() || (input.PointerPosition().y <= borderThickness && borderScroll))
             {
+                CallS?.Invoke(this, new GenEventArgs<bool>(true));
                 moveDirection += -relativeTransform.forward;
             }
 
             if (input.Right() || (input.PointerPosition().x >= Screen.width - borderThickness && borderScroll))
             {
+                CallD?.Invoke(this, new GenEventArgs<bool>(true));
                 moveDirection += relativeTransform.right;
             }
             moveDirection.y = 0f;
@@ -182,23 +223,15 @@ namespace Player.Camera
             target.position += movement;
 
             if (moveDirection != Vector3.zero)
+            {
                 target.rotation = Quaternion.RotateTowards(target.rotation, Quaternion.LookRotation(moveDirection), 0 * Time.deltaTime);
+            }
         }
 
         private void OnWindowPosition()
         {
             var screenRect = new Rect(0, 0, Screen.width, Screen.height);
             inWindow = screenRect.Contains(input.PointerPosition()) && hasFocus;
-        }
-
-        private void OnApplicationFocus(bool changedFocus)
-        {
-            hasFocus = changedFocus;
-        }
-
-        public string LN()
-        {
-            return "Camera controller";
         }
     }
 }

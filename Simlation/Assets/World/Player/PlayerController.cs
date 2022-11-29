@@ -127,6 +127,15 @@ namespace Player
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MiddleMouse"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa2e5eef-f222-44d2-aca4-cc209c1217fc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -360,6 +369,17 @@ namespace Player
                     ""action"": ""MainAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c99c3c6-b493-46e7-b2aa-caece81a4589"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MiddleMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -379,6 +399,7 @@ namespace Player
             m_Player_Left = m_Player.FindAction("Left", throwIfNotFound: true);
             m_Player_Right = m_Player.FindAction("Right", throwIfNotFound: true);
             m_Player_MainAction = m_Player.FindAction("MainAction", throwIfNotFound: true);
+            m_Player_MiddleMouse = m_Player.FindAction("MiddleMouse", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -449,6 +470,7 @@ namespace Player
         private readonly InputAction m_Player_Left;
         private readonly InputAction m_Player_Right;
         private readonly InputAction m_Player_MainAction;
+        private readonly InputAction m_Player_MiddleMouse;
         public struct PlayerActions
         {
             private @ComputerActions m_Wrapper;
@@ -464,6 +486,7 @@ namespace Player
             public InputAction @Left => m_Wrapper.m_Player_Left;
             public InputAction @Right => m_Wrapper.m_Player_Right;
             public InputAction @MainAction => m_Wrapper.m_Player_MainAction;
+            public InputAction @MiddleMouse => m_Wrapper.m_Player_MiddleMouse;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -506,6 +529,9 @@ namespace Player
                     @MainAction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMainAction;
                     @MainAction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMainAction;
                     @MainAction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMainAction;
+                    @MiddleMouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMiddleMouse;
+                    @MiddleMouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMiddleMouse;
+                    @MiddleMouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMiddleMouse;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -543,6 +569,9 @@ namespace Player
                     @MainAction.started += instance.OnMainAction;
                     @MainAction.performed += instance.OnMainAction;
                     @MainAction.canceled += instance.OnMainAction;
+                    @MiddleMouse.started += instance.OnMiddleMouse;
+                    @MiddleMouse.performed += instance.OnMiddleMouse;
+                    @MiddleMouse.canceled += instance.OnMiddleMouse;
                 }
             }
         }
@@ -560,6 +589,7 @@ namespace Player
             void OnLeft(InputAction.CallbackContext context);
             void OnRight(InputAction.CallbackContext context);
             void OnMainAction(InputAction.CallbackContext context);
+            void OnMiddleMouse(InputAction.CallbackContext context);
         }
     }
 }

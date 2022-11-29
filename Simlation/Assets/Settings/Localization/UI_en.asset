@@ -97,8 +97,9 @@ MonoBehaviour:
   - m_Id: 24285468962054144
     m_Localized: "Movement: \n\tWASD/Arrow keys - Camera movement\n\tMouse on the
       borders - Camera movement\n\tMiddle mouse button - Camera tilt\nInteractions:
-      \n\tLeft click on rubbish - Money fot the recycling\n\tLeft click on  buttons
-      - Perform user interface functions\n\tLeft click on plants - Get plants information"
+      \n\tLeft click on rubbish - Money for the recycling\n\tLeft click on  buttons
+      - Perform user interface functions\n\tLeft click on plants - Get plants information\nKeys\n\tESC
+      - Exit the application"
     m_Metadata:
       m_Items: []
   - m_Id: 26762046765785088
@@ -228,43 +229,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 27915165981728768
     m_Localized: Help
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28279199323119616
-    m_Localized: Collect rubbish
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28279261939884032
-    m_Localized: "You have to collect abandoned rubbishin your forest to earn 500
-      \xA4."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28284344379367424
-    m_Localized: Find 5 infested trees and fell them to protect the forest. Then
-      plant 5  more resistant trees.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28284385143808000
-    m_Localized: Tree Mission
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28286208441311232
-    m_Localized: Take 10 soil samples to explore your ground and get information
-      about it.
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28286241513398272
-    m_Localized: Ground detection
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28286889705332736
-    m_Localized: Getting more technical
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28287207302225920
-    m_Localized: Build a weather station and check the data about it in the new window.
-      After that, scan the forest with the help of a satellite and get a detailed
-      height map.
     m_Metadata:
       m_Items: []
   - m_Id: 28634783121661952

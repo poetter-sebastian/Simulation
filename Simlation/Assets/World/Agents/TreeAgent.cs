@@ -9,7 +9,6 @@ using World.Structure;
 
 namespace World.Agents
 {
-    [RequireComponent(typeof(NavMeshAgent))]
     public abstract class TreeAgent: FloraAgent
     {
         protected TreeAgent(Ground ground) : base(ground) { }

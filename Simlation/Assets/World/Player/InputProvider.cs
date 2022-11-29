@@ -14,6 +14,8 @@ namespace Player
         }
 
         public InputAction OnLeftClick => input.Player.MainAction;
+        
+        public InputAction OnMiddleClick => input.Player.MiddleMouse;
 
         public bool Top()
         {

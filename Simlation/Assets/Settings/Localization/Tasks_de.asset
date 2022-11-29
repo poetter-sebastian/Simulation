@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tasks_de
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: 10c375f6e28b78b4bbc9c1ea4cd34267, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 5347338084352
+    m_Localized: "Baue eine Wetterstation und schauen Sie die Daten dazu im neuen
+      Fenster an. Scannen Sie danach den Wald mit Hilfe eines Satelliten und erhalten
+      Sie eine detaillierte H\xF6henkarte."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5173450629120
+    m_Localized: "Finde 5 kranke B\xE4ume und f\xE4lle sie zum Schutz des Waldes.
+      Pflanzen Sie danach 5 neue B\xE4ume, welche widerstandsf\xE4higer sind."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5166437752832
+    m_Localized: "Entnehmen Sie 10 Bodenproben, um Ihren Boden zu erforschen und
+      Informationen \xFCber die Beschaffenheit zu erhalten."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5159299047424
+    m_Localized: "Beseitigen Sie den liegengelassenen M\\\xFCll im Wald und verdienen
+      Sie damit 500 \xA4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5152248422400
+    m_Localized: "M\xFCll im Wald sammeln"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5162658684928
+    m_Localized: Bodenforschung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5171512860672
+    m_Localized: Baumschule
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5345622614016
+    m_Localized: Mehr Technik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5144480571392
+    m_Localized: Bewegung in der Simulation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5148012175360
+    m_Localized: Benutze die Bewegungstasten um dich umher zu bewegen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168797666271232
+    m_Localized: Willkommen in Ihren Wald
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168828574097408
+    m_Localized: "Um sich in der Umgebung bewegen zu k\xF6nnen, dr\xFCcken sie WASD
+      oder die Pfeiltasten um sich in die entsprechen Richtung zu bewegen. Auch durch
+      das Bewegen des Mauszeigers an den entsprechenden Rand erm\xF6glicht eine Bewegung
+      in diese Richtung.  Mithilfe der mittleren Maustaste k\xF6nnen sie Zoomen oder
+      bei gedr\xFCckter Taste hin und her rotieren. Als erste Aufgabe sollen sie
+      die Bewegungen ausprobieren.\n\nVersuchen Sie es mit den WASD-Tasten oder den
+      Pfeiltasten und benutzen Sie das Scrollrad zum Zoomen und Drehen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180438067830784
+    m_Localized: "Die Benutzeroberfl\xE4che"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180764187549696
+    m_Localized: "Als n\xE4chstes sollten Sie sich mit der Benutzeroberfl\xE4che
+      auseinandersetzen. \xD6ffnen Sie das Hilffenster \xFCber den Knopf mit dem
+      i-Symbol oben rechts. Dort finden Sie Hilfen zur Benutzung und Ihre aktuelle
+      Aufgabe.\n\nDanach sollten Sie sich das Stratistik-Fenster anschauen, den Knopf
+      daf\xFCr finden Sie direkt unter dem Hilfe-Knopf."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180440295006208
+    m_Localized: "\xD6ffnen Sie das Fenster f\xFCr die Benutzungshilfe und das Fenster
+      f\xFCr stratistische Daten."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 471022947000320
+    m_Localized: "Nun sollen Sie liegengelassenen M\xFCll aus ihrem Wald entsorgen.
+      F\xFCr jede Tonne erhalten Sie Geld. Die F\xE4sser k\xF6nnen mit Linksklick
+      aufgehoben werden. Sammeln Sie eine Geldmenge von 500 \xA4."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

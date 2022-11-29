@@ -7,7 +7,7 @@ namespace Player.GUI
     [RequireComponent(typeof(CanvasRenderer))]
     public class GUIHelpController : PopupBehaviour
     {
-        public TextMeshPro taskText;
+        public TMP_Text taskText;
         
         public void OnTaskChange(object s, GenEventArgs<string> e)
         {

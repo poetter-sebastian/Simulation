@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tasks_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 10c375f6e28b78b4bbc9c1ea4cd34267, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 5159299047424
+    m_Localized: "You have to collect abandoned rubbish in your forest to earn 500
+      \xA4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5166437752832
+    m_Localized: Take 10 soil samples to explore your ground and get information
+      about the ground types.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5173450629120
+    m_Localized: Find 5 infested trees and fell them to protect the forest. Then
+      plant 5  more resistant trees.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5347338084352
+    m_Localized: Build a weather station and check the data about it in the new window.
+      After that, scan the forest with the help of a satellite and get a detailed
+      height map.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5345622614016
+    m_Localized: Getting more technical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5171512860672
+    m_Localized: Tree Mission
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5162658684928
+    m_Localized: Ground detection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5152248422400
+    m_Localized: Collect rubbish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5144480571392
+    m_Localized: Movement tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5148012175360
+    m_Localized: Use the movement keys to learn how to move in the world.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168797666271232
+    m_Localized: Welcome to your Forest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168828574097408
+    m_Localized: 'To move around, press WASD or the arrow keys. Moving the mouse
+      pointer to the corresponding border also allows you to move in that direction.
+      Using the scroll wheel to zoom or rotate back and forth while holding down
+      the key. The first task is to try out this movements.
+
+
+
+      Try WASD-keys
+      or arrow keys and use the scroll wheel to zoom and rotating.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180438067830784
+    m_Localized: The Interface guidance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180764187549696
+    m_Localized: 'Next, you should get familiar with the user interface. Open the
+      help window via the button with the i-symbol on the top right. There you will
+      find useful information and your current task.
+
+
+
+      After that you should
+      have a look at the statistics window, the button can be found directly under
+      the help button.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180440295006208
+    m_Localized: Open the help window and the statistics window.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 471022947000320
+    m_Localized: "Now you are to remove abandoned rubbish from your forest. You get
+      money for each recycled barrels. The barrels can be picked up by left clicking.
+      Collect an amount of 500\xA4 (money)."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

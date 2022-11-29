@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Tasks Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Tasks
+  m_TableCollectionNameGuidString: 10c375f6e28b78b4bbc9c1ea4cd34267
+  m_Entries:
+  - m_Id: 5144480571392
+    m_Key: MovementTestTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5148012175360
+    m_Key: MovementTestDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5152248422400
+    m_Key: CollectRubbishTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5159299047424
+    m_Key: CollectRubbishDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5162658684928
+    m_Key: SoilSamplesTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5166437752832
+    m_Key: SoilSamplesDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5171512860672
+    m_Key: TreeMissionTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5173450629120
+    m_Key: TreeMissionDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5345622614016
+    m_Key: MeasureWeatherTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5347338084352
+    m_Key: MeasureWeatherDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168797666271232
+    m_Key: WelcomeTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 168828574097408
+    m_Key: WelcomeMessage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180438067830784
+    m_Key: ButtonGuidanceTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180440295006208
+    m_Key: ButtonGuidanceDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180764187549696
+    m_Key: ButtonGuidanceMessage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 471022947000320
+    m_Key: CollectRubbishMessage
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1103280276124205058
+  references:
+    version: 2
+    RefIds:
+    - rid: 1103280276124205058
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1669547550489

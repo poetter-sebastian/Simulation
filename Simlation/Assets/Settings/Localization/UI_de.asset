@@ -95,10 +95,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 24285468962054144
-    m_Localized: "Bewegung: \n\tWASD/Pfeiltasten - Kamera bewegung\n\tMaus an den
-      Rand des Bildes - Kamera bewegung\n\tMittlere Maustaste - Kameraneigung\nInteraktionen:
+    m_Localized: "Bewegung: \n\tWASD/Pfeiltasten - Kamerabewegung\n\tMaus an den
+      Rand des Bildes - Kamerabewegung\n\tMittlere Maustaste - Kameraneigung\nInteraktionen:
       \n\tLinksklick auf M\xFCll - Geld f\xFCr Recycling\n\tLinksklick auf Icons
-      - Aktionen ausf\xFChren\n\tLicksklick auf Pflanzen - Pflanze \xFCberpr\xFCfen"
+      - Aktionen ausf\xFChren\n\tLinksklick auf Pflanzen - Pflanze \xFCberpr\xFCfen\nTastenkombinationen\n\tESC-Taste
+      - Beenden der Anwendung"
     m_Metadata:
       m_Items: []
   - m_Id: 26762046765785088
@@ -228,43 +229,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 27915165981728768
     m_Localized: Hilfe
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28279199323119616
-    m_Localized: "M\xFCll im Wald sammeln"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28279261939884032
-    m_Localized: "Beseitigen Sie den liegengelassenen M\xFCll im Wald und verdienen
-      Sie damit 500 \xA4."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28284344379367424
-    m_Localized: "Finde 5 kranke B\xE4ume und f\xE4lle sie zum Schutz des Waldes.
-      Pflanzen Sie danach 5 neue B\xE4ume, welche widerstandsf\xE4higer sind."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28284385143808000
-    m_Localized: Baumschule
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28286208441311232
-    m_Localized: "Entnehmen Sie 10 Bodenproben, um Ihren Boden zu erforschen und
-      Informationen \xFCber ihn zu erhalten."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28286241513398272
-    m_Localized: Bodenforschung
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28286889705332736
-    m_Localized: Mehr Technik
-    m_Metadata:
-      m_Items: []
-  - m_Id: 28287207302225920
-    m_Localized: "Baue eine Wetterstation und schauen Sie die Daten dazu im neuen
-      Fenster an. Scannen Sie danach den Wald mit Hilfe eines Satelliten und erhalten
-      Sie eine detaillierte H\xF6henkarte."
     m_Metadata:
       m_Items: []
   - m_Id: 28634783121661952

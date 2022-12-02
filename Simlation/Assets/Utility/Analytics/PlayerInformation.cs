@@ -44,6 +44,8 @@ namespace Utility.Analytics
         public readonly float co2Consumption = 0;
         public readonly float waterConsumption = 0;
         
+        
+        
         public CompactPackage(PlayerHandler playerHandler)
         {
             playtime = playerHandler.playtime;

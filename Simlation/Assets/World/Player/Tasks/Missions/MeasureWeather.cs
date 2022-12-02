@@ -1,4 +1,8 @@
 ﻿using System;
+using Player.GUI;
+using UnityEngine.Localization;
+using UnityEngine.UI;
+using Utility;
 
 namespace World.Player.Tasks.Missions
 {
@@ -16,7 +20,12 @@ namespace World.Player.Tasks.Missions
             manager.player.ui.guiPlaceableController.UnlockWeatherButton();
             manager.player.ui.guiPlaceableController.UnlockSatelliteButton();
             
-            manager.player.BuildedWeatherStation += OnWeatherStationBuild;
+            manager.player.ui.guiMessageController.OnToggle(this, new GenEventArgs<(string, string)>((
+                new LocalizedString("Tasks", $"{GetTaskName}Title").GetLocalizedString(),
+                new LocalizedString("Tasks", $"{GetTaskName}Message").GetLocalizedString()
+            )));
+            
+            manager.player.BuiltWeatherStation += OnWeatherStationBuild;
             manager.player.TookSatellitePicture += OnSatellitePictureTaken;
         }
 
@@ -26,11 +35,17 @@ namespace World.Player.Tasks.Missions
             manager.player.UnlockAridityView();
             manager.player.UnlockHeightView();
             manager.player.UnlockWeatherUI();
+            
+            manager.player.ui.guiMessageController.OnToggle(this, new GenEventArgs<(string, string)>((
+                new LocalizedString("Tasks", "FinishedTitle").GetLocalizedString(),
+                new LocalizedString("Tasks", "FinishedMessage").GetLocalizedString()
+            )));
+            manager.player.ui.guiMessageController.GetComponentInChildren<Button>().onClick.AddListener(manager.player.ui.guiSurveyController.activateSurvey);
         }
 
         public override void DeactivateTask()
         {
-            manager.player.BuildedWeatherStation -= OnWeatherStationBuild;
+            manager.player.BuiltWeatherStation -= OnWeatherStationBuild;
             manager.player.TookSatellitePicture -= OnSatellitePictureTaken;
         }
 

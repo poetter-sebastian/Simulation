@@ -386,9 +386,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8317025562775135444}
+  - component: {fileID: 8423626665534636849}
   - component: {fileID: 3834284045613700005}
   - component: {fileID: 3222561674330610662}
-  - component: {fileID: 8423626665534636849}
   m_Layer: 0
   m_Name: conifer_5
   m_TagString: Untagged
@@ -416,6 +416,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8423626665534636849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8658119721314319982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d66f2fb0479a2458354b0edc2d8265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  world: {fileID: 0}
+  moveAble: 0
+  alive: 0
+  domain: 
+  kingdom: 
+  phylum: 
+  agentClass: 
+  order: 
+  family: 
+  genus: 
+  species: Conifer
+  o2Modifier: 12.3465
+  co2Modifier: 27.39
+  size: 0
+  age: 0
+  diurnal: 0
+  health: 200
+  thirst: 0
+  injuries: 
+  diseases: 
+  waterConsumption: 20
+  preferredGround: 0
+  heatResistance: 0
+  dryResistance: 0
+  xerophyt: 0
 --- !u!205 &3834284045613700005
 LODGroup:
   m_ObjectHideFlags: 0
@@ -459,39 +496,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8423626665534636849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8658119721314319982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d66f2fb0479a2458354b0edc2d8265, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveAble: 0
-  alive: 0
-  domain: 
-  kingdom: 
-  phylum: 
-  agentClass: 
-  order: 
-  family: 
-  genus: 
-  species: 
-  o2Modifier: 0
-  co2Modifier: 0
-  size: 0
-  age: 0
-  diurnal: 0
-  health: 0
-  thirst: 0
-  injuries: 
-  diseases: 
-  waterConsumption: 20
-  preferredGround: 0
-  heatResistance: 0
-  dryResistance: 0
-  xerophyt: 0

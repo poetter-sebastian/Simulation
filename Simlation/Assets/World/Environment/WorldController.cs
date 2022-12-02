@@ -72,17 +72,16 @@ namespace World.Environment
         public bool showGraph = false;
         public bool spawnPlants = false;
         public string LN() => "Time handler";
-
-        private float maxHeight = 0;
-        private float minHeight = float.MaxValue;
-
-        private TimeHandler timeHandler;
-        private ClimateHandler climateHandler;
         
+        public TimeHandler timeHandler;
+        public ClimateHandler climateHandler;
         //analytics
         public FileWriter comp;
         public FileWriter compHandle;
-        private readonly Stopwatch timer = new Stopwatch();
+        private readonly Stopwatch timer = new();
+        
+        private float maxHeight = 0;
+        private float minHeight = float.MaxValue;
 
         private Mesh GenerateGraph(out Vector3[] vertices)
         {
@@ -370,7 +369,8 @@ namespace World.Environment
                 timer.Reset();
                 //#endif
             }
-            
+            //init UI 
+            player.UpdateStatisticsValue();
             
             GetComponent<MeshFilter>().sharedMesh.colors = textureColors;
 //#if UNITY_EDITOR
@@ -606,6 +606,12 @@ namespace World.Environment
         {
             Instantiate(obj, pos, obj.transform.rotation, transform);
         }
+        
+        public void SpawnPlant(GameObject obj, Vector3 pos)
+        {
+            Instantiate(obj, pos, new Quaternion(0f, Random.Range(0f, 360f), 0f, 0f), transform);
+            RegisterFloraAgent(obj.GetComponent<FloraAgent>());
+        }
 
         /// <summary>
         /// Register new plant agent to the handler system
@@ -623,10 +629,10 @@ namespace World.Environment
             agent.ground = Grounds[vec]; //connects the agent with the ground value
             
             //add modifier to world numbers
-            player.AddTree();
             player.o2Production += agent.o2Modifier;
             player.co2Consumption += agent.co2Modifier;
             player.waterConsumption += agent.waterConsumption;
+            player.AddTree();
         }
 
         /// <summary>
@@ -637,7 +643,12 @@ namespace World.Environment
             //TODO find a better way to deregister tree for the player statistics
             if (agent.GetType() == typeof(TreeAgent))
             {
-                player.RemoveTree();
+                var tree = (TreeAgent)agent;
+                player.RemoveTree(tree);
+                player.co2Consumption -= tree.co2Modifier;
+                player.o2Production -= tree.o2Modifier;
+                player.waterConsumption -= tree.waterConsumption;
+                player.UpdateStatisticsValue();
             }
             removeList.Add(agent);
         }

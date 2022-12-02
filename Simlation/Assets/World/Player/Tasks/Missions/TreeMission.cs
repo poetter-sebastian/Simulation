@@ -1,4 +1,5 @@
-﻿using Utility;
+﻿using UnityEngine.Localization;
+using Utility;
 
 namespace World.Player.Tasks.Missions
 {
@@ -15,6 +16,14 @@ namespace World.Player.Tasks.Missions
         public override void ActivateTask(TaskManager manager)
         {
             this.manager = manager;
+            
+            manager.player.ui.guiPlaceableController.UnlockTreePlanting();
+            
+            manager.player.ui.guiMessageController.OnToggle(this, new GenEventArgs<(string, string)>((
+                new LocalizedString("Tasks", $"{GetTaskName}Title").GetLocalizedString(),
+                new LocalizedString("Tasks", $"{GetTaskName}Message").GetLocalizedString()
+            )));
+            
             manager.player.FoundIllTrees += OnIllTrees;
             manager.player.PlantedTrees += OnPlantedTrees;
         }

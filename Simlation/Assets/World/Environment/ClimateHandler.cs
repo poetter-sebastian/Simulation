@@ -52,6 +52,8 @@ namespace World.Environment
         public float weatherMaxMultiplier = 0.35f; //%
 
         //Events
+        public event EventHandler<GenEventArgs<float>> TemperatureChanged;
+        
         public event EventHandler<GenEventArgs<Weather>> WeatherChanged;
         public event EventHandler<GenEventArgs<Weather>> ChangedToRain;
         public event EventHandler<GenEventArgs<Weather>> ChangedToDrizzle;
@@ -87,6 +89,8 @@ namespace World.Environment
             //sound effects
             time.TimeChangedToDawn += OnTimeChangedToDawn;
             time.TimeChangedToNight += OnTimeChangedToDusk;
+
+            SetTemperature();
             
             OnDayChange(this, EventArgs.Empty);
             OnHourElapsed(this, new HourElapsedEventArgs(time.LocalTime.Hour));
@@ -243,6 +247,7 @@ namespace World.Environment
             ui.guiWeatherController.OnTempFeelChange(new GenEventArgs<string>((
                 13.12f + 0.6215f * temperature + (0.3965f * temperature - 11.37f) * MathF.Pow(windSpeed * 3.6f, 0.16f)
             ).ToString("0.00")));
+            TemperatureChanged?.Invoke(this, new GenEventArgs<float>(temperature));
         }
 
         /// <summary>

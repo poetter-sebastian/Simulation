@@ -5,8 +5,10 @@ namespace World.Player.Tasks.Missions
 {
     public class SoilSamples : Task
     {
+        private const int sampleCount = 10;
+            
         public override string GetTaskName => nameof(SoilSamples);
-
+        
         public override void ActivateTask(TaskManager manager)
         {
             this.manager = manager;
@@ -35,7 +37,7 @@ namespace World.Player.Tasks.Missions
         
         private void CheckConditions(object sender, GenEventArgs<int> e)
         {
-            if (e.Value > 5)
+            if (e.Value >= sampleCount)
             {
                 
                 TriggerCompletion();

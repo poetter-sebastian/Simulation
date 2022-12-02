@@ -8,6 +8,7 @@ using static UnityEngine.Camera;
 using Cursor = UnityEngine.Cursor;
 using UnityEngine.EventSystems;
 using UnityEngineInternal;
+using World.Agents;
 using World.Environment;
 
 namespace Player.Camera
@@ -17,7 +18,7 @@ namespace Player.Camera
     {
         public Transform target = default;
         public EventSystem UIEvents;
-        
+
         [Header("Functions")]
         public bool borderScroll;
         public bool orbitY = true;
@@ -47,6 +48,7 @@ namespace Player.Camera
         public event EventHandler<GenEventArgs<bool>> CallS;
         public event EventHandler<GenEventArgs<bool>> CallD;
         public event EventHandler<GenEventArgs<bool>> CallRotation;
+        public event EventHandler<GenEventArgs<TreeAgent>> TreeWasHit;
         
         private Vector3 mousePosition;
         private Transform relativeTransform;
@@ -138,6 +140,11 @@ namespace Player.Camera
                 {
                     var selectedComponent = hit.rigidbody.GetComponent<IMouseListener>();
                     //collider was hit and it's a world object and the function is called
+                    var tree = hit.rigidbody.GetComponent<TreeAgent>();
+                    if (tree != null)
+                    {
+                        TreeWasHit?.Invoke(this, new GenEventArgs<TreeAgent>(tree));
+                    }
                     selectedComponent?.MouseClick();
                 }
             }

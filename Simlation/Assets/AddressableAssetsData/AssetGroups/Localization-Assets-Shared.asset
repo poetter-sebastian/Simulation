@@ -33,6 +33,14 @@ MonoBehaviour:
     m_Address: Assets/Settings/Localization/Tasks Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
+  - m_GUID: 4ff4577f0c0fa9e4d9e9863353abe5b1
+    m_Address: Assets/Settings/Localization/Trees Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: cbe26de8bbe161d419ea0440dc9b69d7
+    m_Address: Assets/Settings/Localization/TreeDeseases Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: ffe07a746f024e446906ed38eadc61e5, type: 2}
   m_SchemaSet:

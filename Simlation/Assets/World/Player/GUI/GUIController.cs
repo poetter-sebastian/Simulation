@@ -21,15 +21,17 @@ namespace Player.GUI
         public GUIOptionsPanelController guiOptionsController;
         public GUIMessageController guiMessageController;
         public GUIPlaceableController guiPlaceableController;
+        public GUIViewerController guiViewerController;
+        public GUISurveyController guiSurveyController;
 
         [Header("Audio Sources")]
         public AudioSource click;
         public AudioSource background;
+        public AudioSource tasks;
         public AudioClip successSound;
         public AudioClip clickSound;
         public AudioClip diggingSound;
         public AudioClip placeSound;
-        
 
         public void PlayDigging()
         {
@@ -45,8 +47,8 @@ namespace Player.GUI
         
         public void PlaySuccess()
         {
-            click.clip = successSound;
-            click.Play();
+            tasks.clip = successSound;
+            tasks.Play();
         }
         
         public void PlayClick()

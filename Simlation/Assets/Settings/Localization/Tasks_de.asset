@@ -25,8 +25,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5173450629120
-    m_Localized: "Finde 5 kranke B\xE4ume und f\xE4lle sie zum Schutz des Waldes.
-      Pflanzen Sie danach 5 neue B\xE4ume, welche widerstandsf\xE4higer sind."
+    m_Localized: "Finde 5 mit Borkenk\xE4fern infizierte B\xE4ume und f\xE4lle sie
+      zum Schutz des Waldes. Pflanzen Sie danach 5 neue B\xE4ume, welche widerstandsf\xE4higer
+      sind."
     m_Metadata:
       m_Items: []
   - m_Id: 5166437752832
@@ -98,6 +99,45 @@ MonoBehaviour:
     m_Localized: "Nun sollen Sie liegengelassenen M\xFCll aus ihrem Wald entsorgen.
       F\xFCr jede Tonne erhalten Sie Geld. Die F\xE4sser k\xF6nnen mit Linksklick
       aufgehoben werden. Sammeln Sie eine Geldmenge von 500 \xA4."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 737433699213312
+    m_Localized: "Gute Arbeit! Um Ihren Wald besser kennen zu lernen sollen Sie nun
+      den Boden untersuchen. Hierf\xFCr wird eine Kernbohrung an verschiedenen Stellen
+      empfohlen. Klicken Sie daf\xFCr, den nun sichtbaren Knopf mit dem Bau-Symbol
+      und danach auf eine Stelle an der Sie bohren wollen. Nehmen Sie 10 Kernbohrung
+      vor."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 740358634856448
+    m_Localized: "Da Sie Ihren Boden nun besser kennen, k\xF6nnen Sie auch die Boden-Typen
+      Ansicht mit dem Knopf unten links aktivieren. Um wieder zur\xFCck zu wechsel,
+      klicken Sie auf den Knopf daneben.\r\n\r\nAnschlie\xDFend bemerken Sie, dass
+      Borkenk\xE4fer Ihrem Wald befallen, finden und f\xE4llen Sie kranke B\xE4ume.
+      Um einen Baum zu untersuchen, klicken Sie auf den Stamm eines Baumes. Finden
+      und F\xE4llen Sie 5 B\xE4ume und pflanzen Sie danach 5 neue B\xE4ume \xFCber
+      den Knopf mit dem Pflanzensymbol unten in der Mitte."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 760560156139520
+    m_Localized: "Jetzt kennen Sie Ihren Wald sehr viel besser. Um weitere Informationen
+      zu sammeln sollen Sie eine Wetterstation aufstellen und einen Satelliten-Scan
+      Anfordern. Klicken Sie daf\xFCr auf dem jeweiligen Knopf unten in der Mitte. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 775153247051776
+    m_Localized: "Gl\xFCckwunsch!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 775208397955072
+    m_Localized: "Sie haben alle Aufgaben gemeistert. Zusammen mit den Daten von
+      der Wetterstation, der Satellitenmessung und den Bodenprobem, k\xF6nnen Sie
+      nun die Ansicht der feuchtigkeit im Boden und eine H\xF6henkarte unten links
+      aktivieren.\n\nNachdem Sie das Fenster schlie\xDFen, \xF6ffnet sich ein Umfragefenster,
+      bitte nehmen Sie daran teil. Die Daten sind wichtig f\xFCr meine wissenschaftliche
+      Arbeit.\nNachdem Sie das Fenster schlie\xDFen, wird aber zuerst eine Umfrage
+      erscheinen. Bitte nehmen Sie daran teil, sie m\xFCssen das nat\xFCrlich nicht.\n\nDanach
+      k\xF6nnen Sie in Ruhe die Simulation weiter testen."
     m_Metadata:
       m_Items: []
   references:

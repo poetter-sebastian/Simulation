@@ -86,14 +86,6 @@ MonoBehaviour:
     m_Localized: "H\xF6chste Temperatur:"
     m_Metadata:
       m_Items: []
-  - m_Id: 6476093912506368
-    m_Localized: XXX g/Tag
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6476144571310080
-    m_Localized: XXX l/Tag
-    m_Metadata:
-      m_Items: []
   - m_Id: 24285468962054144
     m_Localized: "Bewegung: \n\tWASD/Pfeiltasten - Kamerabewegung\n\tMaus an den
       Rand des Bildes - Kamerabewegung\n\tMittlere Maustaste - Kameraneigung\nInteraktionen:
@@ -241,6 +233,210 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 28638489527443456
     m_Localized: Momentane Aufgabe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30515589679144960
+    m_Localized: "M\xF6chten Sie Ihren Log teilen (Simulationsdaten und Programmlog)?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30515681727340544
+    m_Localized: "M\xF6chten Sie Ihre Hardware-Informationen teilen (CPU, GPU, Mainboard,
+      RAM)?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30515828234379264
+    m_Localized: Waren die Herausforderungen zu einfach?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30735120951402496
+    m_Localized: "Liebe teilnehmende Person,\r\nich freue mich \xFCber Ihr Interesse,
+      an dieser wissenschaftlichen Studie teilzunehmen. Diese Umfrage befasst sich
+      mit der Evaluation eines Prototypen zur Simulation eines \xD6kosystems mit
+      dem Schwerpunkt auf den anthropomorphen Klimawandel.\r\n\r\nDiese Befragung
+      wird im Zuge der Abfassung einer Masterarbeit an der HTWK-Leipzig erstellt.
+      Die Daten k\xF6nnen von dem Betreuer der wissenschaftlichen Arbeit Herr Professor
+      Dr. Kiran Varanasi und Herr Philipp Fanta f\xFCr Zwecke der Leistungsbeurteilung
+      eingesehen werden. Die erhobenen Daten d\xFCrfen gem\xE4\xDF Art. 89 Abs. 1
+      DSGVO grunds\xE4tzlich unbeschr\xE4nkt gespeichert werden.\r\n\r\nEs besteht
+      das Recht auf Auskunft durch den Verantwortlichen dieser Studie \xFCber die
+      erhobenen personenbezogenen Daten sowie das Recht auf Berichtigung, L\xF6schung,
+      Einschr\xE4nkung der Verarbeitung der Daten sowie ein Widerspruchsrecht gegen
+      die Verarbeitung sowie des Rechts auf Daten\xFCbertragbarkeit. Bevor der Fragebogen
+      startet, sehen Sie detaillierte Informationen zu Ihren Rechten im Zuge dieser
+      Befragung und werden nochmals um Ihre Zustimmung gebeten. Ihre Daten werden
+      ausschlie\xDFlich auf Grundlage der gesetzlichen Bestimmungen erhoben und verarbeitet.
+      Ihre \xFCbermittelten Daten werden verschl\xFCsselt und auf einem selbst betriebenen
+      Server gespeichert. Die \xDCbermittlung selber findet \xFCber eine TLS-1.2
+      verschl\xFCsselte Verbindung statt. Sie verf\xFCgen \xFCber folgende pers\xF6nliche
+      Rechte im Rahmen dieser Befragung:\r\n\r\n- Die Teilnahme an der Studie ist
+      freiwillig. Sie k\xF6nnen den Fragebogen jederzeit \xFCber den Knopf oben rechts
+      abbrechen.\r\n- Ihre Teilnahme ist anonym, Ihre Antworten k\xF6nnen nicht auf
+      Sie zur\xFCckgef\xFChrt werden. Das bedeutet ebenfalls, dass Ihr pers\xF6nlicher
+      Datensatz nach Abschluss der Befragung f\xFCr mich nicht identifizierbar ist
+      (weder Ihre IP-Adresse noch Ihre Hardware-ID wird verarbeitet oder gespeichert).\r\n-
+      Falls Sie nach der Studie Auskunft \xFCber Ihre Daten haben wollen oder Ihre
+      Teilnahme zur\xFCckziehen, bitte ich Sie, dies in einem Kommentarfeld (falls
+      n\xF6tig gemeinsam mit einer Kontaktadresse) zu vermerken.\r\n- Ihre Daten
+      werden ausschlie\xDFlich f\xFCr wissenschaftliche Zwecke und nur im Rahmen
+      dieser Masterarbeit verwendet und ausgewertet.\r\n- Die Forschung folgt keinem
+      kommerziellen Interesse. Ich behandel all Ihre \xFCbermittelten Daten streng
+      vertraulich.\r\n\r\nWenn Sie Fragen zu dieser Umfrage haben, wenden Sie sich
+      bitte gerne an mich, den Verantwortlichen dieser Untersuchung: Sebastian P\xF6tter
+      (sebastian.poetter@stud.htwk-leipzig.de) ein Student der Studienrichtung Informatik
+      (INM) an der HTWK-Leipzig, ladungsf\xE4hige Adresse: Zwenkauerstra\xDFe 14,
+      04277 Leipzig. Zudem besteht das Recht der Beschwerde bei der Datenschutzbeh\xF6rde
+      (bspw. \xFCber bfdi.bund.del)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30735877561901056
+    m_Localized: Umfrage zur Masterarbeit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30735903017132032
+    m_Localized: Akzeptieren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30735963356389376
+    m_Localized: Abbrechen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30736123276812288
+    m_Localized: Weiter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30736201861292032
+    m_Localized: "Zur\xFCck"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30736945054212096
+    m_Localized: "Sind Sie \xFCber 18 Jahre alt ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30738052732149760
+    m_Localized: Ja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30739723772223488
+    m_Localized: Nein
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30740603720425472
+    m_Localized: "Gamification ist die \xDCbertragung von spiel typischen Elementen
+      und Vorg\xE4ngen in spiel-fremde Zusammenh\xE4nge. Ziele von Gamification sind
+      Motivationssteigerung und Verhaltens\xE4nderung bei Anwenderinnen und Anwendern.
+      Zu den spiel typischen Elementen geh\xF6ren Beschreibungen, Ziele, Beteiligte,
+      Regeln, M\xF6glichkeiten, Punkte, Preise und Vergleiche. Zu den spiel typischen
+      Vorg\xE4ngen z\xE4hlt die Bew\xE4ltigung von Aufgaben durch individuelle oder
+      kollaborative Leistungen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30741165023158272
+    m_Localized: Antwort eingeben...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30741876620386304
+    m_Localized: Wie sind Ihre allgemeinen Gedanken zur der Anwendung ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30742529778376704
+    m_Localized: "Wie w\xFCrden Sie sich die Gamification einer Umweltsimulation
+      vorstellen ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30748856139374592
+    m_Localized: "Die Definition von Simulation sind Sachverhalte, Vorg\xE4nge mit
+      technischen, naturwissenschaftlichen Mitteln modellhaft zu \xDCbungs-, Erkenntniszwecken
+      nachbilden, wirklichkeitsgetreu nachahmen. Das hei\xDFt eine Simulation eines
+      \xD6kosystems bedeutet es, Vorg\xE4nge in der Natur m\xF6glichst nachzubilden
+      um zuk\xFCnftige Ver\xE4nderungen zu simulieren."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30749381735997440
+    m_Localized: "Wie wichtig w\xE4ren Ihnen folgende Aspekte an einer Umweltsimulation?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30749497532342272
+    m_Localized: Frage zur Simulation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750139135025152
+    m_Localized: Lehrsamkeit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750228159127552
+    m_Localized: "Unterhaltung und Spielspa\xDF"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750308182253568
+    m_Localized: Niedrige Systemanforderung (PC)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750488835121152
+    m_Localized: "Grafisch Anspruchsvolle (sch\xF6ne) Grafik"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750625204527104
+    m_Localized: "Eine realit\xE4tsnahe Simulation"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30751000548597760
+    m_Localized: "Eine realit\xE4tsferne Simulation"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30751448533819392
+    m_Localized: Sehr wichtig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30752493578215424
+    m_Localized: Eher nicht wichtig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30752586431717376
+    m_Localized: Nicht wichtig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30754801699512320
+    m_Localized: Wichtig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30761048809136128
+    m_Localized: "Sehr geehrte teilnehmende Person!\r\n\r\nHerzlichen Dank f\xFCr
+      die Teilnahme! Sie helfen mir damit, mehr \xFCber die Benutzererfahrung zum
+      Prototypen zu erfahren. Sie haben nun das Ende des Fragebogens erreicht.\r\nFalls
+      Sie noch Fragen zum Inhalt, Zweck oder Forschungsethik dieser Erhebung haben,
+      wenden Sie sich bitte an sebastian.poetter@stud.htwk-leipzig.de. \n\nFalls
+      Sie Interesse an den Ergebnissen der Untersuchung haben, wenden Sie sich bitte
+      an sebastian.poetter@stud.htwk-leipzig.de. \r\n\r\nBitte klicken Sie unten
+      links auf \u201EAkzeptieren\u201C \u2013 erst dann ist der Fragebogen abgeschlossen
+      und Ihre Daten gespeichert.\r\n\r\nIch bedanke mich bei Ihnen nochmals herzlich
+      f\xFCr Ihre Zeit und M\xFChe!\r\n\r\nF\xFCr Weitere Informationen zur DSVGO:
+      gdpr-info.eu\nLink zur Masterarbeit: Github.com/poetter-sebastian/Simulation"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30831040565075968
+    m_Localized: "Entschuldigung! \r\n\r\nAus datenschutzrechtlichen Gr\xFCnden,
+      k\xF6nnen die Daten von Minderj\xE4hrigen nicht erhoben werden, weswegen Sie
+      die Umfrage nur schlie\xDFen k\xF6nnen. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30877876558487552
+    m_Localized: Kennen Sie das Kontept von Gamification?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30877955004555264
+    m_Localized: "Zu welchem Altersbereich geh\xF6ren Sie?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30878527581577216
+    m_Localized: "\xDCber 45 Jahre"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30878557189169152
+    m_Localized: Zwischen 18-25 Jahre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30878584250818560
+    m_Localized: Zwischen 25-45 Jahre
     m_Metadata:
       m_Items: []
   references:

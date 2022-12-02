@@ -79,6 +79,26 @@ MonoBehaviour:
     m_Key: CollectRubbishMessage
     m_Metadata:
       m_Items: []
+  - m_Id: 737433699213312
+    m_Key: SoilSamplesMessage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 740358634856448
+    m_Key: TreeMissionMessage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 760560156139520
+    m_Key: MeasureWeatherMessage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 775153247051776
+    m_Key: FinishedTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 775208397955072
+    m_Key: FinishedMessage
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -29,8 +29,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5173450629120
-    m_Localized: Find 5 infested trees and fell them to protect the forest. Then
-      plant 5  more resistant trees.
+    m_Localized: Find 5 with bark beetle infested trees and fell them to protect
+      the forest. Then plant 5  more resistant trees.
     m_Metadata:
       m_Items: []
   - m_Id: 5347338084352
@@ -74,7 +74,6 @@ MonoBehaviour:
       the key. The first task is to try out this movements.
 
 
-
       Try WASD-keys
       or arrow keys and use the scroll wheel to zoom and rotating.'
     m_Metadata:
@@ -103,6 +102,53 @@ MonoBehaviour:
     m_Localized: "Now you are to remove abandoned rubbish from your forest. You get
       money for each recycled barrels. The barrels can be picked up by left clicking.
       Collect an amount of 500\xA4 (money)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 737433699213312
+    m_Localized: Good job! To get to know your forest better, you have to take some
+      soil samples. For this, a core drilling at different places is recommended.
+      To do this, click on the button that is now visible with the construction symbol
+      and then on a location where you want to drill. Take 10 soil samples.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 740358634856448
+    m_Localized: 'Now that you know your soil better, you can also activate the soil
+      type view with the button at the bottom left. To switch back, click the button
+      next to it.
+
+
+
+      Next, you notice that bark beetles are infesting your
+      forest, find and cut down diseased trees. To examine a tree, click on the trunk
+      of a tree. Find and cut down 5 trees and then plant 5 new trees using the button
+      with the plant icon at the middle bottom.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 760560156139520
+    m_Localized: 'Now you know your forest much better. To gather more information,
+      you should set up a weather station and request a satellite scan. To do this,
+      click on the respective button at the bottom middle. '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 775208397955072
+    m_Localized: 'You have completed all the tasks. Together with the data from the
+      weather station, the satellite measurement and the soil samples, you can now
+      activate the view of the moisture in the soil and an height map at the bottom
+      left.
+
+
+
+      After you close the window, a survey window will open, please
+      participate. The data is important for my master thesis.
+
+
+
+      You can continue
+      to view the simulation afterwards.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 775153247051776
+    m_Localized: Congratulations!
     m_Metadata:
       m_Items: []
   references:

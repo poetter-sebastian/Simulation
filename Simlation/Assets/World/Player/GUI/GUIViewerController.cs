@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
 using Utility;
+using World.Agents;
 
 namespace Player.GUI
 {
@@ -15,29 +16,33 @@ namespace Player.GUI
         public TextMeshProUGUI o2Value;
         public TextMeshProUGUI diseaseValue;
 
-        public void OnNameChange(GenEventArgs<string> e)
+        public event EventHandler<GenEventArgs<TreeAgent>> treeCutClicked;
+        public event EventHandler foundIllTree;
+        
+        private TreeAgent tree;
+
+        public void OpenViewer(TreeAgent treeAgent)
         {
-            nameValue.text = "" + e.Value + "";
+            gameObject.SetActive(true);
+            nameValue.text = new LocalizedString("Trees", treeAgent.species).GetLocalizedString();
+            waterValue.text = "" + treeAgent.waterConsumption.ToString("0.00") + " "+new LocalizedString("Units", "LitersPerDay").GetLocalizedString();
+            co2Value.text = "" + treeAgent.co2Modifier.ToString("0.00") + " "+new LocalizedString("Units", "GramPerDay").GetLocalizedString();
+            o2Value.text = "" + treeAgent.o2Modifier.ToString("0.00") + " "+new LocalizedString("Units", "KiloGramPerDay").GetLocalizedString();
+            if (treeAgent.diseases.Length > 0)
+            {
+                diseaseValue.text = new LocalizedString("TreeDiseases", treeAgent.diseases[0]).GetLocalizedString();
+                foundIllTree?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                diseaseValue.text = new LocalizedString("TreeDiseases", "Healthy").GetLocalizedString();
+            }
+            tree = treeAgent;
         }
-        
-        public void OnWaterChange(GenEventArgs<string> e)
+
+        public void CutTreeButtonPressed()
         {
-            waterValue.text = "" + e.Value + " "+new LocalizedString("Units", "LitersPerDay").GetLocalizedString();
-        }
-        
-        public void OnCo2Change(GenEventArgs<string> e)
-        {
-            co2Value.text = "" + e.Value + " "+new LocalizedString("Units", "GramPerDay").GetLocalizedString();
-        }        
-        
-        public void OnO2Change(GenEventArgs<string> e)
-        {
-            o2Value.text = "" + e.Value + " "+new LocalizedString("Units", "GramPerDay").GetLocalizedString();
-        }        
-        
-        public void OnDiseaseChange(GenEventArgs<string> e)
-        {
-            diseaseValue.text = "" + e.Value + "";
+            treeCutClicked?.Invoke(this, new GenEventArgs<TreeAgent>(tree));
         }
     }
 }

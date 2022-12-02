@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Globalization;
+using Mono.Cecil;
 using Player.Camera;
 using Player.GUI;
 using UnityEngine;
 using Utility;
+using World.Agents;
 using World.Environment;
+using World.Environment.Spawn;
+using Random = UnityEngine.Random;
 
 namespace Player
 {
@@ -50,6 +54,7 @@ namespace Player
         public bool activateTreePlanting;
         public GameObject hole;
         public GameObject weatherStation;
+        public TreeSpawner plant;
 
         public event EventHandler<GenEventArgs<int>> GotMoney;
         public event EventHandler<GenEventArgs<int>> SpendMoney;
@@ -57,7 +62,7 @@ namespace Player
         public event EventHandler<GenEventArgs<int>> FoundIllTrees;
         public event EventHandler<GenEventArgs<int>> CutTrees;
         public event EventHandler<GenEventArgs<int>> PlantedTrees;
-        public event EventHandler BuildedWeatherStation;
+        public event EventHandler BuiltWeatherStation;
         public event EventHandler TookSatellitePicture;
         public event EventHandler UnlockedElements;
 
@@ -162,7 +167,7 @@ namespace Player
             TookSoilExample?.Invoke(this, new GenEventArgs<int>(soilSampleCount));
         }
 
-        public void PlayerFoundIllTree()
+        public void OnPlayerFoundIllTree(object s, EventArgs e)
         {
             playerFoundIllTreesCount++;
             FoundIllTrees?.Invoke(this, new GenEventArgs<int>(playerFoundIllTreesCount));
@@ -172,10 +177,9 @@ namespace Player
         {
             playerCutTreeCount++;
             CutTrees?.Invoke(this, new GenEventArgs<int>(playerCutTreeCount));
-            RemoveTree();
         }
         
-        public void RemoveTree()
+        public void RemoveTree(TreeAgent agent)
         {
             treeCount--;
             if (treeCount < 0)
@@ -196,17 +200,19 @@ namespace Player
         public void AddTree()
         {
             treeCount++;
+
             CalcQuality();
         }
 
         public void PlantTree()
         {
             AddPlayerPlantedTree();
+            UpdateStatisticsValue();
         }
         
         public void BuildWeatherStation()
         {
-            BuildedWeatherStation?.Invoke(this, EventArgs.Empty);
+            BuiltWeatherStation?.Invoke(this, EventArgs.Empty);
         }
         
         public void TakeSatellitePicture()
@@ -217,6 +223,48 @@ namespace Player
             }
         }
 
+        public void SpawnObjOnWorld(Vector3 pos)
+        {
+            if (activateDigging && RemoveMoney(50))
+            {
+                WorldController.Instance.Spawn(hole, pos);
+                AddSoilSample();
+                ui.PlayDigging();
+            }
+            else if(activateWeatherStationBuilding && RemoveMoney(250))
+            {
+                WorldController.Instance.Spawn(weatherStation, pos);
+                BuildWeatherStation();
+                ui.PlayPlace();
+            }
+            else if(activateTreePlanting && RemoveMoney(75))
+            {
+                WorldController.Instance.SpawnPlant(plant.GetRandomTree(), pos);
+                PlantTree();
+                ui.PlayPlace();
+            }
+            else
+            {
+                ILog.LER(LN, "Placed obj without activating it!");
+            }
+        }
+
+        public void UpdateStatisticsValue()
+        {
+            ui.guiStatisticsController.OnCo2Change(new GenEventArgs<string>(co2Consumption.ToString("0.00")));
+            ui.guiStatisticsController.OnO2Change(new GenEventArgs<string>(o2Production.ToString("0.00")));
+            //for better calculation (waterConsumption/10)
+            ui.guiStatisticsController.OnWaterConsumptionChange(new GenEventArgs<string>((waterConsumption/10).ToString("0.00")));
+        }
+        
+        private void Start()
+        {
+            WorldController.Instance.climateHandler.TemperatureChanged += OnTemperatureChange;
+            movement.TreeWasHit += OnTreeClicked;
+            ui.guiViewerController.treeCutClicked += OnTreeCut;
+            ui.guiViewerController.foundIllTree += OnPlayerFoundIllTree;
+        }
+
         private void CalcQuality()
         {
             var rubbish = rubbishCount switch
@@ -225,6 +273,7 @@ namespace Player
                 < 0 => 0,
                 _ => (int)Mathf.Lerp(0, 25, rubbishCount / 100f)
             };
+            ui.guiStatisticsController.OnPollutionChange(new GenEventArgs<string>((100 - rubbish).ToString()));
             var tree = treeCount switch
             {
                 > 300 => 0,
@@ -235,26 +284,28 @@ namespace Player
             ui.guiResourcesController.OnQualityChange(new GenEventArgs<string>(quality.ToString(CultureInfo.InvariantCulture)));
         }
 
-        public void SpawnObjOnWorld(Vector3 pos)
+        private void OnTreeClicked(object s, GenEventArgs<TreeAgent> e)
         {
-            if (activateDigging && RemoveMoney(50))
+            ui.guiViewerController.OpenViewer(e.Value);
+        }
+
+        private void OnTreeCut(object s, GenEventArgs<TreeAgent> e)
+        {
+            e.Value.CutTree();
+            PlayerRemovedTree();
+        }
+
+        private void OnTemperatureChange(object s, GenEventArgs<float> e)
+        {
+            if (coldestTemp > e.Value)
             {
-                WorldController.Instance.Spawn(hole, pos);
-                AddSoilSample();
+                coldestTemp = e.Value;
+                ui.guiStatisticsController.OnMinTempChange(new GenEventArgs<string>(coldestTemp.ToString("0.00")));
             }
-            else if(activateWeatherStationBuilding && RemoveMoney(250))
+            if (hottestTemp < e.Value)
             {
-                WorldController.Instance.Spawn(weatherStation, pos);
-                BuildWeatherStation();
-            }
-            else if(activateTreePlanting && RemoveMoney(75))
-            {
-                WorldController.Instance.Spawn(weatherStation, pos);
-                PlantTree();
-            }
-            else
-            {
-                ILog.LER(LN, "Placed obj without activating it!");
+                hottestTemp = e.Value;
+                ui.guiStatisticsController.OnMaxTempChange(new GenEventArgs<string>(hottestTemp.ToString("0.00")));
             }
         }
     }

@@ -193,9 +193,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3640027783213906646}
+  - component: {fileID: 2207164779957315621}
   - component: {fileID: 8420014222314491303}
   - component: {fileID: 7878816171339400676}
-  - component: {fileID: 2207164779957315621}
   m_Layer: 0
   m_Name: pine_3
   m_TagString: Untagged
@@ -226,6 +226,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2207164779957315621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163623310043914348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db504a2d5424c99b74f432dba01cdf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  world: {fileID: 0}
+  moveAble: 0
+  alive: 0
+  domain: 
+  kingdom: 
+  phylum: 
+  agentClass: 
+  order: 
+  family: 
+  genus: 
+  species: Pine
+  o2Modifier: 12.3465
+  co2Modifier: 27.39
+  size: 0
+  age: 0
+  diurnal: 0
+  health: 200
+  thirst: 0
+  injuries: 
+  diseases: 
+  waterConsumption: 25
+  preferredGround: 0
+  heatResistance: 0
+  dryResistance: 0
+  xerophyt: 0
 --- !u!205 &8420014222314491303
 LODGroup:
   m_ObjectHideFlags: 0
@@ -273,42 +310,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2207164779957315621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4163623310043914348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0db504a2d5424c99b74f432dba01cdf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveAble: 0
-  alive: 0
-  domain: 
-  kingdom: 
-  phylum: 
-  agentClass: 
-  order: 
-  family: 
-  genus: 
-  species: 
-  o2Modifier: 0
-  co2Modifier: 0
-  size: 0
-  age: 0
-  diurnal: 0
-  health: 0
-  thirst: 0
-  injuries: 
-  diseases: 
-  waterConsumption: 25
-  preferredGround: 0
-  heatResistance: 0
-  dryResistance: 0
-  xerophyt: 0
 --- !u!1 &6518193844803978237
 GameObject:
   m_ObjectHideFlags: 0

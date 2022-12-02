@@ -84,7 +84,7 @@ namespace World.Agents
         /// List of diseases modifiers of the agent
         /// </summary>
         [Tooltip("List of diseases of agent")]
-        public int[] diseases;
+        public string[] diseases;
 
         /// <summary>
         /// Behaviour of the agent

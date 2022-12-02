@@ -26,6 +26,10 @@ MonoBehaviour:
     m_Localized: l/Tag
     m_Metadata:
       m_Items: []
+  - m_Id: 2342732835053568
+    m_Localized: kg/Tag
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

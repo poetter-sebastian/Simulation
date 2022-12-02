@@ -41,6 +41,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-de
     - Preload
+  - m_GUID: 67ffcc2eb73242145b355b280966de0d
+    m_Address: Trees_de
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-de
+    - Preload
+  - m_GUID: 6a5aee605b89c6b40ade60ac900d183a
+    m_Address: TreeDiseases_de
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-de
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: ffe07a746f024e446906ed38eadc61e5, type: 2}
   m_SchemaSet:

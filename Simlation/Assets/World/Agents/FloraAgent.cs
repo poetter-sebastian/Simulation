@@ -59,5 +59,10 @@ namespace World.Agents
         {
 
         }
+
+        public void AddDisease(string d)
+        {
+            diseases = new[] { d };
+        }
     }
 }

@@ -10,15 +10,20 @@ namespace Player.GUI
     public class GUIStatisticsController : PopupBehaviour
     {
         public TextMeshProUGUI co2Value;
+        public TextMeshProUGUI o2Value;
         public TextMeshProUGUI waterConsumptionValue;
         public TextMeshProUGUI pollutionValue;
         public TextMeshProUGUI approvalValue;
         public TextMeshProUGUI minTempValue;
         public TextMeshProUGUI maxTempValue;
-
+        
         public void OnCo2Change(GenEventArgs<string> e)
         {
             co2Value.text = "" + e.Value + " "+new LocalizedString("Units", "GramPerDay").GetLocalizedString();
+        }
+        public void OnO2Change(GenEventArgs<string> e)
+        {
+            o2Value.text = "" + e.Value + " "+new LocalizedString("Units", "KiloGramPerDay").GetLocalizedString();
         }
         public void OnWaterConsumptionChange(GenEventArgs<string> e)
         {

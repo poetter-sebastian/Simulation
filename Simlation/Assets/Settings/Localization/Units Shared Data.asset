@@ -23,6 +23,10 @@ MonoBehaviour:
     m_Key: LitersPerDay
     m_Metadata:
       m_Items: []
+  - m_Id: 2342732835053568
+    m_Key: KiloGramPerDay
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

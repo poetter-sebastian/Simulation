@@ -83,14 +83,6 @@ MonoBehaviour:
     m_Key: Simulation/Player/GUI/Statistic/MaxTemperature
     m_Metadata:
       m_Items: []
-  - m_Id: 6476093912506368
-    m_Key: Simulation/Player/GUI/Statistic/CO2ConsumptionValue
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6476144571310080
-    m_Key: Simulation/Player/GUI/Statistic/WaterConsumptionValue
-    m_Metadata:
-      m_Items: []
   - m_Id: 24285468962054144
     m_Key: Simulation/Player/GUI/HelpShadow/Help/Text (TMP)
     m_Metadata:
@@ -223,6 +215,150 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 28638489527443456
     m_Key: Simulation/Player/GUI/HelpShadow/Help/TaskHelp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30515589679144960
+    m_Key: Simulation/Player/GUI/SurveyShadow/Survey/ShareLogsQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30515681727340544
+    m_Key: Simulation/Player/GUI/SurveyShadow/Survey/ShareHardwareQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30515828234379264
+    m_Key: Simulation/Player/GUI/SurveyShadow/Survey/TooEasyQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30735120951402496
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart1/Descripton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30735877561901056
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart1/Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30735903017132032
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart1/Accept/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30735963356389376
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart1/Cancel/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30736123276812288
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/Continue/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30736201861292032
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/Back/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30736945054212096
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/Over18Question
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30738052732149760
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/Over18YesValue/Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30739723772223488
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/Over18NoValue/Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30740603720425472
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/GamificationNotKnown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30741165023158272
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/SimulationValue/Text Area/Placeholder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30741876620386304
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/SimulationQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30742529778376704
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/GamificationKnown/GamificationKnownQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30748856139374592
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart3/Simulation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30749381735997440
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart3/SimulationQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30749497532342272
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart3/SimulationTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750139135025152
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart3/TeachingQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750228159127552
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart3/FunQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750308182253568
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart3/SystemRequirementsQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750488835121152
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart3/FancyGraphicsQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750625204527104
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart3/RealisticSimulationQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30751000548597760
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart3/NonRealisticSimulationQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30751448533819392
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart3/Teaching/TeachingVeryImportant/Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30752493578215424
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart3/Teaching/TeachingNotSoImportant/Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30752586431717376
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart3/Teaching/TeachingNotImportant/Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30754801699512320
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart3/Teaching/Important/Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30761048809136128
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart4/Descripton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30831040565075968
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/NotOver18/Disclamer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30877876558487552
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/Over18/GamificationQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30877955004555264
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/Over18/AgeAreaQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30878527581577216
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/Over18/AgeAreaValue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30878557189169152
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/Over18/AgeAreaValue 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30878584250818560
+    m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/Over18/AgeAreaValue 2
     m_Metadata:
       m_Items: []
   m_Metadata:

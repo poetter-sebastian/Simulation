@@ -86,14 +86,6 @@ MonoBehaviour:
     m_Localized: 'Highest temperature:'
     m_Metadata:
       m_Items: []
-  - m_Id: 6476093912506368
-    m_Localized: XXX g/Day
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6476144571310080
-    m_Localized: XXX l/Day
-    m_Metadata:
-      m_Items: []
   - m_Id: 24285468962054144
     m_Localized: "Movement: \n\tWASD/Arrow keys - Camera movement\n\tMouse on the
       borders - Camera movement\n\tMiddle mouse button - Camera tilt\nInteractions:
@@ -241,6 +233,202 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 28638489527443456
     m_Localized: Current Task
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30515589679144960
+    m_Localized: Do you want to share your log (simulation data and program log)?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30515681727340544
+    m_Localized: Do you want to share your hardware information (CPU, GPU, motherboard,
+      RAM)?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30515828234379264
+    m_Localized: Were the challenges too easy?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30735120951402496
+    m_Localized: "Dear Participating Person,\r\nI appreciate your interest in participating
+      in this scientific survey. This survey is about the evaluation of a prototype
+      for the simulation of an ecosystem with a focus on anthropomorphic climate
+      change.\r\n\r\nThis survey is created in the course of writing a master thesis
+      at HTWK-Leipzig. The data can be viewed by the supervisor of the scientific
+      thesis Mr. Professor Dr. Kiran Varanasi and Mr. Philipp Fanta for the purpose
+      of performance evaluation. In accordance with Art. 89 Para. 1 DSGVO, the collected
+      data may in principle be stored without restriction.\r\n\r\nThere is the right
+      to information by the person responsible for this survey about the collected
+      personal data as well as the right to correction, deletion, restriction of
+      the processing of the data as well as a right to object to the processing and
+      the right to data portability. Before the survey starts, you will see detailed
+      information about your rights in the context of this survey and you will be
+      asked again for your consent. Your data will be collected and processed exclusively
+      on the basis of the legal provisions. Your transmitted data will be encrypted
+      and stored on a self-operated server. The transfer itself uses a TLS-1.2 encrypted
+      connection. You have the following personal rights in the context of this survey:\r\n\r\n-
+      Participation in the survey is optional. You can cancel the survey at any time
+      by clicking the button in the upper right corner.\r\n- Your participation is
+      anonymous, your answers cannot be traced back to you. This also means that
+      your personal data set is not identifiable to me after finishing the survey
+      (neither your IP address nor your hardware ID will be processed or stored).\r\n-
+      If you want to have information about your data after the study or withdraw
+      your participation, I ask you to note this in a comment field (together with
+      a contact address if necessary).\r\n- Your data will be used and analyzed exclusively
+      for scientific purposes and only in the context of this master thesis.\r\n-
+      The research does not follow any commercial interest. I will treat all your
+      submitted data strictly private and secure.\r\n\r\nIf you have any questions
+      about this survey, please feel free to contact me, the person responsible for
+      this research: Sebastian P\xF6tter (sebastian.poetter@stud.htwk-leipzig.de)
+      a student of computer science (INM) at the HTWK-Leipzig, address to contact:
+      Zwenkauerstra\xDFe 14, 04277 Leipzig. In addition, there is the right of complaint
+      to the data protection authority (e.g. via bfdi.bund.del)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30735877561901056
+    m_Localized: Survey for the master thesis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30735903017132032
+    m_Localized: Accept
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30735963356389376
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30736123276812288
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30736201861292032
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30736945054212096
+    m_Localized: Are you over 18 ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30738052732149760
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30739723772223488
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30740603720425472
+    m_Localized: Gamification is the transfer of typical game elements and processes
+      into non-game contexts. The goals of gamification are to increase motivation
+      and change behavior among users. Game-typical elements include descriptions,
+      goals, participants, rules, opportunities, points, prizes, and comparisons.
+      Game-typical processes include the accomplishment of tasks through individual
+      or collaborative performance.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30741165023158272
+    m_Localized: Answer here...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30741876620386304
+    m_Localized: What are your general thoughts about the prototype?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30742529778376704
+    m_Localized: How would you imagine the gamification of an environmental simulation
+      ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30748856139374592
+    m_Localized: The definition of simulation is to reproduce facts, processes with
+      technical, scientific means in a model-like way for training and knowledge
+      purposes, to imitate them realistically. That means a simulation of an ecosystem
+      means it, processes in nature as far as possible to simulate future changes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30749381735997440
+    m_Localized: How important would the following aspects be to you in an ecological
+      simulation?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30749497532342272
+    m_Localized: Simulation question
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750139135025152
+    m_Localized: Teachability
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750228159127552
+    m_Localized: Entertainment and fun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750308182253568
+    m_Localized: Low system requirements (PC)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750488835121152
+    m_Localized: Fancy (beautiful) graphics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30750625204527104
+    m_Localized: A realistic simulation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30751000548597760
+    m_Localized: A non realistic simulation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30751448533819392
+    m_Localized: Very important
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30752493578215424
+    m_Localized: Less important
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30752586431717376
+    m_Localized: Not important
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30754801699512320
+    m_Localized: Important
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30761048809136128
+    m_Localized: "Dear participating person!\r\n\r\nThank you very much for participating!
+      You are helping me to learn more about the user experience of the prototype.
+      You have now reached the end of the survey.\r\nIf you have any further questions
+      about the content, purpose, or research ethics of this survey, please contact
+      me at sebastian.poetter@stud.htwk-leipzig.de. \n\nIf you are interested in
+      the results of the survey, please contact sebastian.poetter@stud.htwk-leipzig.de.
+      \r\n\r\nPlease click \"Accept\" at the bottom left - only then your answers
+      will be saved.\r\n\r\nThank you again very much for your time and effort!\r\n\r\nFor
+      more information of the DSVGO: gdpr-info.eu\nLink my master thesis: Github.com/poetter-sebastian/Simulation"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30831040565075968
+    m_Localized: "Sorry! \r\n\r\nFor data protection reasons, the data of minors
+      cannot be collected, which is why you can only close the survey. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30877876558487552
+    m_Localized: Do you know the concept of gamification ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30877955004555264
+    m_Localized: To which age range do you belong?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30878527581577216
+    m_Localized: Over 45 year
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30878557189169152
+    m_Localized: Between 18-25 years
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30878584250818560
+    m_Localized: Between 25-45 years
     m_Metadata:
       m_Items: []
   references:

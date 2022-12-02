@@ -35,12 +35,6 @@ namespace World.Player.Tasks.Missions
             manager.player.UnlockAridityView();
             manager.player.UnlockHeightView();
             manager.player.UnlockWeatherUI();
-            
-            manager.player.ui.guiMessageController.OnToggle(this, new GenEventArgs<(string, string)>((
-                new LocalizedString("Tasks", "FinishedTitle").GetLocalizedString(),
-                new LocalizedString("Tasks", "FinishedMessage").GetLocalizedString()
-            )));
-            manager.player.ui.guiMessageController.GetComponentInChildren<Button>().onClick.AddListener(manager.player.ui.guiSurveyController.activateSurvey);
         }
 
         public override void DeactivateTask()

@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 9ab43c68bbf308a48952e90687c0a594, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 8264390150883377162
   m_TableData:
   - m_Id: 28776388878336
     m_Localized: 'Temperature:'
@@ -170,7 +171,7 @@ MonoBehaviour:
     m_Localized: "Thank you for participating my survey.\r\n\r\nThis is a prototype
       of an application to simulate an ecosystem. \r\n\r\nThe application is not
       optimized, so it may has increased power consumption and visual bugs!\r\n\r\nIf
-      you encounter any bugs while using it, please report them to me via email,
+      you encounter any bugs while using it, please report them to me via e-mail,
       GitHub-Issue, or any other communication channels. Any feedback and or participation
       in the survey is valuable to me!\r\n\r\nYou can close the application at any
       time by clicking the button (with the X) in the upper right corner or by pressing
@@ -182,13 +183,21 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 27076914878341120
-    m_Localized: "You are an owner of a plot of land with a grove. You have no information
+    m_Localized: 'You are an owner of a plot of land with a grove. You have no information
       about the soil or the plants that grow there. Therefore, you have done some
-      research and are now trying to discover your forest and learn from it.\r\n\r\nWithin
+      research and are now trying to discover your forest and learn from it.
+
+      
+
+      Within
       the application you will learn some basics about how people from forestry,
-      biology and geology do their work. For this you have to solve four tasks and
-      afterwards you can participate in a survey. \r\n\r\nThe time interval is maximum
-      30 minutes."
+      biology, and geology do their work. For this you have to solve four tasks and
+      afterwards you can participate in a survey.
+
+      
+
+      The time interval
+      is maximum 30 minutes.'
     m_Metadata:
       m_Items: []
   - m_Id: 27098148768833536
@@ -212,7 +221,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 27188577946296320
-    m_Localized: XXX g/Tag
+    m_Localized: Healthy
     m_Metadata:
       m_Items: []
   - m_Id: 27802908908052480
@@ -251,19 +260,19 @@ MonoBehaviour:
   - m_Id: 30735120951402496
     m_Localized: "Dear Participating Person,\r\nI appreciate your interest in participating
       in this scientific survey. This survey is about the evaluation of a prototype
-      for the simulation of an ecosystem with a focus on anthropomorphic climate
+      for the simulation of an ecosystem, with a focus on anthropomorphic climate
       change.\r\n\r\nThis survey is created in the course of writing a master thesis
       at HTWK-Leipzig. The data can be viewed by the supervisor of the scientific
-      thesis Mr. Professor Dr. Kiran Varanasi and Mr. Philipp Fanta for the purpose
-      of performance evaluation. In accordance with Art. 89 Para. 1 DSGVO, the collected
-      data may in principle be stored without restriction.\r\n\r\nThere is the right
-      to information by the person responsible for this survey about the collected
-      personal data as well as the right to correction, deletion, restriction of
-      the processing of the data as well as a right to object to the processing and
-      the right to data portability. Before the survey starts, you will see detailed
-      information about your rights in the context of this survey and you will be
-      asked again for your consent. Your data will be collected and processed exclusively
-      on the basis of the legal provisions. Your transmitted data will be encrypted
+      thesis Prof. Dr. Kiran Varanasi and Mr. Philipp Fanta for the purpose of performance
+      evaluation. In accordance with Art. 89 Para. 1 DSGVO, the collected data may
+      in principle be stored without restriction.\r\n\r\nYou have the right to information
+      by the person responsible for this survey about the collected personal data
+      as well as the right to correction, deletion, restriction of the processing
+      of the data as well as a right to object to the processing and the right to
+      data portability. Before the survey starts, you will see detailed information
+      about your rights in the context of this survey and you will be asked again
+      for your consent. Your data will be collected and processed exclusively on
+      the basis of the legal provisions. Your transmitted data will be encrypted
       and stored on a self-operated server. The transfer itself uses a TLS-1.2 encrypted
       connection. You have the following personal rights in the context of this survey:\r\n\r\n-
       Participation in the survey is optional. You can cancel the survey at any time
@@ -275,17 +284,17 @@ MonoBehaviour:
       your participation, I ask you to note this in a comment field (together with
       a contact address if necessary).\r\n- Your data will be used and analyzed exclusively
       for scientific purposes and only in the context of this master thesis.\r\n-
-      The research does not follow any commercial interest. I will treat all your
-      submitted data strictly private and secure.\r\n\r\nIf you have any questions
-      about this survey, please feel free to contact me, the person responsible for
-      this research: Sebastian P\xF6tter (sebastian.poetter@stud.htwk-leipzig.de)
-      a student of computer science (INM) at the HTWK-Leipzig, address to contact:
-      Zwenkauerstra\xDFe 14, 04277 Leipzig. In addition, there is the right of complaint
-      to the data protection authority (e.g. via bfdi.bund.del)."
+      The research does not follow any commercial interest. Your submitted data will
+      be treated strictly private and secure.\r\n\r\nIf you have any questions about
+      this survey, please feel free to contact me, the person responsible for this
+      research: Sebastian P\xF6tter (sebastian.poetter@stud.htwk-leipzig.de) a student
+      of computer science (INM) at the HTWK-Leipzig, address to contact: Zwenkauerstra\xDFe
+      14, 04277 Leipzig. In addition, there is the right of complaint to the data
+      protection authority (e.g. via bfdi.bund.del)."
     m_Metadata:
       m_Items: []
   - m_Id: 30735877561901056
-    m_Localized: Survey for the master thesis
+    m_Localized: Survey for the master's thesis
     m_Metadata:
       m_Items: []
   - m_Id: 30735903017132032
@@ -339,14 +348,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 30748856139374592
-    m_Localized: The definition of simulation is to reproduce facts, processes with
-      technical, scientific means in a model-like way for training and knowledge
-      purposes, to imitate them realistically. That means a simulation of an ecosystem
-      means it, processes in nature as far as possible to simulate future changes.
+    m_Localized: The definition of simulation is to reproduce processes with technical,
+      scientific means in a model-like manner for training and knowledge purposes.
+      Simulation of an ecosystem means to reproduce processes in nature as realistically
+      as possible in order to simulate future changes.
     m_Metadata:
       m_Items: []
   - m_Id: 30749381735997440
-    m_Localized: How important would the following aspects be to you in an ecological
+    m_Localized: How important are the following aspects to you in an ecological
       simulation?
     m_Metadata:
       m_Items: []
@@ -414,7 +423,8 @@ MonoBehaviour:
   - m_Id: 30877876558487552
     m_Localized: Do you know the concept of gamification ?
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 8264390150883377162
   - m_Id: 30877955004555264
     m_Localized: To which age range do you belong?
     m_Metadata:
@@ -433,4 +443,8 @@ MonoBehaviour:
       m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8264390150883377162
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e0afdf43b36d00

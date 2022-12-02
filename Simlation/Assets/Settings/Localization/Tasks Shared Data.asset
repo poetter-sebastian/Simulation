@@ -99,6 +99,18 @@ MonoBehaviour:
     m_Key: FinishedMessage
     m_Metadata:
       m_Items: []
+  - m_Id: 1914264838201344
+    m_Key: ViewGuidanceTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1914356185948160
+    m_Key: ViewGuidanceDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1914371201556480
+    m_Key: ViewGuidanceMessage
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

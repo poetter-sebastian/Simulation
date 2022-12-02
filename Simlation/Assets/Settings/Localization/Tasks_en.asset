@@ -29,12 +29,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5173450629120
-    m_Localized: Find 5 with bark beetle infested trees and fell them to protect
-      the forest. Then plant 5  more resistant trees.
+    m_Localized: Find 5 trees with bark beetle infested and fell them to protect
+      the forest. Then plant 5 more resistant trees.
     m_Metadata:
       m_Items: []
   - m_Id: 5347338084352
-    m_Localized: Build a weather station and check the data about it in the new window.
+    m_Localized: Build a weather station to get real time data about your forest.
       After that, scan the forest with the help of a satellite and get a detailed
       height map.
     m_Metadata:
@@ -60,7 +60,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5148012175360
-    m_Localized: Use the movement keys to learn how to move in the world.
+    m_Localized: Use the movement keys (WASD, or arrow keys) to move around in the
+      world.
     m_Metadata:
       m_Items: []
   - m_Id: 168797666271232
@@ -68,14 +69,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 168828574097408
-    m_Localized: 'To move around, press WASD or the arrow keys. Moving the mouse
-      pointer to the corresponding border also allows you to move in that direction.
-      Using the scroll wheel to zoom or rotate back and forth while holding down
-      the key. The first task is to try out this movements.
-
-
-      Try WASD-keys
-      or arrow keys and use the scroll wheel to zoom and rotating.'
+    m_Localized: To move around, press WASD or the arrow keys. Moving the mouse pointer
+      to the side of the screen allows you to move in that direction, as well. Using
+      the scroll wheel to zoom in or out. Press the right mouse button to rotate
+      the camera. The first task is to move around.
     m_Metadata:
       m_Items: []
   - m_Id: 180438067830784
@@ -84,14 +81,13 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 180764187549696
     m_Localized: 'Next, you should get familiar with the user interface. Open the
-      help window via the button with the i-symbol on the top right. There you will
+      info-window via the button with the i-symbol on the top right. There you will
       find useful information and your current task.
-
 
 
       After that you should
       have a look at the statistics window, the button can be found directly under
-      the help button.'
+      the info-button.'
     m_Metadata:
       m_Items: []
   - m_Id: 180440295006208
@@ -99,9 +95,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 471022947000320
-    m_Localized: "Now you are to remove abandoned rubbish from your forest. You get
-      money for each recycled barrels. The barrels can be picked up by left clicking.
-      Collect an amount of 500\xA4 (money)."
+    m_Localized: "Now you have to remove rubbish from your forest. You get money
+      for each recycled barrel. The barrels can be picked up by left-clicking. Collect
+      an amount of 500\xA4 (money)."
     m_Metadata:
       m_Items: []
   - m_Id: 737433699213312
@@ -112,43 +108,53 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 740358634856448
-    m_Localized: 'Now that you know your soil better, you can also activate the soil
-      type view with the button at the bottom left. To switch back, click the button
-      next to it.
+    m_Localized: 'Now that you know your soil better, you can activate the soil type
+      view with the button at the bottom left. To switch back, click the button next
+      to it.
 
 
-
-      Next, you notice that bark beetles are infesting your
-      forest, find and cut down diseased trees. To examine a tree, click on the trunk
-      of a tree. Find and cut down 5 trees and then plant 5 new trees using the button
-      with the plant icon at the middle bottom.'
+      Next, you notice that bark beetles are infesting your forest,
+      find and cut down these infested trees. To examine a tree, click on the trunk
+      of it. Find and cut down 5 trees and then plant 5 new trees using the button
+      with the plant icon at the bottom.'
     m_Metadata:
       m_Items: []
   - m_Id: 760560156139520
     m_Localized: 'Now you know your forest much better. To gather more information,
       you should set up a weather station and request a satellite scan. To do this,
-      click on the respective button at the bottom middle. '
+      click on the respective button at the bottom. '
     m_Metadata:
       m_Items: []
   - m_Id: 775208397955072
-    m_Localized: 'You have completed all the tasks. Together with the data from the
-      weather station, the satellite measurement and the soil samples, you can now
-      activate the view of the moisture in the soil and an height map at the bottom
-      left.
-
-
-
-      After you close the window, a survey window will open, please
-      participate. The data is important for my master thesis.
-
-
-
-      You can continue
-      to view the simulation afterwards.'
+    m_Localized: "You have completed all tasks. Together with the data from the weather
+      station, the satellite measurement and the soil samples, you can now activate
+      the view of the moisture in the soil and a height map at the bottom left.\r\n\r\nAfter
+      you close the window, a survey window will open, please participate. The data
+      is important for my master\u2019s thesis.\r\n\r\nYou can continue to view the
+      simulation afterwards."
     m_Metadata:
       m_Items: []
   - m_Id: 775153247051776
     m_Localized: Congratulations!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1914356185948160
+    m_Localized: Try each view-mode on the bottom left.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1914371201556480
+    m_Localized: 'Together with the data from the weather station, the satellite
+      measurement and the soil samples, you can now activate the view of moisture
+      in the soil and an elevation map at the bottom left.
+
+      
+
+      Try each
+      view-mode.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1914264838201344
+    m_Localized: Data usage
     m_Metadata:
       m_Items: []
   references:

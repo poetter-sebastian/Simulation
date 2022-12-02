@@ -40,6 +40,7 @@ namespace World.Environment
         public GameObject water;
         public GameObject plants;
         public GameObject border;
+        public GameObject rubbish;
         public GameObject[] plantSpawner;
         public GameObject[] otherSpawner;
         
@@ -549,6 +550,7 @@ namespace World.Environment
             water.SetActive(false);
             plants.SetActive(false);
             border.SetActive(false);
+            rubbish.SetActive(false);
             GetComponent<Renderer>().sharedMaterial.shader = Shader.Find("Shader Graphs/NodeColor");
             GetComponent<MeshFilter>().sharedMesh.colors = groundTypeColors;
         }
@@ -560,6 +562,7 @@ namespace World.Environment
             water.SetActive(true);
             plants.SetActive(false);
             border.SetActive(false);
+            rubbish.SetActive(false);
             GetComponent<Renderer>().sharedMaterial.shader = Shader.Find("Shader Graphs/NodeColor");
             GetComponent<MeshFilter>().sharedMesh.colors = aridityColors;
         }
@@ -571,6 +574,7 @@ namespace World.Environment
             water.SetActive(false);
             plants.SetActive(false);
             border.SetActive(false);
+            rubbish.SetActive(false);
             GetComponent<Renderer>().sharedMaterial.shader = Shader.Find("Shader Graphs/NodeColor");
             GetComponent<MeshFilter>().sharedMesh.colors = heightColors;
         }
@@ -582,6 +586,7 @@ namespace World.Environment
             water.SetActive(true);
             plants.SetActive(true);
             border.SetActive(true);
+            rubbish.SetActive(true);
             GetComponent<Renderer>().sharedMaterial.shader = Shader.Find("Shader Graphs/TerrainColor");
             GetComponent<MeshFilter>().sharedMesh.colors = textureColors;
         }

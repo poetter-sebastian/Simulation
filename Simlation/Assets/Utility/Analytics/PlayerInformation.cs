@@ -44,8 +44,20 @@ namespace Utility.Analytics
         public readonly float co2Consumption = 0;
         public readonly float waterConsumption = 0;
         
-        
-        
+        public readonly bool knowGamification;
+        public readonly string imagineGamification;
+        public readonly int ageArea;
+        public readonly string opinionToApp;
+        public readonly int teachingScore;
+        public readonly int funScore;
+        public readonly int systemRequirementsScore;
+        public readonly int fancyGraphicScore;
+        public readonly int realisticSimulationScore;
+        public readonly int nonRealisticSimulationScore;
+        public readonly bool tooEasy;
+        public readonly bool shareHardware;
+        public readonly bool shareLogs;
+
         public CompactPackage(PlayerHandler playerHandler)
         {
             playtime = playerHandler.playtime;
@@ -78,6 +90,20 @@ namespace Utility.Analytics
             systemInformation[6] = ("Processor count", SystemInfo.processorCount.ToString());
             systemInformation[7] = ("Processor type", SystemInfo.processorType);
             systemInformation[8] = ("Memory size", SystemInfo.systemMemorySize.ToString());
+            
+            knowGamification = playerHandler.ui.guiSurveyController.knowGamification;
+            imagineGamification = playerHandler.ui.guiSurveyController.imagineGamification;
+            ageArea = playerHandler.ui.guiSurveyController.ageArea;
+            opinionToApp = playerHandler.ui.guiSurveyController.opinionToApp;
+            teachingScore = playerHandler.ui.guiSurveyController.teachingScore;
+            funScore = playerHandler.ui.guiSurveyController.funScore;
+            systemRequirementsScore = playerHandler.ui.guiSurveyController.systemRequirementsScore;
+            fancyGraphicScore = playerHandler.ui.guiSurveyController.fancyGraphicScore;
+            realisticSimulationScore = playerHandler.ui.guiSurveyController.realisticSimulationScore;
+            nonRealisticSimulationScore = playerHandler.ui.guiSurveyController.nonRealisticSimulationScore;
+            tooEasy = playerHandler.ui.guiSurveyController.tooEasy;
+            shareHardware = playerHandler.ui.guiSurveyController.shareHardware;
+            shareLogs = playerHandler.ui.guiSurveyController.shareLogs;
         }
     }
 }

@@ -19,25 +19,25 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 5347338084352
-    m_Localized: "Baue eine Wetterstation und schauen Sie die Daten dazu im neuen
-      Fenster an. Scannen Sie danach den Wald mit Hilfe eines Satelliten und erhalten
-      Sie eine detaillierte H\xF6henkarte."
+    m_Localized: "Bauen Sie eine Wetterstation und scannen Sie danach den Wald mithilfe
+      eines Satelliten. Dadurch erhalten Sie eine \xDCbersicht zur Bodenfeuchtigkeit
+      und eine detaillierte H\xF6henkarte."
     m_Metadata:
       m_Items: []
   - m_Id: 5173450629120
-    m_Localized: "Finde 5 mit Borkenk\xE4fern infizierte B\xE4ume und f\xE4lle sie
-      zum Schutz des Waldes. Pflanzen Sie danach 5 neue B\xE4ume, welche widerstandsf\xE4higer
-      sind."
+    m_Localized: "Finden Sie 5 mit Borkenk\xE4fern infizierte B\xE4ume und f\xE4llen
+      Sie diese zum Schutz des Waldes. Pflanzen Sie danach 5 neue B\xE4ume, welche
+      widerstandsf\xE4higer sind."
     m_Metadata:
       m_Items: []
   - m_Id: 5166437752832
-    m_Localized: "Entnehmen Sie 10 Bodenproben, um Ihren Boden zu erforschen und
-      Informationen \xFCber die Beschaffenheit zu erhalten."
+    m_Localized: "Entnehmen Sie 10 Bodenproben, um den Boden zu erforschen und Informationen
+      \xFCber die Beschaffenheit zu erhalten."
     m_Metadata:
       m_Items: []
   - m_Id: 5159299047424
-    m_Localized: "Beseitigen Sie den liegengelassenen M\\\xFCll im Wald und verdienen
-      Sie damit 500 \xA4."
+    m_Localized: "Beseitigen Sie den liegengelassenen M\xFCll im Wald und verdienen
+      Sie damit 500 \xA4 (Geld)."
     m_Metadata:
       m_Items: []
   - m_Id: 5152248422400
@@ -61,7 +61,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5148012175360
-    m_Localized: Benutze die Bewegungstasten um dich umher zu bewegen.
+    m_Localized: Benutzen Sie die Bewegungstasten um die Kamera zu bewegen.
     m_Metadata:
       m_Items: []
   - m_Id: 168797666271232
@@ -69,13 +69,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 168828574097408
-    m_Localized: "Um sich in der Umgebung bewegen zu k\xF6nnen, dr\xFCcken sie WASD
-      oder die Pfeiltasten um sich in die entsprechen Richtung zu bewegen. Auch durch
-      das Bewegen des Mauszeigers an den entsprechenden Rand erm\xF6glicht eine Bewegung
-      in diese Richtung.  Mithilfe der mittleren Maustaste k\xF6nnen sie Zoomen oder
-      bei gedr\xFCckter Taste hin und her rotieren. Als erste Aufgabe sollen sie
-      die Bewegungen ausprobieren.\n\nVersuchen Sie es mit den WASD-Tasten oder den
-      Pfeiltasten und benutzen Sie das Scrollrad zum Zoomen und Drehen."
+    m_Localized: "Um die Kamera bewegen zu k\xF6nnen, dr\xFCcken Sie WASD oder die
+      Pfeiltasten, um sich in die entsprechen Richtung zu bewegen. Auch durch das
+      Bewegen des Mauszeigers an den Bildschirmrand erm\xF6glicht eine Bewegung in
+      diese Richtung. Mithilfe der mittleren Maustaste k\xF6nnen sie Zoomen. Ihre
+      erste Aufgabe, besteht darin, sich mit der Kamerasteuerung vertraut zu machen.\r\n\r\nBewegen
+      Sie die Kamera einmal in jede Richtung und zoomen sie anschlie\xDFen einmal
+      rein und raus."
     m_Metadata:
       m_Items: []
   - m_Id: 180438067830784
@@ -83,46 +83,49 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 180764187549696
-    m_Localized: "Als n\xE4chstes sollten Sie sich mit der Benutzeroberfl\xE4che
-      auseinandersetzen. \xD6ffnen Sie das Hilffenster \xFCber den Knopf mit dem
-      i-Symbol oben rechts. Dort finden Sie Hilfen zur Benutzung und Ihre aktuelle
-      Aufgabe.\n\nDanach sollten Sie sich das Stratistik-Fenster anschauen, den Knopf
-      daf\xFCr finden Sie direkt unter dem Hilfe-Knopf."
+    m_Localized: "Als N\xE4chstes sollten Sie sich mit der Benutzeroberfl\xE4che
+      vertraut machen. \xD6ffnen Sie das Informationsfenster \xFCber den Knopf mit
+      dem i-Symbol oben rechts. Dort finden Sie Hilfen zur Benutzung und Ihre aktuelle
+      Aufgabe.\r\n\r\n\xD6ffnen Sie anschlie\xDFend das Statistik-Fenster. Den Knopf
+      daf\xFCr finden Sie direkt unter dem Info-Knopf."
     m_Metadata:
       m_Items: []
   - m_Id: 180440295006208
-    m_Localized: "\xD6ffnen Sie das Fenster f\xFCr die Benutzungshilfe und das Fenster
-      f\xFCr stratistische Daten."
+    m_Localized: "\xD6ffnen Sie das Informationsfenster und das Fenster f\xFCr statistische
+      Daten."
     m_Metadata:
       m_Items: []
   - m_Id: 471022947000320
-    m_Localized: "Nun sollen Sie liegengelassenen M\xFCll aus ihrem Wald entsorgen.
-      F\xFCr jede Tonne erhalten Sie Geld. Die F\xE4sser k\xF6nnen mit Linksklick
-      aufgehoben werden. Sammeln Sie eine Geldmenge von 500 \xA4."
+    m_Localized: "Sie stellen fest, dass M\xFCll in Ihrem Wald entsorgt wurde. Sammeln
+      Sie den M\xFCll ein, f\xFCr jede recycelte Tonne erhalten Sie Geld. Die F\xE4sser
+      k\xF6nnen mit Linksklick aufgehoben werden. Sammeln Sie eine Geldmenge von
+      500 \xA4 (Geld)."
     m_Metadata:
       m_Items: []
   - m_Id: 737433699213312
-    m_Localized: "Gute Arbeit! Um Ihren Wald besser kennen zu lernen sollen Sie nun
+    m_Localized: "Gute Arbeit! Um Ihren Wald besser kennenzulernen, sollen Sie nun
       den Boden untersuchen. Hierf\xFCr wird eine Kernbohrung an verschiedenen Stellen
-      empfohlen. Klicken Sie daf\xFCr, den nun sichtbaren Knopf mit dem Bau-Symbol
-      und danach auf eine Stelle an der Sie bohren wollen. Nehmen Sie 10 Kernbohrung
+      empfohlen. Klicken Sie daf\xFCr, den inzwischen sichtbaren Knopf mit dem Bau-Symbol
+      und danach auf eine Stelle, an der Sie bohren wollen. Nehmen Sie 10 Kernbohrung
       vor."
     m_Metadata:
       m_Items: []
   - m_Id: 740358634856448
-    m_Localized: "Da Sie Ihren Boden nun besser kennen, k\xF6nnen Sie auch die Boden-Typen
-      Ansicht mit dem Knopf unten links aktivieren. Um wieder zur\xFCck zu wechsel,
+    m_Localized: "Da Sie Ihren Boden nun besser kennen, k\xF6nnen Sie die Boden-Typen
+      Ansicht mit dem Knopf unten links aktivieren. Um wieder zur\xFCckzuwechseln,
       klicken Sie auf den Knopf daneben.\r\n\r\nAnschlie\xDFend bemerken Sie, dass
-      Borkenk\xE4fer Ihrem Wald befallen, finden und f\xE4llen Sie kranke B\xE4ume.
-      Um einen Baum zu untersuchen, klicken Sie auf den Stamm eines Baumes. Finden
-      und F\xE4llen Sie 5 B\xE4ume und pflanzen Sie danach 5 neue B\xE4ume \xFCber
-      den Knopf mit dem Pflanzensymbol unten in der Mitte."
+      Borkenk\xE4fer Ihrem Wald befallen haben, finden und f\xE4llen Sie die befallenen
+      B\xE4ume. Um einen Baum zu untersuchen, klicken Sie auf den Stamm des Baumes.
+      Finden und f\xE4llen Sie 5 B\xE4ume und pflanzen Sie danach 5 neue B\xE4ume.
+      Einen Baum pflanzen Sie \xFCber den Knopf mit dem Pflanzensymbol unten in der
+      Mitte. Klicken Sie anschlie\xDFend auf die Stelle, an der der Baum gepflanzt
+      werden soll."
     m_Metadata:
       m_Items: []
   - m_Id: 760560156139520
     m_Localized: "Jetzt kennen Sie Ihren Wald sehr viel besser. Um weitere Informationen
-      zu sammeln sollen Sie eine Wetterstation aufstellen und einen Satelliten-Scan
-      Anfordern. Klicken Sie daf\xFCr auf dem jeweiligen Knopf unten in der Mitte. "
+      zu sammeln, sollen Sie eine Wetterstation aufstellen und einen Satelliten-Scan
+      anfordern. Klicken Sie daf\xFCr auf den jeweiligen Knopf unten in der Mitte."
     m_Metadata:
       m_Items: []
   - m_Id: 775153247051776
@@ -130,14 +133,26 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 775208397955072
-    m_Localized: "Sie haben alle Aufgaben gemeistert. Zusammen mit den Daten von
-      der Wetterstation, der Satellitenmessung und den Bodenprobem, k\xF6nnen Sie
-      nun die Ansicht der feuchtigkeit im Boden und eine H\xF6henkarte unten links
-      aktivieren.\n\nNachdem Sie das Fenster schlie\xDFen, \xF6ffnet sich ein Umfragefenster,
-      bitte nehmen Sie daran teil. Die Daten sind wichtig f\xFCr meine wissenschaftliche
-      Arbeit.\nNachdem Sie das Fenster schlie\xDFen, wird aber zuerst eine Umfrage
-      erscheinen. Bitte nehmen Sie daran teil, sie m\xFCssen das nat\xFCrlich nicht.\n\nDanach
-      k\xF6nnen Sie in Ruhe die Simulation weiter testen."
+    m_Localized: "Sie haben alle Aufgaben gemeistert. \n\nNachdem Sie das Fenster
+      schlie\xDFen, \xF6ffnet sich ein Umfragefenster, bitte nehmen Sie daran teil.
+      Die Daten sind wichtig f\xFCr meine wissenschaftliche Arbeit. Sie m\xFCssen
+      das nat\xFCrlich nicht!\n\nDanach k\xF6nnen Sie in Ruhe die Simulation weiter
+      testen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1914371201556480
+    m_Localized: "Zusammen mit den Daten von der Wetterstation, der Satellitenmessung
+      und den Bodenproben, k\xF6nnen Sie nun die Ansicht der Feuchtigkeit im Boden
+      und eine H\xF6henkarte mit den Kn\xF6pfen unten links aktivieren.\n\nProbieren
+      Sie jede Ansicht einmal aus."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1914264838201344
+    m_Localized: Datennutzung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1914356185948160
+    m_Localized: Probieren Sie jede Ansicht unten links einmal aus.
     m_Metadata:
       m_Items: []
   references:

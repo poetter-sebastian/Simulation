@@ -168,10 +168,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 27064227498811392
     m_Localized: "Danke, dass Sie an meiner Evaluation teilnehmen.\r\n\r\nDies ist
-      ein Prototyp einer Anwendung zum Simulieren eines \xD6kosystems. \r\n\r\nDie
-      Anwendung ist nicht optimiert weswegen es zu einer erh\xF6hten Leistungsaufnahme
-      kommen kann!\r\n\r\nSollte es w\xE4hrend der Benutzung zu Fehlern kommen melden
-      Sie mir dies bitte per Email, GitHub-Issue, oder \xFCber andere Kommunikationsmittel.
+      ein Prototyp einer Anwendung zum Simulieren eines \xD6kosystems.\r\n\r\nDie
+      Anwendung ist nicht optimiert, weswegen es zu einer erh\xF6hten Leistungsaufnahme
+      kommen kann!\r\n\r\nSollte es w\xE4hrend der Benutzung zu Fehlern kommen, melden
+      Sie mir dies bitte per E-Mail, GitHub-Issue oder \xFCber andere Kommunikationsmittel.
       Jede R\xFCckmeldung und oder die Teilnahme an der Umfrage ist f\xFCr mich wertvoll!\r\n\r\nSie
       k\xF6nnen die Anwendung jederzeit \xFCber den Button (mit dem X) oben rechts
       schlie\xDFen oder mit ALT+F4 beenden."
@@ -183,16 +183,17 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 27076914878341120
     m_Localized: "Sie sind ein Besitzer eines Grundst\xFCcks mit einem W\xE4ldchen.
-      Sie haben keine Information \xFCber den Boden oder die Pflanzen die dort wachsen.
+      Sie haben keine Information \xFCber den Boden oder die Pflanzen, die dort wachsen.
       Deswegen haben Sie sich schlau gemacht und versuchen nun Ihren Wald zu entdecken
-      und davon zu lernen.\n\nInnerhalb der Awendung lernen Sie ein paar Einblicke
-      kennen, wie  Personen aus der Forsterei, Biologie und Geologie arbeiten. Hierf\xFCr
-      sollen Sie vier Aufgaben l\xF6sen und k\xF6nnen danach an einer Umfrage dazu
-      teilnehmen. \n\nDer Zeitliche Umfang betr\xE4gt maximal 30 Minuten."
+      und davon zu lernen.\r\n\r\nInnerhalb der Anwendung lernen Sie ein paar Einblicke
+      kennen, wie Personen aus der F\xF6rsterei, Biologie und Geologie arbeiten.
+      Hierf\xFCr sollen Sie vier Aufgaben l\xF6sen und k\xF6nnen danach an einer
+      Umfrage dazu teilnehmen.\r\n\r\nDer zeitliche Umfang betr\xE4gt maximal 30
+      Minuten."
     m_Metadata:
       m_Items: []
   - m_Id: 27098148768833536
-    m_Localized: Szeneario wird geladen...
+    m_Localized: Wird geladen...
     m_Metadata:
       m_Items: []
   - m_Id: 27176913930805248
@@ -251,41 +252,40 @@ MonoBehaviour:
   - m_Id: 30735120951402496
     m_Localized: "Liebe teilnehmende Person,\r\nich freue mich \xFCber Ihr Interesse,
       an dieser wissenschaftlichen Studie teilzunehmen. Diese Umfrage befasst sich
-      mit der Evaluation eines Prototypen zur Simulation eines \xD6kosystems mit
-      dem Schwerpunkt auf den anthropomorphen Klimawandel.\r\n\r\nDiese Befragung
-      wird im Zuge der Abfassung einer Masterarbeit an der HTWK-Leipzig erstellt.
-      Die Daten k\xF6nnen von dem Betreuer der wissenschaftlichen Arbeit Herr Professor
-      Dr. Kiran Varanasi und Herr Philipp Fanta f\xFCr Zwecke der Leistungsbeurteilung
-      eingesehen werden. Die erhobenen Daten d\xFCrfen gem\xE4\xDF Art. 89 Abs. 1
-      DSGVO grunds\xE4tzlich unbeschr\xE4nkt gespeichert werden.\r\n\r\nEs besteht
-      das Recht auf Auskunft durch den Verantwortlichen dieser Studie \xFCber die
-      erhobenen personenbezogenen Daten sowie das Recht auf Berichtigung, L\xF6schung,
-      Einschr\xE4nkung der Verarbeitung der Daten sowie ein Widerspruchsrecht gegen
-      die Verarbeitung sowie des Rechts auf Daten\xFCbertragbarkeit. Bevor der Fragebogen
-      startet, sehen Sie detaillierte Informationen zu Ihren Rechten im Zuge dieser
-      Befragung und werden nochmals um Ihre Zustimmung gebeten. Ihre Daten werden
-      ausschlie\xDFlich auf Grundlage der gesetzlichen Bestimmungen erhoben und verarbeitet.
-      Ihre \xFCbermittelten Daten werden verschl\xFCsselt und auf einem selbst betriebenen
-      Server gespeichert. Die \xDCbermittlung selber findet \xFCber eine TLS-1.2
-      verschl\xFCsselte Verbindung statt. Sie verf\xFCgen \xFCber folgende pers\xF6nliche
-      Rechte im Rahmen dieser Befragung:\r\n\r\n- Die Teilnahme an der Studie ist
-      freiwillig. Sie k\xF6nnen den Fragebogen jederzeit \xFCber den Knopf oben rechts
-      abbrechen.\r\n- Ihre Teilnahme ist anonym, Ihre Antworten k\xF6nnen nicht auf
-      Sie zur\xFCckgef\xFChrt werden. Das bedeutet ebenfalls, dass Ihr pers\xF6nlicher
-      Datensatz nach Abschluss der Befragung f\xFCr mich nicht identifizierbar ist
-      (weder Ihre IP-Adresse noch Ihre Hardware-ID wird verarbeitet oder gespeichert).\r\n-
-      Falls Sie nach der Studie Auskunft \xFCber Ihre Daten haben wollen oder Ihre
-      Teilnahme zur\xFCckziehen, bitte ich Sie, dies in einem Kommentarfeld (falls
-      n\xF6tig gemeinsam mit einer Kontaktadresse) zu vermerken.\r\n- Ihre Daten
-      werden ausschlie\xDFlich f\xFCr wissenschaftliche Zwecke und nur im Rahmen
-      dieser Masterarbeit verwendet und ausgewertet.\r\n- Die Forschung folgt keinem
-      kommerziellen Interesse. Ich behandel all Ihre \xFCbermittelten Daten streng
-      vertraulich.\r\n\r\nWenn Sie Fragen zu dieser Umfrage haben, wenden Sie sich
-      bitte gerne an mich, den Verantwortlichen dieser Untersuchung: Sebastian P\xF6tter
-      (sebastian.poetter@stud.htwk-leipzig.de) ein Student der Studienrichtung Informatik
-      (INM) an der HTWK-Leipzig, ladungsf\xE4hige Adresse: Zwenkauerstra\xDFe 14,
-      04277 Leipzig. Zudem besteht das Recht der Beschwerde bei der Datenschutzbeh\xF6rde
-      (bspw. \xFCber bfdi.bund.del)."
+      mit der Evaluation eines Prototyps zur Simulation eines \xD6kosystems mit dem
+      Schwerpunkt auf den anthropomorphen Klimawandel.\r\n\r\nDiese Befragung wird
+      im Zuge einer Masterarbeit an der HTWK-Leipzig erstellt. Die Daten k\xF6nnen
+      von dem Betreuer der wissenschaftlichen Arbeit Herr Professor Dr. Kiran Varanasi
+      und Herr Philipp Fanta f\xFCr Zwecke der Leistungsbeurteilung eingesehen werden.
+      Die erhobenen Daten d\xFCrfen gem\xE4\xDF Art. 89 Abs. 1 DSGVO grunds\xE4tzlich
+      unbeschr\xE4nkt gespeichert werden.\r\n\r\nEs besteht das Recht auf Auskunft
+      durch den Verantwortlichen dieser Studie \xFCber die erhobenen personenbezogenen
+      Daten sowie das Recht auf Berichtigung, L\xF6schung, Einschr\xE4nkung der Verarbeitung
+      der Daten sowie ein Widerspruchsrecht gegen die Verarbeitung sowie des Rechts
+      auf Daten\xFCbertragbarkeit. Bevor der Fragebogen startet, sehen Sie detaillierte
+      Informationen zu Ihren Rechten im Zuge dieser Befragung und werden nochmals
+      um Ihre Zustimmung gebeten. Ihre Daten werden ausschlie\xDFlich auf Grundlage
+      der gesetzlichen Bestimmungen erhoben und verarbeitet. Ihre \xFCbermittelten
+      Daten werden verschl\xFCsselt und auf einem selbst betriebenen Server gespeichert.
+      Die \xDCbermittlung selber findet \xFCber eine TLS-1.2 verschl\xFCsselte Verbindung
+      statt. Sie verf\xFCgen \xFCber folgende pers\xF6nliche Rechte im Rahmen dieser
+      Befragung:\r\n\r\n- Die Teilnahme an der Studie ist freiwillig. Sie k\xF6nnen
+      den Fragebogen jederzeit \xFCber den Knopf oben rechts abbrechen.\r\n- Ihre
+      Teilnahme ist anonym, Ihre Antworten k\xF6nnen nicht auf Sie zur\xFCckgef\xFChrt
+      werden. Das bedeutet ebenfalls, dass Ihr pers\xF6nlicher Datensatz nach Abschluss
+      der Befragung f\xFCr mich nicht identifizierbar ist (weder Ihre IP-Adresse
+      noch Ihre Hardware-ID wird verarbeitet oder gespeichert).\r\n- Falls Sie nach
+      der Studie Auskunft \xFCber Ihre Daten haben wollen oder Ihre Teilnahme zur\xFCckziehen,
+      bitte ich Sie, dies in einem Kommentarfeld (falls n\xF6tig gemeinsam mit einer
+      Kontaktadresse) zu vermerken.\r\n- Ihre Daten werden ausschlie\xDFlich f\xFCr
+      wissenschaftliche Zwecke und nur im Rahmen dieser Masterarbeit verwendet und
+      ausgewertet.\r\n- Die Forschung folgt keinem kommerziellen Interesse. Ihre
+      \xFCbermittelten Daten werden streng vertraulich behandelt.\r\n\r\nWenn Sie
+      Fragen zu dieser Umfrage haben, wenden Sie sich bitte gerne an mich, den Verantwortlichen
+      dieser Untersuchung: Sebastian P\xF6tter (sebastian.poetter@stud.htwk-leipzig.de)
+      ein Student der Studienrichtung Informatik (INM) an der HTWK-Leipzig, ladungsf\xE4hige
+      Adresse: Zwenkauerstra\xDFe 14, 04277 Leipzig. Zudem besteht das Recht der
+      Beschwerde bei der Datenschutzbeh\xF6rde (bspw. \xFCber bfdi.bund.del)."
     m_Metadata:
       m_Items: []
   - m_Id: 30735877561901056
@@ -322,10 +322,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 30740603720425472
     m_Localized: "Gamification ist die \xDCbertragung von spiel typischen Elementen
-      und Vorg\xE4ngen in spiel-fremde Zusammenh\xE4nge. Ziele von Gamification sind
-      Motivationssteigerung und Verhaltens\xE4nderung bei Anwenderinnen und Anwendern.
-      Zu den spiel typischen Elementen geh\xF6ren Beschreibungen, Ziele, Beteiligte,
-      Regeln, M\xF6glichkeiten, Punkte, Preise und Vergleiche. Zu den spiel typischen
+      und Vorg\xE4ngen in nicht spielerische Zusammenh\xE4nge. Ziele von Gamification
+      sind Motivationssteigerung bei Ausf\xFChrungen, bei Prozessen, welche eint\xF6nig
+      erscheinen. Zu den Spiel-Elementen geh\xF6ren Beschreibungen, Ziele, Beteiligte,
+      Regeln, M\xF6glichkeiten, Punkte, Preise und Vergleiche. Zu den spiel-typischen
       Vorg\xE4ngen z\xE4hlt die Bew\xE4ltigung von Aufgaben durch individuelle oder
       kollaborative Leistungen."
     m_Metadata:
@@ -344,11 +344,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 30748856139374592
-    m_Localized: "Die Definition von Simulation sind Sachverhalte, Vorg\xE4nge mit
+    m_Localized: "Die Definition von Simulation sind Sachverhalte, Vorg\xE4nge, mit
       technischen, naturwissenschaftlichen Mitteln modellhaft zu \xDCbungs-, Erkenntniszwecken
-      nachbilden, wirklichkeitsgetreu nachahmen. Das hei\xDFt eine Simulation eines
-      \xD6kosystems bedeutet es, Vorg\xE4nge in der Natur m\xF6glichst nachzubilden
-      um zuk\xFCnftige Ver\xE4nderungen zu simulieren."
+      nachzubilden. Simulation eines \xD6kosystems bedeutet, Vorg\xE4nge in der Natur
+      m\xF6glichst realistisch nachzubilden, um zuk\xFCnftige Ver\xE4nderungen zu
+      simulieren."
     m_Metadata:
       m_Items: []
   - m_Id: 30749381735997440
@@ -372,7 +372,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 30750488835121152
-    m_Localized: "Grafisch Anspruchsvolle (sch\xF6ne) Grafik"
+    m_Localized: "Grafisch anspruchsvolle (sch\xF6ne) Grafik"
     m_Metadata:
       m_Items: []
   - m_Id: 30750625204527104
@@ -404,13 +404,13 @@ MonoBehaviour:
       die Teilnahme! Sie helfen mir damit, mehr \xFCber die Benutzererfahrung zum
       Prototypen zu erfahren. Sie haben nun das Ende des Fragebogens erreicht.\r\nFalls
       Sie noch Fragen zum Inhalt, Zweck oder Forschungsethik dieser Erhebung haben,
-      wenden Sie sich bitte an sebastian.poetter@stud.htwk-leipzig.de. \n\nFalls
+      wenden Sie sich bitte an sebastian.poetter@stud.htwk-leipzig.de.\r\n\r\nFalls
       Sie Interesse an den Ergebnissen der Untersuchung haben, wenden Sie sich bitte
-      an sebastian.poetter@stud.htwk-leipzig.de. \r\n\r\nBitte klicken Sie unten
-      links auf \u201EAkzeptieren\u201C \u2013 erst dann ist der Fragebogen abgeschlossen
+      an sebastian.poetter@stud.htwk-leipzig.de.\r\n\r\nBitte klicken Sie unten links
+      auf \u201EAkzeptieren\u201C \u2013 erst dann ist der Fragebogen abgeschlossen
       und Ihre Daten gespeichert.\r\n\r\nIch bedanke mich bei Ihnen nochmals herzlich
-      f\xFCr Ihre Zeit und M\xFChe!\r\n\r\nF\xFCr Weitere Informationen zur DSVGO:
-      gdpr-info.eu\nLink zur Masterarbeit: Github.com/poetter-sebastian/Simulation"
+      f\xFCr Ihre Zeit und M\xFChe!\r\n\r\nF\xFCr weitere Informationen zur DSVGO:
+      gdpr-info.eu\r\nLink zur Masterarbeit: Github.com/poetter-sebastian/Simulation"
     m_Metadata:
       m_Items: []
   - m_Id: 30831040565075968

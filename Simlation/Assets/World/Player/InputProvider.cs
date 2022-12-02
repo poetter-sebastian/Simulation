@@ -17,6 +17,8 @@ namespace Player
         
         public InputAction OnMiddleClick => input.Player.MiddleMouse;
 
+        public InputAction OnRightClick => input.Player.RightClick;
+
         public bool Top()
         {
             return input.Player.Forward.ReadValue<float>() > 0.1f;

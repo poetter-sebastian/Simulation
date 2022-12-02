@@ -82,6 +82,7 @@ namespace Player.Camera
             input.FasterMovement += FasterMovement;
             input.OnLeftClick.performed += OnLeftClick;
             input.OnMiddleClick.performed += OnMiddleClick;
+            input.OnRightClick.performed += OnRightClick;
         }
 
         private void OnDisable()
@@ -89,6 +90,7 @@ namespace Player.Camera
             input.FasterMovement -= FasterMovement;
             input.OnLeftClick.performed -= OnLeftClick;
             input.OnMiddleClick.performed -= OnMiddleClick;
+            input.OnRightClick.performed -= OnRightClick;
         }
 
         private void Update()
@@ -165,9 +167,9 @@ namespace Player.Camera
             CallRotation?.Invoke(this, new GenEventArgs<bool>(true));
         }
         
-        private void OnRightClick()
+        private void OnRightClick(InputAction.CallbackContext e)
         {
-            
+            ILog.L(LN, "Right clicked!");
         }
 
         public void OnESC()

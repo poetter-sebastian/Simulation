@@ -88,10 +88,11 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 24285468962054144
     m_Localized: "Bewegung: \n\tWASD/Pfeiltasten - Kamerabewegung\n\tMaus an den
-      Rand des Bildes - Kamerabewegung\n\tMittlere Maustaste - Kameraneigung\nInteraktionen:
-      \n\tLinksklick auf M\xFCll - Geld f\xFCr Recycling\n\tLinksklick auf Icons
-      - Aktionen ausf\xFChren\n\tLinksklick auf Pflanzen - Pflanze \xFCberpr\xFCfen\nTastenkombinationen\n\tESC-Taste
-      - Beenden der Anwendung"
+      Rand des Bildes - Kamerabewegung\n\tMittlere Maustaste - Kameraneigung\n\tRechte
+      Maustaste - Kamerarotation\nInteraktionen: \n\tLinksklick auf M\xFCll - Geld
+      f\xFCr Recycling\n\tLinksklick auf Icons - Aktionen ausf\xFChren\n\tLinksklick
+      auf Pflanzen - Pflanze \xFCberpr\xFCfen\nTastenkombinationen\n\tESC-Taste -
+      Beenden der Anwendung"
     m_Metadata:
       m_Items: []
   - m_Id: 26762046765785088
@@ -437,6 +438,79 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 30878584250818560
     m_Localized: Zwischen 25-45 Jahre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31474767771983872
+    m_Localized: Ja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31474786210144256
+    m_Localized: Nein
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31485523045376000
+    m_Localized: "Fenster schlie\xDFen ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31485537373118464
+    m_Localized: "M\xF6chten Sie das Umfragefenster wirklich schlie\xDFen? Sie k\xF6nnen
+      die Umfrage nicht erneut \xF6ffnen!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31488679766646784
+    m_Localized: "Anwendung schlie\xDFen ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31488750184816640
+    m_Localized: "M\xF6chten Sie die Anwendung wirklich schlie\xDFen?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31501332803215360
+    m_Localized: 'Feucht
+
+
+      Ausgewogen
+
+
+
+      Ausgetrocknet'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31502257936654336
+    m_Localized: 'Lehm
+
+
+      Ton
+
+      Schluff
+
+
+      Sand'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31502302153007104
+    m_Localized: '-4m - -2m
+
+
+      0m - 1m
+
+
+      25m- 35m
+
+      150m - 200m'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31549074283945984
+    m_Localized: Legende
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31573593019113472
+    m_Localized: 'Es ist ein Fehler aufgetreten! Bitte Sende den Inhalt der Eingabebox
+      zu sebastian.poetter@stud.htwk-leipzig.de: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31574083316473856
+    m_Localized: "Fehler beim \xDCbertragen"
     m_Metadata:
       m_Items: []
   references:

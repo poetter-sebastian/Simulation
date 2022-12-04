@@ -361,6 +361,54 @@ MonoBehaviour:
     m_Key: Simulation/Player/GUI/SurveyShadow/SurveyPart2/Over18/AgeAreaValue 2
     m_Metadata:
       m_Items: []
+  - m_Id: 31474767771983872
+    m_Key: Simulation/Player/GUI/YesNoBoxShadow/Help/Yes/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31474786210144256
+    m_Key: Simulation/Player/GUI/YesNoBoxShadow/Help/No/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31485523045376000
+    m_Key: Simulation/Player/GUI/YesNoBoxShadow/SurveyQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31485537373118464
+    m_Key: Simulation/Player/GUI/YesNoBoxShadow/SurveyDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31488679766646784
+    m_Key: Simulation/Player/GUI/YesNoBoxShadow/CloseAppQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31488750184816640
+    m_Key: Simulation/Player/GUI/YesNoBoxShadow/CloseAppDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31501332803215360
+    m_Key: Simulation/Player/GUI/Legend/Arid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31502257936654336
+    m_Key: Simulation/Player/GUI/Legend/GroundType
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31502302153007104
+    m_Key: Simulation/Player/GUI/Legend/Height
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31549074283945984
+    m_Key: Simulation/Player/GUI/Legend/Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31573593019113472
+    m_Key: Simulation/Player/GUI/ErrorBox/Help/Desc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31574083316473856
+    m_Key: Simulation/Player/GUI/ErrorBox/Help/Title
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

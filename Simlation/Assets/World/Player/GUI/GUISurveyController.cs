@@ -1,6 +1,8 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Localization;
 using UnityEngine.UI;
 using Utility;
 using Toggle = UnityEngine.UIElements.Toggle;
@@ -9,6 +11,8 @@ namespace Player.GUI
 {
     public class GUISurveyController : PopupBehaviour
     {
+        public GUIDialogBoxController guiDialogBoxController;
+        
         public CanvasRenderer[] windows;
         public GameObject over18Container;
         public TMP_InputField ImagineSimulationValue;
@@ -36,9 +40,19 @@ namespace Player.GUI
         /// </summary>
         private int wc;
 
-        public void activateSurvey()
+        public void ActivateSurvey()
         {
             gameObject.SetActive(true);
+        }
+
+        public void OpenDialogBoxClose()
+        {
+            guiDialogBoxController.OnToggle(this, new GenEventArgs<(string title, string text, Action callPos, Action callNeg)>((
+                new LocalizedString("UI", "Simulation/Player/GUI/YesNoBoxShadow/SurveyQuestion").GetLocalizedString(),
+                new LocalizedString("UI", "Simulation/Player/GUI/YesNoBoxShadow/SurveyDesc").GetLocalizedString(),
+                ToggleWindow,
+                null
+            )));
         }
 
         public void NextWindow()

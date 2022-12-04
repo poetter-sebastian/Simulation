@@ -300,7 +300,7 @@ Material:
     - _MetallicRemapMin: 0
     - _NormalMapSpace: 0
     - _NormalScale: 0.62
-    - _Normal_Stengh: 0.8
+    - _Normal_Stengh: 0.2
     - _Normal_Strengh: 1
     - _OpaqueCullMode: 2
     - _PPDLodThreshold: 5
@@ -315,7 +315,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Roughness_Strengh: 0.2
+    - _Roughness_Strengh: 0.1
     - _Smoothness: 0
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0

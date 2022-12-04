@@ -89,10 +89,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 24285468962054144
     m_Localized: "Movement: \n\tWASD/Arrow keys - Camera movement\n\tMouse on the
-      borders - Camera movement\n\tMiddle mouse button - Camera tilt\nInteractions:
-      \n\tLeft click on rubbish - Money for the recycling\n\tLeft click on  buttons
-      - Perform user interface functions\n\tLeft click on plants - Get plants information\nKeys\n\tESC
-      - Exit the application"
+      borders - Camera movement\n\tMiddle mouse button - Camera zoom\n\tRight mouse
+      button - Camera rotation\nInteractions: \n\tLeft click on rubbish - Money for
+      the recycling\n\tLeft click on  buttons - Perform user interface functions\n\tLeft
+      click on plants - Get plants information\nKeys\n\tESC - Exit the application"
     m_Metadata:
       m_Items: []
   - m_Id: 26762046765785088
@@ -187,17 +187,17 @@ MonoBehaviour:
       about the soil or the plants that grow there. Therefore, you have done some
       research and are now trying to discover your forest and learn from it.
 
-      
+
 
       Within
       the application you will learn some basics about how people from forestry,
       biology, and geology do their work. For this you have to solve four tasks and
       afterwards you can participate in a survey.
 
-      
 
-      The time interval
-      is maximum 30 minutes.'
+
+      The time interval is maximum
+      30 minutes.'
     m_Metadata:
       m_Items: []
   - m_Id: 27098148768833536
@@ -439,6 +439,78 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 30878584250818560
     m_Localized: Between 25-45 years
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31474767771983872
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31474786210144256
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31485523045376000
+    m_Localized: Close the survey ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31485537373118464
+    m_Localized: Do you want to close the survey window? You can't open it again!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31488679766646784
+    m_Localized: Close the app ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31488750184816640
+    m_Localized: Do you want to close the application ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31501332803215360
+    m_Localized: 'Wet
+
+
+      Balanced
+
+
+
+      Dried out'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31502257936654336
+    m_Localized: 'Loam
+
+
+      Clay
+
+      Silt
+
+
+      Sand'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31502302153007104
+    m_Localized: '-4m - -2m
+
+
+      0m - 1m
+
+
+      25m- 35m
+
+      150m - 200m'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31549074283945984
+    m_Localized: Legend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31573593019113472
+    m_Localized: 'There was a Error while sending, please send me the following to
+      sebastian.poetter@stud.htwk-leipzig.de:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31574083316473856
+    m_Localized: Error while sending!
     m_Metadata:
       m_Items: []
   references:

@@ -145,6 +145,24 @@ namespace Player
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Value"",
+                    ""id"": ""d847536c-a0fa-4bf1-941b-ccd6d502c032"",
+                    ""expectedControlType"": ""Key"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Cheating"",
+                    ""type"": ""Value"",
+                    ""id"": ""36754aff-8f67-4fc8-9a7e-c54bbfb35d2a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -173,7 +191,7 @@ namespace Player
                 {
                     ""name"": """",
                     ""id"": ""2d069ff1-dbd1-428c-95a0-c1ec01314b46"",
-                    ""path"": ""<Mouse>/middleButton"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -400,6 +418,28 @@ namespace Player
                     ""action"": ""RightClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef32e830-cc23-41b6-93bf-086f214112aa"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d1e5c41e-e50c-466a-8cb4-979ff63a1217"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cheating"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -421,6 +461,8 @@ namespace Player
             m_Player_MainAction = m_Player.FindAction("MainAction", throwIfNotFound: true);
             m_Player_MiddleMouse = m_Player.FindAction("MiddleMouse", throwIfNotFound: true);
             m_Player_RightClick = m_Player.FindAction("RightClick", throwIfNotFound: true);
+            m_Player_Exit = m_Player.FindAction("Exit", throwIfNotFound: true);
+            m_Player_Cheating = m_Player.FindAction("Cheating", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -493,6 +535,8 @@ namespace Player
         private readonly InputAction m_Player_MainAction;
         private readonly InputAction m_Player_MiddleMouse;
         private readonly InputAction m_Player_RightClick;
+        private readonly InputAction m_Player_Exit;
+        private readonly InputAction m_Player_Cheating;
         public struct PlayerActions
         {
             private @ComputerActions m_Wrapper;
@@ -510,6 +554,8 @@ namespace Player
             public InputAction @MainAction => m_Wrapper.m_Player_MainAction;
             public InputAction @MiddleMouse => m_Wrapper.m_Player_MiddleMouse;
             public InputAction @RightClick => m_Wrapper.m_Player_RightClick;
+            public InputAction @Exit => m_Wrapper.m_Player_Exit;
+            public InputAction @Cheating => m_Wrapper.m_Player_Cheating;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -558,6 +604,12 @@ namespace Player
                     @RightClick.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightClick;
                     @RightClick.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightClick;
                     @RightClick.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightClick;
+                    @Exit.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExit;
+                    @Exit.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExit;
+                    @Exit.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnExit;
+                    @Cheating.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheating;
+                    @Cheating.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheating;
+                    @Cheating.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheating;
                 }
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
@@ -601,6 +653,12 @@ namespace Player
                     @RightClick.started += instance.OnRightClick;
                     @RightClick.performed += instance.OnRightClick;
                     @RightClick.canceled += instance.OnRightClick;
+                    @Exit.started += instance.OnExit;
+                    @Exit.performed += instance.OnExit;
+                    @Exit.canceled += instance.OnExit;
+                    @Cheating.started += instance.OnCheating;
+                    @Cheating.performed += instance.OnCheating;
+                    @Cheating.canceled += instance.OnCheating;
                 }
             }
         }
@@ -620,6 +678,8 @@ namespace Player
             void OnMainAction(InputAction.CallbackContext context);
             void OnMiddleMouse(InputAction.CallbackContext context);
             void OnRightClick(InputAction.CallbackContext context);
+            void OnExit(InputAction.CallbackContext context);
+            void OnCheating(InputAction.CallbackContext context);
         }
     }
 }

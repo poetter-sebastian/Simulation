@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using Mono.Cecil;
 using Player.Camera;
 using Player.GUI;
 using UnityEngine;
@@ -8,6 +7,7 @@ using Utility;
 using World.Agents;
 using World.Environment;
 using World.Environment.Spawn;
+using World.Player.Tasks;
 using Random = UnityEngine.Random;
 
 namespace Player
@@ -21,6 +21,7 @@ namespace Player
         public long playtime = 0;
         public GUIController ui;
         public FreeLookUserInput movement;
+        public TaskManager manager;
         
         [Header("Player resources")]
         public int money = 0;
@@ -176,6 +177,7 @@ namespace Player
         public void PlayerRemovedTree()
         {
             playerCutTreeCount++;
+            AddMoney(Random.Range(50, 150));
             CutTrees?.Invoke(this, new GenEventArgs<int>(playerCutTreeCount));
         }
         
@@ -263,6 +265,19 @@ namespace Player
             movement.TreeWasHit += OnTreeClicked;
             ui.guiViewerController.treeCutClicked += OnTreeCut;
             ui.guiViewerController.foundIllTree += OnPlayerFoundIllTree;
+            movement.DoCheating += OnCheating;
+
+            ui.guiSurveyController.windowOpens += movement.OnUIToggle;
+            ui.guiSurveyController.windowClosed += movement.OnUIToggle;
+            
+            ui.guiHelpController.windowOpens += movement.OnUIToggle;
+            ui.guiHelpController.windowClosed += movement.OnUIToggle;
+            
+            ui.guiMessageController.windowOpens += movement.OnUIToggle;
+            ui.guiMessageController.windowClosed += movement.OnUIToggle;
+            
+            ui.guiErrorHandlingController.windowOpens += movement.OnUIToggle;
+            ui.guiErrorHandlingController.windowClosed += movement.OnUIToggle;
         }
 
         private void CalcQuality()
@@ -293,6 +308,7 @@ namespace Player
         {
             e.Value.CutTree();
             PlayerRemovedTree();
+            ui.guiViewerController.CloseWindow();
         }
 
         private void OnTemperatureChange(object s, GenEventArgs<float> e)
@@ -307,6 +323,11 @@ namespace Player
                 hottestTemp = e.Value;
                 ui.guiStatisticsController.OnMaxTempChange(new GenEventArgs<string>(hottestTemp.ToString("0.00")));
             }
+        }
+
+        private void OnCheating(object s, EventArgs e)
+        {
+            manager.TriggerNextTask();
         }
     }
 }

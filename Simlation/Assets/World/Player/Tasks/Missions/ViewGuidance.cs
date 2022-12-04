@@ -33,7 +33,7 @@ namespace World.Player.Tasks.Missions
                 new LocalizedString("Tasks", "FinishedTitle").GetLocalizedString(),
                 new LocalizedString("Tasks", "FinishedMessage").GetLocalizedString()
             )));
-            manager.player.ui.guiMessageController.GetComponentInChildren<Button>().onClick.AddListener(manager.player.ui.guiSurveyController.activateSurvey);
+            manager.player.ui.guiMessageController.GetComponentInChildren<Button>().onClick.AddListener(manager.player.ui.guiSurveyController.ActivateSurvey);
             
             manager.player.ui.PlaySuccess();
         }

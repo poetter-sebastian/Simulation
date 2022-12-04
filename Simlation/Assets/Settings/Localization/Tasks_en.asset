@@ -61,7 +61,8 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5148012175360
     m_Localized: Use the movement keys (WASD, or arrow keys) to move around in the
-      world.
+      world. Zoom with your scroll wheel and rotate your camera with the right mouse
+      button.
     m_Metadata:
       m_Items: []
   - m_Id: 168797666271232
@@ -147,10 +148,9 @@ MonoBehaviour:
       measurement and the soil samples, you can now activate the view of moisture
       in the soil and an elevation map at the bottom left.
 
-      
 
-      Try each
-      view-mode.'
+
+      Try each view-mode.'
     m_Metadata:
       m_Items: []
   - m_Id: 1914264838201344

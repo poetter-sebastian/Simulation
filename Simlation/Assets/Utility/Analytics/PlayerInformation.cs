@@ -81,16 +81,6 @@ namespace Utility.Analytics
             co2Consumption = playerHandler.co2Consumption;
             waterConsumption = playerHandler.waterConsumption;
 
-            systemInformation[0] = ("Device model", SystemInfo.deviceModel);
-            systemInformation[1] = ("Device type", SystemInfo.deviceType.ToString());
-            systemInformation[2] = ("Graphics device name", SystemInfo.graphicsDeviceName);
-            systemInformation[3] = ("Graphics device vendor", SystemInfo.graphicsDeviceVendor);
-            systemInformation[4] = ("Graphics device version", SystemInfo.graphicsDeviceVersion);
-            systemInformation[5] = ("OS", SystemInfo.operatingSystem);
-            systemInformation[6] = ("Processor count", SystemInfo.processorCount.ToString());
-            systemInformation[7] = ("Processor type", SystemInfo.processorType);
-            systemInformation[8] = ("Memory size", SystemInfo.systemMemorySize.ToString());
-            
             knowGamification = playerHandler.ui.guiSurveyController.knowGamification;
             imagineGamification = playerHandler.ui.guiSurveyController.imagineGamification;
             ageArea = playerHandler.ui.guiSurveyController.ageArea;
@@ -104,6 +94,19 @@ namespace Utility.Analytics
             tooEasy = playerHandler.ui.guiSurveyController.tooEasy;
             shareHardware = playerHandler.ui.guiSurveyController.shareHardware;
             shareLogs = playerHandler.ui.guiSurveyController.shareLogs;
+
+            if (shareHardware)
+            {
+                systemInformation[0] = ("Device model", SystemInfo.deviceModel);
+                systemInformation[1] = ("Device type", SystemInfo.deviceType.ToString());
+                systemInformation[2] = ("Graphics device name", SystemInfo.graphicsDeviceName);
+                systemInformation[3] = ("Graphics device vendor", SystemInfo.graphicsDeviceVendor);
+                systemInformation[4] = ("Graphics device version", SystemInfo.graphicsDeviceVersion);
+                systemInformation[5] = ("OS", SystemInfo.operatingSystem);
+                systemInformation[6] = ("Processor count", SystemInfo.processorCount.ToString());
+                systemInformation[7] = ("Processor type", SystemInfo.processorType);
+                systemInformation[8] = ("Memory size", SystemInfo.systemMemorySize.ToString());
+            }
         }
     }
 }

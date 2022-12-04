@@ -61,7 +61,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5148012175360
-    m_Localized: Benutzen Sie die Bewegungstasten um die Kamera zu bewegen.
+    m_Localized: Benutzen Sie die Bewegungstasten (WASD oder Pfeiltasten), um sich
+      in der Welt zu bewegen. Zoomen Sie mit dem Scrollrad und drehen Sie Ihre Kamera
+      mit der rechten Maustaste.
     m_Metadata:
       m_Items: []
   - m_Id: 168797666271232
@@ -72,8 +74,9 @@ MonoBehaviour:
     m_Localized: "Um die Kamera bewegen zu k\xF6nnen, dr\xFCcken Sie WASD oder die
       Pfeiltasten, um sich in die entsprechen Richtung zu bewegen. Auch durch das
       Bewegen des Mauszeigers an den Bildschirmrand erm\xF6glicht eine Bewegung in
-      diese Richtung. Mithilfe der mittleren Maustaste k\xF6nnen sie Zoomen. Ihre
-      erste Aufgabe, besteht darin, sich mit der Kamerasteuerung vertraut zu machen.\r\n\r\nBewegen
+      diese Richtung. Mithilfe der mittleren Maustaste k\xF6nnen sie Zoomen. Mit
+      der rechten Maustaste k\xF6nnen Sie die Kamera rotieren lassten. Ihre erste
+      Aufgabe, besteht darin, sich mit der Kamerasteuerung vertraut zu machen. \n\nBewegen
       Sie die Kamera einmal in jede Richtung und zoomen sie anschlie\xDFen einmal
       rein und raus."
     m_Metadata:

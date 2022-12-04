@@ -18,11 +18,13 @@ namespace Utility.Analytics
         
         public PlayerHandler player;
         
-        public List<string> logStack = new List<string>();
+        public List<string> logStack = new();
         
         public event EventHandler<HttpStatusCode> SendComplete;
-        
+
+        private string json;
         private CompactPackage package;
+        private HttpStatusCode statusCode = HttpStatusCode.BadRequest;
         
         public string LN()
         {
@@ -33,28 +35,41 @@ namespace Utility.Analytics
         public void Send()
         {
             package = new CompactPackage(player);
-            package.timeComplexities.Add(world.comp.comp);
-            package.timeComplexities.Add(world.compHandle.comp);
-            package.log = logStack;
+            if (package.shareLogs)
+            {
+                package.timeComplexities.Add(world.comp.comp);
+                package.timeComplexities.Add(world.compHandle.comp);
+                package.log = logStack;
+            }
             SendComplete += Completed;
-            Task.Run(Sender);
+            Task.Run(Sender).Wait(15000);
+            if (statusCode != HttpStatusCode.Accepted)
+            {
+                player.ui.guiErrorHandlingController.PlaceError(json);
+            }
         }
         
-        public async Task Sender()
+        private async Task Sender()
         {
             try
             {
-                var json = JsonConvert.SerializeObject(package, new JsonSerializerSettings());
+                ILog.L(LN, "Init sending!");
+                json = JsonConvert.SerializeObject(package, new JsonSerializerSettings());
                 var httpClient = new HttpClient();
                 
                 httpClient.DefaultRequestHeaders.Add("X-API-KEY", Credentials.KEY);
                 httpClient.DefaultRequestHeaders.Add("User-Agent", Credentials.AGENT);
                 
-                var statusCode = HttpStatusCode.BadRequest;
+                ILog.L(LN, "Start sending!");
                 try
                 {
                     var responseMessage = await httpClient.PostAsync(new Uri(Credentials.URL), new StringContent(json));
                     statusCode = responseMessage.StatusCode;
+                    if (statusCode == HttpStatusCode.NotImplemented)
+                    {
+                        ILog.L(LN, "Error while sending!");
+                        ILog.LE(LN, responseMessage.Content.ReadAsStringAsync());
+                    }
                 }
                 catch (Exception e)
                 {

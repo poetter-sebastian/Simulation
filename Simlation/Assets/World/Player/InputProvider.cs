@@ -19,6 +19,8 @@ namespace Player
 
         public InputAction OnRightClick => input.Player.RightClick;
 
+        public InputAction OnCheating => input.Player.Cheating;
+
         public bool Top()
         {
             return input.Player.Forward.ReadValue<float>() > 0.1f;

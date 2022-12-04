@@ -49,6 +49,7 @@ namespace Player.Camera
         public event EventHandler<GenEventArgs<bool>> CallD;
         public event EventHandler<GenEventArgs<bool>> CallRotation;
         public event EventHandler<GenEventArgs<TreeAgent>> TreeWasHit;
+        public event EventHandler DoCheating;
         
         private Vector3 mousePosition;
         private Transform relativeTransform;
@@ -56,6 +57,7 @@ namespace Player.Camera
         private bool newFreeLookActive;
         private bool hasFocus = true;
         private bool inWindow = true;
+        private bool inGUI = false;
 
         private InputProvider input;
 
@@ -67,6 +69,11 @@ namespace Player.Camera
         public string LN()
         {
             return "Camera controller";
+        }
+
+        public void OnUIToggle(object s, GenEventArgs<bool> e)
+        {
+            inGUI = e.Value;
         }
         
         private void Awake()
@@ -83,6 +90,7 @@ namespace Player.Camera
             input.OnLeftClick.performed += OnLeftClick;
             input.OnMiddleClick.performed += OnMiddleClick;
             input.OnRightClick.performed += OnRightClick;
+            input.OnCheating.performed += OnCheating;
         }
 
         private void OnDisable()
@@ -96,7 +104,8 @@ namespace Player.Camera
         private void Update()
         {
             OnWindowPosition();
-            if (inWindow)
+
+            if (!inGUI && inWindow)
             {
                 newFreeLookActive = input.Rotation();
                 HandleMovementInput();
@@ -170,6 +179,12 @@ namespace Player.Camera
         private void OnRightClick(InputAction.CallbackContext e)
         {
             ILog.L(LN, "Right clicked!");
+            CallRotation?.Invoke(this, new GenEventArgs<bool>(true));
+        }
+
+        private void OnCheating(InputAction.CallbackContext e)
+        {
+            DoCheating?.Invoke(this, EventArgs.Empty);
         }
 
         public void OnESC()

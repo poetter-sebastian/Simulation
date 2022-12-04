@@ -14,7 +14,7 @@ namespace Player.GUI
 
         public void OnToggle(object s, GenEventArgs<(string, string)> e)
         {
-            gameObject.SetActive(true);
+            OpenWindow();
             title.text = e.Value.Item1;
             message.text = e.Value.Item2;
         }

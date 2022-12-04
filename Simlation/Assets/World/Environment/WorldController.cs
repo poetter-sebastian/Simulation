@@ -471,7 +471,15 @@ namespace World.Environment
                 {
                     if (plant.gameObject.activeSelf)
                     {
-                        plant.GetComponent<FloraAgent>().OnHandle(this);
+                        var agent = plant.GetComponent<FloraAgent>();
+                        if(agent)
+                        {
+                            plant.GetComponent<FloraAgent>().OnHandle(this);
+                        }
+                        else
+                        {
+                            plant.GetComponentInParent<FloraAgent>()?.OnHandle(this);
+                        }
                         yield return null;
                     }
                 }
@@ -490,7 +498,7 @@ namespace World.Environment
             var sumWater = 0f;
 
             //plant root length
-            var area = 3;
+            var area = 2;
 
             //to ignore the border elements to prevent desiccation from the border
             var runner = 0;
@@ -499,7 +507,7 @@ namespace World.Environment
             {
                 for (var j = -area; j < area; j++)
                 {
-                    //TODO fix this for float pointscale
+                    //TODO fix this for float point scale
                     var vec = new Vector2(pos.x + i * pointScale, pos.y + j * pointScale);
                     if (vec.x < 0 || vec.y < 0 || vec.x >= size.x * pointScale || vec.y >= size.y * pointScale)
                     {
@@ -520,7 +528,7 @@ namespace World.Environment
             {
                 for (var j = -area; j < area; j++)
                 {
-                    //TODO fix this for float pointscale
+                    //TODO fix this for float point scale
                     var vec = new Vector2(pos.x + i * pointScale, pos.y + j * pointScale);
                     if (vec.x < 0 || vec.y < 0 || vec.x >= size.x * pointScale || vec.y >= size.y * pointScale)
                     {
@@ -528,7 +536,7 @@ namespace World.Environment
                     }
                     var selGround = Grounds[vec];
                     //if the ground is under water
-                    selGround.SetWater(selGround.Node.Pos.y - 0.5f < climateHandler.waterLevel ? selGround.WaterCapacity : sumWater);
+                    selGround.SetWater(selGround.Node.Pos.y - 0.3f < climateHandler.waterLevel ? selGround.WaterCapacity : sumWater);
                 }
             }
         }
@@ -614,8 +622,7 @@ namespace World.Environment
         
         public void SpawnPlant(GameObject obj, Vector3 pos)
         {
-            Instantiate(obj, pos, new Quaternion(0f, Random.Range(0f, 360f), 0f, 0f), transform);
-            RegisterFloraAgent(obj.GetComponent<FloraAgent>());
+            RegisterFloraAgent(Instantiate(obj, pos, new Quaternion(0f, Random.Range(0f, 360f), 0f, 0f), plants.transform).GetComponent<FloraAgent>());
         }
 
         /// <summary>
@@ -631,6 +638,7 @@ namespace World.Environment
                 MathF.Round(pos.x, MidpointRounding.AwayFromZero),
                 MathF.Round(pos.z, MidpointRounding.AwayFromZero));
             //TODO maybe improvement or perform earlier
+            agent.world = this;
             agent.ground = Grounds[vec]; //connects the agent with the ground value
             
             //add modifier to world numbers

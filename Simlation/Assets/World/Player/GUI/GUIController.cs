@@ -23,6 +23,8 @@ namespace Player.GUI
         public GUIPlaceableController guiPlaceableController;
         public GUIViewerController guiViewerController;
         public GUISurveyController guiSurveyController;
+        public GUILegendController guiLegendController;
+        public GUIErrorHandlingController guiErrorHandlingController;
 
         [Header("Audio Sources")]
         public AudioSource click;

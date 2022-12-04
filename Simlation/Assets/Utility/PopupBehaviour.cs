@@ -5,12 +5,32 @@ namespace Utility
 {
     public abstract class PopupBehaviour : MonoBehaviour
     {
-        public EventHandler<GenEventArgs<bool>> windowOpens;
+        public event EventHandler<GenEventArgs<bool>> windowOpens;
+        public event EventHandler<GenEventArgs<bool>> windowClosed;
         
         public void ToggleWindow()
         {
-            windowOpens?.Invoke(this, new GenEventArgs<bool>(gameObject.activeSelf));
+            if (gameObject.activeSelf)
+            {
+                windowClosed?.Invoke(this, new GenEventArgs<bool>(false));
+            }
+            else
+            {
+                windowOpens?.Invoke(this, new GenEventArgs<bool>(true));
+            }
             gameObject.SetActive(!gameObject.activeSelf);
+        }
+        
+        public void CloseWindow()
+        {
+            gameObject.SetActive(false);
+            windowClosed?.Invoke(this, new GenEventArgs<bool>(false));
+        }
+        
+        public void OpenWindow()
+        {
+            gameObject.SetActive(true);
+            windowOpens?.Invoke(this, new GenEventArgs<bool>(true));
         }
     }
 }

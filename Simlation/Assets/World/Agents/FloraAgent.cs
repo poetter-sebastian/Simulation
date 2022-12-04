@@ -28,6 +28,11 @@ namespace World.Agents
         
         public override void OnConsumption(object sender, EventArgs e)
         {
+            if (ground == null)
+            {
+                WorldController.Instance.RegisterFloraAgent(this);
+                ILog.LE(LN, "Wrong registered plant!");
+            }
             if (!ground.GetWater(-1 * waterConsumption))
             {
                 OnDamage(this, new GenEventArgs<int>(-5));

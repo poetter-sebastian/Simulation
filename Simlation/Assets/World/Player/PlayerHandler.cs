@@ -131,6 +131,7 @@ namespace Player
             money += amount;
             GotMoney?.Invoke(this, new GenEventArgs<int>(money));
             ui.guiResourcesController.OnMoneyChange(new GenEventArgs<string>(money.ToString(CultureInfo.InvariantCulture)));
+            ui.guiResourcesController.PosValues();
         }
 
         public bool RemoveMoney(int amount)
@@ -140,8 +141,11 @@ namespace Player
                 money -= amount;
                 SpendMoney?.Invoke(this, new GenEventArgs<int>(money));
                 ui.guiResourcesController.OnMoneyChange(new GenEventArgs<string>(money.ToString(CultureInfo.InvariantCulture)));
+                ui.guiResourcesController.NegValues();
                 return true;
             }
+            ui.guiResourcesController.NoMoney();
+            ui.PlayError();
             return false;
         }
 
@@ -262,10 +266,13 @@ namespace Player
         private void Start()
         {
             WorldController.Instance.climateHandler.TemperatureChanged += OnTemperatureChange;
+            
             movement.TreeWasHit += OnTreeClicked;
+            
+            movement.DoCheating += OnCheating;
+            
             ui.guiViewerController.treeCutClicked += OnTreeCut;
             ui.guiViewerController.foundIllTree += OnPlayerFoundIllTree;
-            movement.DoCheating += OnCheating;
 
             ui.guiSurveyController.windowOpens += movement.OnUIToggle;
             ui.guiSurveyController.windowClosed += movement.OnUIToggle;
@@ -301,6 +308,7 @@ namespace Player
 
         private void OnTreeClicked(object s, GenEventArgs<TreeAgent> e)
         {
+            ui.PlayClick();
             ui.guiViewerController.OpenViewer(e.Value);
         }
 

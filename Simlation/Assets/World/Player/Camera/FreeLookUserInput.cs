@@ -187,7 +187,10 @@ namespace Player.Camera
 
         private void OnCheating(InputAction.CallbackContext e)
         {
-            DoCheating?.Invoke(this, EventArgs.Empty);
+            if (!inGUI)
+            {
+                DoCheating?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         public void OnESC()

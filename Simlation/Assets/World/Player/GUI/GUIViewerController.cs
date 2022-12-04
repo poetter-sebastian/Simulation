@@ -37,7 +37,31 @@ namespace Player.GUI
             {
                 diseaseValue.text = new LocalizedString("TreeDiseases", "Healthy").GetLocalizedString();
             }
+            if (tree != null)
+            {
+                ChangeMat(tree.gameObject.transform, true);
+            }
             tree = treeAgent;
+            ChangeMat(treeAgent.gameObject.transform);
+        }
+
+        public void ResetColor()
+        {
+            ChangeMat(tree.gameObject.transform, true);
+        }
+        
+        public void ChangeMat(Transform treeTrans, bool ret = false)
+        {
+            for(var i = 0; i < treeTrans.childCount;i++)
+            {
+                foreach (var r in treeTrans.transform.GetChild(i).GetComponents<Renderer>())
+                {
+                    foreach (var m in r.materials)
+                    {
+                        m.color = ret ? Color.white : Color.magenta;
+                    }
+                }
+            }
         }
 
         public void CutTreeButtonPressed()

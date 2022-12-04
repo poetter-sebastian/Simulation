@@ -14,7 +14,7 @@ namespace World.Player.Tasks.Missions
         
         public bool usedScrollWheel = false;
          
-        public override string GetTaskName => nameof(MeasureWeather);
+        public override string GetTaskName => nameof(MovementTest);
 
         public override void ActivateTask(TaskManager manager)
         {
@@ -30,6 +30,9 @@ namespace World.Player.Tasks.Missions
             manager.player.movement.CallS += CheckUsedS;
             manager.player.movement.CallD += CheckUsedD;
             manager.player.movement.CallRotation += CheckUsedScrollWheel;
+
+            CheckConditions();
+            
             //Because of the first camera movement and reset flags
             StartCoroutine(ResetBool());
         }
@@ -90,6 +93,60 @@ namespace World.Player.Tasks.Missions
 
         private void CheckConditions()
         {
+            var no = new LocalizedString("Tasks", "NotFinished").GetLocalizedString();
+            var yes = new LocalizedString("Tasks", "Finished").GetLocalizedString();
+
+            var progress = new LocalizedString("Tasks", "MovementTestProgressW").GetLocalizedString();
+            if (usedW)
+            {
+                progress += "<b>" + yes + "</b> ";
+            }
+            else
+            {
+                progress += "<b>" + no + "</b> ";
+            }
+
+            progress += "\n" + new LocalizedString("Tasks", "MovementTestProgressA").GetLocalizedString();
+            if (usedA)
+            {
+                progress += "<b>" + yes + "</b> ";
+            }
+            else
+            {
+                progress += "<b>" + no + "</b> ";
+            }
+            progress += "\n" + new LocalizedString("Tasks", "MovementTestProgressS").GetLocalizedString();
+            if (usedS)
+            {
+                progress += "<b>" + yes + "</b> ";
+            }
+            else
+            {
+                progress += "<b>" + no + "</b> ";
+            }
+
+            progress += "\n" + new LocalizedString("Tasks", "MovementTestProgressD").GetLocalizedString();
+            if (usedD)
+            {
+                progress += "<b>" + yes + "</b> ";
+            }
+            else
+            {
+                progress += "<b>" + no + "</b> ";
+            }
+
+            progress += "\n" + new LocalizedString("Tasks", "TreeMissionProgressRotate").GetLocalizedString();
+            if (usedScrollWheel)
+            {
+                progress += "<b>" + yes + "</b> ";
+            }
+            else
+            {
+                progress += "<b>" + no + "</b> ";
+            }
+            
+            manager.player.ui.guiTaskController.UpdateProgress(this, new GenEventArgs<string>(progress));
+            
             if (usedW && usedA && usedS && usedD && usedScrollWheel)
             {
                 TriggerCompletion();

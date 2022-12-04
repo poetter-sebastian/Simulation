@@ -7,7 +7,9 @@ namespace World.Player.Tasks.Missions
     {
         private const int FindIllTrees = 5;
         private const int PlantTrees = 5;
-        
+
+        private int foundIllTrees = 0;
+        private int plantTrees = 0;
         private bool illTrees = false;
         private bool plantedTrees = false;
 
@@ -23,6 +25,8 @@ namespace World.Player.Tasks.Missions
                 new LocalizedString("Tasks", $"{GetTaskName}Title").GetLocalizedString(),
                 new LocalizedString("Tasks", $"{GetTaskName}Message").GetLocalizedString()
             )));
+            
+            CheckConditions();
             
             manager.player.FoundIllTrees += OnIllTrees;
             manager.player.PlantedTrees += OnPlantedTrees;
@@ -41,18 +45,27 @@ namespace World.Player.Tasks.Missions
         
         private void OnIllTrees(object sender, GenEventArgs<int> e)
         {
-            illTrees = e.Value > FindIllTrees;
+            foundIllTrees = e.Value;
+            illTrees = foundIllTrees >= FindIllTrees;
             CheckConditions();
         }
-        
+
         private void OnPlantedTrees(object sender, GenEventArgs<int> e)
         {
-            plantedTrees = e.Value > PlantTrees;
+            plantTrees = e.Value;
+            plantedTrees = plantTrees >= PlantTrees;
             CheckConditions();
         }
         
         private void CheckConditions()
         {
+            var progress = new LocalizedString("Tasks", "TreeMissionProgressIll").GetLocalizedString();
+            progress += foundIllTrees + "/" + FindIllTrees + " ";
+            progress += new LocalizedString("Tasks", "TreeMissionProgressPlant").GetLocalizedString();
+            progress += plantTrees + "/" + PlantTrees;
+            
+            manager.player.ui.guiTaskController.UpdateProgress(this, new GenEventArgs<string>(progress));
+            
             if (illTrees && plantedTrees)
             {
                 TriggerCompletion();

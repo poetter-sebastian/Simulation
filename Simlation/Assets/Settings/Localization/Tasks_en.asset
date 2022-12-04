@@ -157,6 +157,78 @@ MonoBehaviour:
     m_Localized: Data usage
     m_Metadata:
       m_Items: []
+  - m_Id: 2618661859745792
+    m_Localized: 'Money: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2620056021229568
+    m_Localized: 'Samples: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2623019024375808
+    m_Localized: 'Trees found: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2623371664678912
+    m_Localized: 'Trees planted: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2628780123217920
+    m_Localized: Not finished
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2628818308161536
+    m_Localized: done
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2628997455273984
+    m_Localized: 'Foward: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629053851885568
+    m_Localized: 'Rotate: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629042518876160
+    m_Localized: 'Right: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629030355394560
+    m_Localized: 'Back: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629013066473472
+    m_Localized: 'Right: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2631285108367360
+    m_Localized: 'Opend information window: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2631297599004672
+    m_Localized: 'Opend statistics windows: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2633667535953920
+    m_Localized: 'Viewed ground typ: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2633705301467136
+    m_Localized: 'Viewed height map: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2633729963974656
+    m_Localized: 'Viewed arid view: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2634767206965248
+    m_Localized: 'Build weather station: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2634792091770880
+    m_Localized: 'Took satellite picture: '
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

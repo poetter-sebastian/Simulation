@@ -34,6 +34,9 @@ namespace Player.GUI
         public AudioClip clickSound;
         public AudioClip diggingSound;
         public AudioClip placeSound;
+        public AudioClip metalSound;
+        public AudioClip woodSound;
+        public AudioClip errorSound;
 
         public void PlayDigging()
         {
@@ -44,6 +47,18 @@ namespace Player.GUI
         public void PlayPlace()
         {
             click.clip = placeSound;
+            click.Play();
+        }
+        
+        public void PlayWood()
+        {
+            click.clip = woodSound;
+            click.Play();
+        }
+        
+        public void PlayMetal()
+        {
+            click.clip = metalSound;
             click.Play();
         }
         
@@ -59,6 +74,12 @@ namespace Player.GUI
             click.Play();
         }
 
+        public void PlayError()
+        {
+            tasks.clip = errorSound;
+            tasks.Play();
+        }
+        
         public void PlayBackgroundSound(AudioClip clip)
         {
             background.Stop();

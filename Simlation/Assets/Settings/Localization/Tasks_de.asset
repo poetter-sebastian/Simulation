@@ -158,6 +158,78 @@ MonoBehaviour:
     m_Localized: Probieren Sie jede Ansicht unten links einmal aus.
     m_Metadata:
       m_Items: []
+  - m_Id: 2618661859745792
+    m_Localized: 'Geld: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2620056021229568
+    m_Localized: 'Proben: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2623371664678912
+    m_Localized: "B\xE4ume gepflanzt: "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2623019024375808
+    m_Localized: "B\xE4ume gefunden: "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2628780123217920
+    m_Localized: nicht fertig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2628818308161536
+    m_Localized: erledigt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2628997455273984
+    m_Localized: 'Nach vorn: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629013066473472
+    m_Localized: 'Nach links: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629030355394560
+    m_Localized: 'Nach hinten: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629042518876160
+    m_Localized: 'Nach rechts: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629053851885568
+    m_Localized: Rotieren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2631285108367360
+    m_Localized: "Informationsfenster ge\xF6ffnet: "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2631297599004672
+    m_Localized: "Statistikfenster ge\xF6ffnet: "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2633729963974656
+    m_Localized: 'Feuchtigkeitskarte gesehen: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2633667535953920
+    m_Localized: 'Bodentypen gesehen: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2633705301467136
+    m_Localized: "H\xF6henkarte gesehen: "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2634767206965248
+    m_Localized: 'Wetterstation gebaut: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2634792091770880
+    m_Localized: 'Satellitenbild gemacht: '
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

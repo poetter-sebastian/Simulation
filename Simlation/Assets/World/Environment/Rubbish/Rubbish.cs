@@ -23,6 +23,7 @@ public class Rubbish : WorldObject
 
     public override void MouseClick()
     {
+        player.ui.PlayMetal();
         ILog.L(LN, "CASH!");
         player.AddMoney(Random.Range(50, 100));
         player.RemoveRubbish();

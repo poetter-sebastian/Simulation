@@ -22,6 +22,9 @@ namespace World.Player.Tasks.Missions
                 new LocalizedString("Tasks", $"{GetTaskName}Message").GetLocalizedString()
                 )));
             //
+
+            CheckConditions();
+            
             manager.player.ui.guiHelpController.windowOpens += OnHelpWindowOpens;
             manager.player.ui.guiStatisticsController.windowOpens += OnStatisticsWindowOpens;
         }
@@ -51,6 +54,30 @@ namespace World.Player.Tasks.Missions
 
         private void CheckConditions()
         {
+            var no = new LocalizedString("Tasks", "NotFinished").GetLocalizedString();
+            var yes = new LocalizedString("Tasks", "Finished").GetLocalizedString();
+            
+            var progress = new LocalizedString("Tasks", "ButtonGuidanceProgressHelp").GetLocalizedString();
+            if (openedHelpUI)
+            {
+                progress += "<b>" + yes + "</b> ";
+            }
+            else
+            {
+                progress += "<b>" + no + "</b> ";
+            }
+            progress += "\n" + new LocalizedString("Tasks", "ButtonGuidanceProgressStatistics").GetLocalizedString();
+            if (openedStatisticsUI)
+            {
+                progress += "<b>" + yes + "</b> ";
+            }
+            else
+            {
+                progress += "<b>" + no + "</b> ";
+            }
+            
+            manager.player.ui.guiTaskController.UpdateProgress(this, new GenEventArgs<string>(progress));
+
             if (openedHelpUI && openedStatisticsUI)
             {
                 TriggerCompletion();

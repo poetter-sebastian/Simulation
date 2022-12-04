@@ -25,6 +25,8 @@ namespace World.Player.Tasks.Missions
                 new LocalizedString("Tasks", $"{GetTaskName}Message").GetLocalizedString()
             )));
             
+            CheckConditions();
+            
             manager.player.BuiltWeatherStation += OnWeatherStationBuild;
             manager.player.TookSatellitePicture += OnSatellitePictureTaken;
         }
@@ -57,6 +59,30 @@ namespace World.Player.Tasks.Missions
         
         private void CheckConditions()
         {
+            var no = new LocalizedString("Tasks", "NotFinished").GetLocalizedString();
+            var yes = new LocalizedString("Tasks", "Finished").GetLocalizedString();
+            
+            var progress = new LocalizedString("Tasks", "MeasureWeatherProgressWeather").GetLocalizedString();
+            if (builtWeatherStation)
+            {
+                progress += "<b>" + yes + "</b> ";
+            }
+            else
+            {
+                progress += "<b>" + no + "</b> ";
+            }
+            progress += "\n" + new LocalizedString("Tasks", "MeasureWeatherProgressSatellite").GetLocalizedString();
+            if (tookSatellitePictures)
+            {
+                progress += "<b>" + yes + "</b> ";
+            }
+            else
+            {
+                progress += "<b>" + no + "</b> ";
+            }
+            
+            manager.player.ui.guiTaskController.UpdateProgress(this, new GenEventArgs<string>(progress));
+            
             if (builtWeatherStation && tookSatellitePictures)
             {
                 TriggerCompletion();

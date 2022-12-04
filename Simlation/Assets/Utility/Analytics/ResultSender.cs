@@ -45,6 +45,7 @@ namespace Utility.Analytics
             Task.Run(Sender).Wait(15000);
             if (statusCode != HttpStatusCode.Accepted)
             {
+                player.ui.PlayError();
                 player.ui.guiErrorHandlingController.PlaceError(json);
             }
         }

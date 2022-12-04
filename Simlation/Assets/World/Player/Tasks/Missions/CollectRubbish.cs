@@ -17,6 +17,7 @@ namespace World.Player.Tasks.Missions
                 new LocalizedString("Tasks", $"{GetTaskName}Message").GetLocalizedString()
             )));
             manager.player.GotMoney += CheckConditions;
+            CheckConditions(this, new GenEventArgs<int>(0));
         }
 
         public override void Succeeded()
@@ -31,7 +32,11 @@ namespace World.Player.Tasks.Missions
 
         private void CheckConditions(object sender, GenEventArgs<int> e)
         {
-            if (e.Value > MoneyToGet)
+            var progress = new LocalizedString("Tasks", "RubbishProgress").GetLocalizedString();
+            progress += e.Value + "/" + MoneyToGet;
+            manager.player.ui.guiTaskController.UpdateProgress(this, new GenEventArgs<string>(progress)
+            );
+            if (e.Value >= MoneyToGet)
             {
                 TriggerCompletion();
             }

@@ -111,6 +111,78 @@ MonoBehaviour:
     m_Key: ViewGuidanceMessage
     m_Metadata:
       m_Items: []
+  - m_Id: 2618661859745792
+    m_Key: RubbishProgress
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2620056021229568
+    m_Key: SoilSampleProgress
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2623019024375808
+    m_Key: TreeMissionProgressIll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2623371664678912
+    m_Key: TreeMissionProgressPlant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2628780123217920
+    m_Key: NotFinished
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2628818308161536
+    m_Key: Finished
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2628997455273984
+    m_Key: MovementTestProgressW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629013066473472
+    m_Key: MovementTestProgressA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629030355394560
+    m_Key: MovementTestProgressS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629042518876160
+    m_Key: MovementTestProgressD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629053851885568
+    m_Key: TreeMissionProgressRotate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2631285108367360
+    m_Key: ButtonGuidanceProgressHelp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2631297599004672
+    m_Key: ButtonGuidanceProgressStatistics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2633667535953920
+    m_Key: ViewGuidanceProgressType
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2633705301467136
+    m_Key: ViewGuidanceProgressHeight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2633729963974656
+    m_Key: ViewGuidanceProgressArid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2634767206965248
+    m_Key: MeasureWeatherProgressWeather
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2634792091770880
+    m_Key: MeasureWeatherProgressSatellite
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

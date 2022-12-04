@@ -17,6 +17,9 @@ namespace World.Player.Tasks.Missions
                 new LocalizedString("Tasks", $"{GetTaskName}Title").GetLocalizedString(),
                 new LocalizedString("Tasks", $"{GetTaskName}Message").GetLocalizedString()
             )));
+            
+            CheckConditions(this, new GenEventArgs<int>(0));
+            
             manager.player.ui.guiPlaceableController.UnlockDigButton();
             
             manager.player.TookSoilExample += CheckConditions;
@@ -37,9 +40,13 @@ namespace World.Player.Tasks.Missions
         
         private void CheckConditions(object sender, GenEventArgs<int> e)
         {
+            var progress = new LocalizedString("Tasks", "SoilSampleProgress").GetLocalizedString();
+            progress += e.Value + "/" + sampleCount;
+            manager.player.ui.guiTaskController.UpdateProgress(this, new GenEventArgs<string>(progress)
+            );
+            
             if (e.Value >= sampleCount)
             {
-                
                 TriggerCompletion();
             }
         }

@@ -22,6 +22,8 @@ namespace World.Player.Tasks.Missions
                 new LocalizedString("Tasks", $"{GetTaskName}Message").GetLocalizedString()
                 )));
 
+            CheckConditions();
+            
             manager.player.ui.guiButtonPanelController.aridityViewActivated += OnAridityViewOpens;
             manager.player.ui.guiButtonPanelController.heightViewActivated += OnHeightViewOpens;
             manager.player.ui.guiButtonPanelController.groundTypeiewActivated += OnTypeViewOpens;
@@ -34,6 +36,11 @@ namespace World.Player.Tasks.Missions
                 new LocalizedString("Tasks", "FinishedMessage").GetLocalizedString()
             )));
             manager.player.ui.guiMessageController.GetComponentInChildren<Button>().onClick.AddListener(manager.player.ui.guiSurveyController.ActivateSurvey);
+            
+            
+            manager.player.ui.guiTaskController.UpdateProgress(this, new GenEventArgs<string>(
+                    new LocalizedString("Tasks", "Finished").GetLocalizedString()
+                ));
             
             manager.player.ui.PlaySuccess();
         }
@@ -65,6 +72,39 @@ namespace World.Player.Tasks.Missions
 
         private void CheckConditions()
         {
+            var no = new LocalizedString("Tasks", "NotFinished").GetLocalizedString();
+            var yes = new LocalizedString("Tasks", "Finished").GetLocalizedString();
+            
+            var progress = new LocalizedString("Tasks", "ViewGuidanceProgressType").GetLocalizedString();
+            if (openedTypeView)
+            {
+                progress += "<b>" + yes + "</b> ";
+            }
+            else
+            {
+                progress += "<b>" + no + "</b> ";
+            }
+            progress += "\n" + new LocalizedString("Tasks", "ViewGuidanceProgressHeight").GetLocalizedString();
+            if (openedHeightView)
+            {
+                progress += "<b>" + yes + "</b> ";
+            }
+            else
+            {
+                progress += "<b>" + no + "</b> ";
+            }
+            progress += "\n" + new LocalizedString("Tasks", "ViewGuidanceProgressArid").GetLocalizedString();
+            if (openedAridityView)
+            {
+                progress += "<b>" + yes + "</b> ";
+            }
+            else
+            {
+                progress += "<b>" + no + "</b> ";
+            }
+            
+            manager.player.ui.guiTaskController.UpdateProgress(this, new GenEventArgs<string>(progress));
+            
             if (openedTypeView && openedHeightView && openedAridityView)
             {
                 TriggerCompletion();

@@ -105,10 +105,13 @@ namespace Player.Camera
         {
             OnWindowPosition();
 
-            if (!inGUI && inWindow)
+            if (inWindow)
             {
                 newFreeLookActive = input.Rotation();
-                HandleMovementInput();
+                if (!inGUI)
+                {
+                    HandleMovementInput();
+                }
             }
             switch (freeLookActive)
             {

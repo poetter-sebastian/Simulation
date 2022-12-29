@@ -170,7 +170,7 @@ MonoBehaviour:
   - m_Id: 27064227498811392
     m_Localized: "Thank you for participating my survey.\r\n\r\nThis is a prototype
       of an application to simulate an ecosystem. \r\n\r\nThe application is not
-      optimized, so it may has increased power consumption and visual bugs!\r\n\r\nIf
+      optimized, so it may have increased power consumption and visual bugs!\r\n\r\nIf
       you encounter any bugs while using it, please report them to me via e-mail,
       GitHub-Issue, or any other communication channels. Any feedback and or participation
       in the survey is valuable to me!\r\n\r\nYou can close the application at any
@@ -185,19 +185,17 @@ MonoBehaviour:
   - m_Id: 27076914878341120
     m_Localized: 'You are an owner of a plot of land with a grove. You have no information
       about the soil or the plants that grow there. Therefore, you have done some
-      research and are now trying to discover your forest and learn from it.
+      research and are now trying to discover your forest.
+
+
+      Within the application
+      you will learn some basics about how people from forestry, biology, and geology
+      do their work. For this you have to solve four tasks and afterwards you can
+      participate in a survey.
 
 
 
-      Within
-      the application you will learn some basics about how people from forestry,
-      biology, and geology do their work. For this you have to solve four tasks and
-      afterwards you can participate in a survey.
-
-
-
-      The time interval is maximum
-      30 minutes.'
+      The time interval is maximum 30 minutes.'
     m_Metadata:
       m_Items: []
   - m_Id: 27098148768833536

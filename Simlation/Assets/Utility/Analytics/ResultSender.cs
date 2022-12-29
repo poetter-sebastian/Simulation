@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
 using NaughtyAttributes;
 using Newtonsoft.Json;
 using Player;
+using Settings;
 using UnityEngine;
 using World.Environment;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Settings;
 
 namespace Utility.Analytics
 {
@@ -47,6 +49,7 @@ namespace Utility.Analytics
             {
                 player.ui.PlayError();
                 player.ui.guiErrorHandlingController.PlaceError(json);
+                ILog.L(LN, json);
             }
         }
         
@@ -60,6 +63,7 @@ namespace Utility.Analytics
                 
                 httpClient.DefaultRequestHeaders.Add("X-API-KEY", Credentials.KEY);
                 httpClient.DefaultRequestHeaders.Add("User-Agent", Credentials.AGENT);
+
                 
                 ILog.L(LN, "Start sending!");
                 try

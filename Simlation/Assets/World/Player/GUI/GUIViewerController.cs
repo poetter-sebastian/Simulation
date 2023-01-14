@@ -28,9 +28,9 @@ namespace Player.GUI
             waterValue.text = "" + treeAgent.waterConsumption.ToString("0.00") + " "+new LocalizedString("Units", "LitersPerDay").GetLocalizedString();
             co2Value.text = "" + treeAgent.co2Modifier.ToString("0.00") + " "+new LocalizedString("Units", "GramPerDay").GetLocalizedString();
             o2Value.text = "" + treeAgent.o2Modifier.ToString("0.00") + " "+new LocalizedString("Units", "KiloGramPerDay").GetLocalizedString();
-            if (treeAgent.diseases.Length > 0)
+            if (treeAgent.diseases.Count > 0)
             {
-                diseaseValue.text = new LocalizedString("TreeDiseases", treeAgent.diseases[0]).GetLocalizedString();
+                diseaseValue.text = new LocalizedString("TreeDiseases", treeAgent.diseases[0].name).GetLocalizedString();
                 foundIllTree?.Invoke(this, EventArgs.Empty);
             }
             else

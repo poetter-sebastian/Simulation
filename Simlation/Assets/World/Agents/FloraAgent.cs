@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 using Utility;
+using World.Agents.Modifier;
 using World.Environment;
 using World.Structure;
 
@@ -65,9 +66,9 @@ namespace World.Agents
 
         }
 
-        public void AddDisease(string d)
+        public void AddDisease(Disease d)
         {
-            diseases = new[] { d };
+            diseases.Add(d);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using World.Agents;
+using World.Agents.Modifier.Diseases;
 using Random = UnityEngine.Random;
 
 namespace World.Environment.Spawn
@@ -27,11 +28,11 @@ namespace World.Environment.Spawn
 
             if (deceaseCounter < 15)
             {
-                tree.AddDisease("BarkBeetle");
+                tree.AddDisease(new BarkBeetle());
             }
             else if(Random.Range(0f, 1f) > 0.8f)
             {
-                tree.AddDisease("BarkBeetle");
+                tree.AddDisease(new BarkBeetle());
             }
             
             deceaseCounter++;

@@ -117,7 +117,7 @@ namespace World.Environment
             TimeChangedToAfternight += OnAfternight;
             
             //init call of time event 
-            CallEventsFromTime(hour-1, hour);
+            CallEventsFromTime((hour + 23) % 24, hour);
             
             //init event call
             CallEventFromStatus(currentState)?.Invoke(this, EventArgs.Empty);

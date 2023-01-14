@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using Game.Utility;
 using UnityEngine;
 using Utility;
+using World.Agents.Modifier;
 using World.Environment;
 using World.Structure;
 
@@ -50,13 +52,18 @@ namespace World.Agents
         /// <summary>
         /// Body size value of the agent
         /// </summary>
-        [Tooltip("Body size of agent")]
+        [Tooltip("Body size of agent in meters")]
         public float size;
         /// <summary>
         /// Age of the agent
         /// </summary>
-        [Tooltip("Age of agent")]
+        [Tooltip("Age of agent in years")]
         public float age;
+        /// <summary>
+        /// Weight of the agent in kg
+        /// </summary>
+        [Tooltip("Weight of agent in kg")]
+        public float weight;
 
         /// <summary>
         /// Do stuff on the day and sleeps in the night if its true
@@ -79,12 +86,12 @@ namespace World.Agents
         /// List of injuries modifiers of the agent
         /// </summary>
         [Tooltip("List of injuries of agent")]
-        public int[] injuries;
+        public List<Injury> injuries = new();
         /// <summary>
         /// List of diseases modifiers of the agent
         /// </summary>
         [Tooltip("List of diseases of agent")]
-        public string[] diseases;
+        public List<Disease> diseases = new();
 
         /// <summary>
         /// Behaviour of the agent

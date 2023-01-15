@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using World.Agents;
 using World.Agents.Modifier.Diseases;

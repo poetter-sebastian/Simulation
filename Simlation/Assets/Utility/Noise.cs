@@ -70,12 +70,25 @@ namespace Utility {
             return noiseMap;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="seed"></param>
+        /// <param name="scale"></param>
+        /// <param name="octaves"></param>
+        /// <param name="persistence"></param>
+        /// <param name="lacunarity"></param>
+        /// <param name="offset"></param>
+        /// <complexity>O(145n²)</complexity>
+        /// <returns></returns>
         public static float[,] GenerateNoiseMap(int width, int height, int seed, float scale, int octaves,
             float persistence, float lacunarity, Vector3 offset) 
         {
             var prng = new Random(seed);
             var octaveOffsets = new Vector3[octaves];
-            for (var i = 0; i < octaves; i++) 
+            for (var i = 0; i < octaves; i++) //O(4)
             {
                 var offsetX = prng.Next(-100000, 100000) + offset.x;
                 var offsetY = prng.Next(-100000, 100000) + offset.y;
@@ -84,21 +97,21 @@ namespace Utility {
             }
 
             var noiseMap = new float[width, height];
-            if (scale <= 0) 
+            if (scale <= 0)
             {
                 scale = 0.0001f;
             }
 
             var maxNoise = float.MinValue;
             var minNoise = float.MaxValue;
-            for (var x = 0; x < width; x++) 
+            for (var x = 0; x < width; x++) //O(144*n²)
             {
-                for (var z = 0; z < height; z++) 
+                for (var z = 0; z < height; z++) //O(n*12)
                 {
                     float amplitude = 1;
                     float frequency = 1;
                     float noiseHeight = 0;
-                    for (var i = 0; i < octaves; i++) 
+                    for (var i = 0; i < octaves; i++)  //O(6)
                     {
                         var sampleX = x / scale * frequency + octaveOffsets[i].x;
                         var sampleZ = z / scale * frequency + octaveOffsets[i].z;
@@ -117,9 +130,9 @@ namespace Utility {
                 }
             }
 
-            for (var x = 0; x < width; x++) 
+            for (var x = 0; x < width; x++) //O(n²)
             {
-                for (var z = 0; z < height; z++) 
+                for (var z = 0; z < height; z++) //O(n)
                 {
                     noiseMap[x, z] = Mathf.InverseLerp(minNoise, maxNoise, noiseMap[x, z]);
                 }

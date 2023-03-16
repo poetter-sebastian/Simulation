@@ -164,12 +164,9 @@ namespace World.Environment.Lightning
             var obliquity = (23.439 - 0.013 * julianCenturies) * Deg2Rad;
 
             // Right Ascension  
-            var rightAscension = Math.Atan2(
-                Math.Cos(obliquity) * Math.Sin(elipticalLongitude),
-                Math.Cos(elipticalLongitude));
+            var rightAscension = Math.Atan2(Math.Cos(obliquity) * Math.Sin(elipticalLongitude), Math.Cos(elipticalLongitude));
 
-            var declination = Math.Asin(
-                Math.Sin(rightAscension) * Math.Sin(obliquity));
+            var declination = Math.Asin(Math.Sin(rightAscension) * Math.Sin(obliquity));
 
             // Horizontal Coordinates  
             var hourAngle = CorrectAngle(siderealTime * Deg2Rad) - rightAscension;

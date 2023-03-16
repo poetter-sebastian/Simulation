@@ -1,0 +1,18 @@
+@startuml
+(*) --> "TimeHandler"
+    -right-> "CalcTime"
+    -right-> if "Changed hour?" then
+        -->[yes] === S1 ===
+    else
+        -down->[no] "TimeHandler"
+    endif
+    
+    === S1 === --> "CallHourChanged"
+    "CallHourChanged" -right-> "TimeHandler"
+    === S1 === --> if "Time span changed ?" then
+        -->[yes] "CallTimeEvent"
+        "CallTimeEvent" -left-> "TimeHandler"
+    else
+        ->[no] "TimeHandler"
+    endif
+@enduml

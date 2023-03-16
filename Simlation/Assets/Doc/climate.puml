@@ -1,0 +1,16 @@
+﻿@startuml
+    (*) -right-> "CalcClimate"
+    "CalcClimate" -right-> "CalcWeather"
+    "CalcWeather" --> if "Weather changed ?" then
+        -right->[yes] "CallWeatherEvent"
+    else
+        -->[no] "CheckTemperature"
+    endif
+    "CallWeatherEvent" -right-> "CheckTemperature"
+    "CheckTemperature" --> if "Temperature changed ?" then
+        -->[yes] "CallTemperatureEvent"
+        "CallTemperatureEvent" --> "CalcClimate"
+    else
+        ->[no] "CalcClimate"
+    endif
+@enduml

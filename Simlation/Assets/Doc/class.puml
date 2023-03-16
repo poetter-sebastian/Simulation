@@ -1,10 +1,9 @@
 @startuml
-	class Climate {
-		+modifier:Modifier[]
-		
-		+Climate()
-	}
-
+    class Graph {
+        +Nodes:Dictionary<Vector2, Node>
+        +Edges:SymmetricVectorDict<Edge>
+    }
+    
 	class WorldGenerator {
 	    +modifier:Modifier[]
 	
@@ -18,63 +17,34 @@
 		+TimeManager()
 	}
 	
+    class Climate {
+        +modifier:Modifier[]
+        
+        +Climate()
+    }
+	
     class World {
         #size:vector2
         #position:vector3
-        -climateHandler:Climate
-        -worldGenerator:WorldGenerator
+        -graph:Graph
         -timeHandler:TimeManager
         -objects:WorldObject[]
-        -graph:Graph
-        
+        -climateHandler:Climate
+        -worldGenerator:WorldGenerator
         +World()
         -HandleAgents()
-    }
-    
-    class Graph {
-        +Nodes:Dictionary<Vector2, Node>
-        +Edges:SymmetricVectorDict<Edge>
     }
 	
 	class WorldObject {
 		#objectName:string
 		#position:vector3
 		#world:world
-		
+
 		+WorldObject()
 	}
 	
 	
 	Abstract class Agent {
-        +movable:bool
-        +alive:bool
-        +domain:string
-        +kingdom:string
-        +phylum:string
-        +class:string
-        +order:string
-        +family:string
-        +genus:string
-        +species:string
-        
-        +o2Modifier:float
-        +co2Modifier:float
-        +ch4Modifier:float
-        +weight:float
-        +temperature:float
-        +size:float
-        +age:float
-        +Diurnal:bool
-        +health:int
-        +healthy:int
-        +thirst:int
-        +injuries:modifier[]
-        +diseases:modifier[]
-        
-        +progeny:int
-        +gestationPeriods:float
-        +timeToMature:float
-        
         #behaviour:AgentBehaviour
         
         +Agent()
@@ -85,70 +55,14 @@
 		
 		+GetNextState():state
 	}
+    
+    World *-up- Graph
 	
-	Abstract class FloraAgent {
-	    +canProduceFood: bool
-	    +plantType:tree, bush, gras, flower
-	    +requiredWaterLevel: int
-	    +requiredMinerals:minerals[]
-	    +requiredTemperature:float
-	    +requiredHumidity:float
-	     
-		+FloraAgent()
-	}
-	
-    Abstract class FaunaAgent {
-        +visibility:int
-        +speed:float
-        
-        +hunger:int
-        +memory:int
-        +consumerType:plants,flesh,both
-        +consumedType: Agent[]
-        +socialFactor:int
-        
-        +SenseOfSmell:int
-        +SenseOfHearing:int
-    
-        +FaunaAgent()
-    }
-    
-    Abstract class HerbivoreBehaviour {
-    
-    }
-    
-    Abstract class CarnivoreBehaviour {
-        
-    }
-    
-    World::graph *- Graph
-	
-	World::objects *- WorldObject
-	World::timeManager *- TimeManager
-	World::worldGenerator *-- WorldGenerator
-	World::climate *-- Climate
-	
-	MonoBehaviour <|-- WorldObject
-	MonoBehaviour <|- World
+	World *-down- WorldObject
+	World *-up- TimeManager
+	World *-- WorldGenerator
+	World *-- Climate
+	Agent *-- AgentBehaviour
 	
 	WorldObject <|-- Agent
-	
-	Agent <|-- FloraAgent
-	Agent::behaviour *-- AgentBehaviour
-	
-	AgentBehaviour <|-- HerbivoreBehaviour
-	AgentBehaviour <|-- CarnivoreBehaviour
-	
-	HerbivoreBehaviour <|-- BunnyBehaviour
-	CarnivoreBehaviour <|-- FoxBehaviour
-	
-	Agent <|-- FaunaAgent
-	
-	FaunaAgent <|-- Bunny
-	FaunaAgent <|-- Fox
-	
-	Fox *-- FoxBehaviour
-	
-	Bunny *-- BunnyBehaviour
-	
 @enduml

@@ -32,6 +32,7 @@ namespace Player.GUI
         public int realisticSimulationScore;
         public int nonRealisticSimulationScore;
         public bool tooEasy;
+        public bool easyUI;
         public bool shareHardware;
         public bool shareLogs;
 
@@ -144,6 +145,16 @@ namespace Player.GUI
         public void SetNonRealisticSimulation(int i)
         {
             nonRealisticSimulationScore = i;
+        }
+
+        public void EasyUI()
+        {
+            easyUI = true;
+        }
+        
+        public void NotEasyUI()
+        {
+            easyUI = false;
         }
         
         public void TooEasy()

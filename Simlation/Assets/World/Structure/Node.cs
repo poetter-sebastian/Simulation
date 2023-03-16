@@ -45,35 +45,35 @@ namespace World.Structure
         public bool UpLeft(out Node node) => QueryEdges(Graph.Direction.UpLeft, out node);
         public bool UpLeft() => QueryEdges(Graph.Direction.UpLeft, out _);
 
-        public bool QueryEdges(Graph.Direction dir, out Node node)
+        public bool QueryEdges(Graph.Direction dir, out Node node) //O(14) Θ(7) Θ(1)
         {
-            node = null;
-            var ret = false;
-            foreach (var otherNode in Edges.Select(edge => edge.GetOtherNode(this)).Where(otherNode => Direction(dir, otherNode.Pos)))
+            node = null; //O(1)
+            var ret = false; //O(1)
+            foreach (var otherNode in Edges.Select(edge => edge.GetOtherNode(this)).Where(otherNode => Direction(dir, otherNode.Pos))) //O(8)
             {
-                ret = true;
-                node = otherNode;
+                ret = true; //O(1)
+                node = otherNode; //O(1)
                 break;
             }
 
             return ret;
         }
 
-        public bool Direction(Graph.Direction dir, Vector3 v) => dir switch 
+        public bool Direction(Graph.Direction dir, Vector3 v) => dir switch //, O(8)
         {
             //north x==x,   z++
             //south x==x,   z--
             //east  x++,    z==z
             //west  x--,    z==z
             
-            Graph.Direction.North => Math.Abs(Pos.x - v.x) < Precision && Pos.z < v.z,
-            Graph.Direction.NorthEast => Pos.x < v.x && Pos.z < v.z,
-            Graph.Direction.East => Pos.x < v.x && Math.Abs(Pos.z - v.z) < Precision,
-            Graph.Direction.SouthEast => Pos.x < v.x && Pos.z > v.z,
-            Graph.Direction.South => Math.Abs(Pos.x - v.x) < Precision && Pos.z > v.z,
-            Graph.Direction.SouthWest => Pos.x > v.x && Pos.z > v.z,
-            Graph.Direction.West => Pos.x > v.x && Math.Abs(Pos.z - v.z) < Precision,
-            Graph.Direction.NorthWest => Pos.x > v.x && Pos.z < v.z,
+            Graph.Direction.North => Math.Abs(Pos.x - v.x) < Precision && Pos.z < v.z, //O(1)
+            Graph.Direction.NorthEast => Pos.x < v.x && Pos.z < v.z, //O(1)
+            Graph.Direction.East => Pos.x < v.x && Math.Abs(Pos.z - v.z) < Precision, //O(1)
+            Graph.Direction.SouthEast => Pos.x < v.x && Pos.z > v.z, //O(1)
+            Graph.Direction.South => Math.Abs(Pos.x - v.x) < Precision && Pos.z > v.z, //O(1)
+            Graph.Direction.SouthWest => Pos.x > v.x && Pos.z > v.z, //O(1)
+            Graph.Direction.West => Pos.x > v.x && Math.Abs(Pos.z - v.z) < Precision, //O(1)
+            Graph.Direction.NorthWest => Pos.x > v.x && Pos.z < v.z, //O(1)
             _ => throw new ArgumentOutOfRangeException(nameof(dir), dir, null)
         };
 

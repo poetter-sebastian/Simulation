@@ -84,39 +84,45 @@ namespace World.Environment
         private float maxHeight = 0;
         private float minHeight = float.MaxValue;
 
+        /// <summary>
+        /// Generate the graph for movement and world-mesh
+        /// </summary>
+        /// <param name="vertices"></param>
+        /// <complexity>O(6n²+164n+1204) => O(6n²+164n), Θ(6n²+142n+841) => Θ(6n²+142n+841) => Θ(6n²+142n)</complexity>
+        /// <returns></returns>
         private Mesh GenerateGraph(out Vector3[] vertices)
         {
-            maxHeight = float.MinValue;
-            minHeight = float.MaxValue;
+            maxHeight = float.MinValue; //O(1)
+            minHeight = float.MaxValue; //O(1)
 
-            MeshGraph = new Graph();
-            Grounds = new Dictionary<Vector2, Ground>();
-            MovementGraph = new Graph();
+            MeshGraph = new Graph(); //O(1)
+            Grounds = new Dictionary<Vector2, Ground>(); //O(1)
+            MovementGraph = new Graph(); //O(1)
 
-            var mesh = new Mesh();
-            mesh.Clear();
-            vertices = new Vector3[size.x * size.y];
+            var mesh = new Mesh(); //O(1)
+            mesh.Clear(); //O(1)
+            vertices = new Vector3[size.x * size.y]; //O(1)
             var noiseMap =
-                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed, scale, octave, persistence, lacunarity, Vector3.zero);
+                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed, scale, octave, persistence, lacunarity, Vector3.zero); //O(145n²)
             
             var noiseMapSand =
-                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed+1, scale, octave, persistence, lacunarity, Vector3.zero);
+                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed+1, scale, octave, persistence, lacunarity, Vector3.zero); //O(145n²)
             
             var noiseMaSilt =
-                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed+2, scale, octave, persistence, lacunarity, Vector3.zero);
+                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed+2, scale, octave, persistence, lacunarity, Vector3.zero); //O(145n²)
             
             var noiseMapClay =
-                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed+3, scale, octave, persistence, lacunarity, Vector3.zero);
+                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed+3, scale, octave, persistence, lacunarity, Vector3.zero); //O(145n²)
 
             var noiseMapLoam =
-                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed+4, scale, octave, persistence, lacunarity, Vector3.zero);
+                Noise.GenerateNoiseMap(size.x + 1, size.y + 1, seed+4, scale, octave, persistence, lacunarity, Vector3.zero); //O(145n²)
             
             Node meshNode = null, graphNode = null;
             int x;
-            for (x = 0; x < size.x; x++)
+            for (x = 0; x < size.x; x++) //O(n²+44n+484) Θ(n²+22n+121)
             {
                 int z;
-                for (z = 0; z < size.y; z++)
+                for (z = 0; z < size.y; z++) //O(n*22) Θ(n*11)
                 {
                     //high scale
                     var y = noiseMap[x, z] * highMultiplier.Evaluate(noiseMap[x, z]) * highScale; 
@@ -144,7 +150,7 @@ namespace World.Environment
                         }
                     }
 
-                    if (y < minHeight)
+                    if (y < minHeight) 
                     {
                         minHeight = y;
                     }
@@ -186,7 +192,7 @@ namespace World.Environment
                     }
                 }
 
-                meshNode = null;
+                meshNode = null; //O(22)
                 //graphNode = null;
             }
             return mesh;
@@ -226,52 +232,62 @@ namespace World.Environment
             mesh.colors = texture;
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <complexity>O(n²+94n+2214) => O(n²+94n) => O(n²), Θ(n²+18n+86) => Θ(n²+18n) => Θ(n²), Ω(n²)</complexity>
+        /// <returns></returns>
         private int[] GenerateTriangles()
         {
-            var triangles = new int[size.x * size.y * 6];
-            var currentPos = Vector3.zero;
+            var triangles = new int[size.x * size.y * 6]; //O(1)
+            var currentPos = Vector3.zero; //O(1)
 
-            var next = MeshGraph.Nodes[currentPos];
-            Node firstElementInRow;
-            var i = 0;
+            var next = MeshGraph.Nodes[currentPos]; //O(1)
+            Node firstElementInRow; //O(1)
+            var i = 0; //O(1)
 
             //triangles
-            do
+            do //O(n²+94n+2214) => O(n²+94n) => O(n²), Θ(n²+18n+81) => Θ(n²+18n) => Θ(n²), Ω(n²)
             {
                 firstElementInRow = next;
                 Node startVertex;
                 do
                 {
                     //0
-                    startVertex = next;
-                    triangles[i++] = startVertex.ID;
+                    startVertex = next; //O(1)
+                    triangles[i++] = startVertex.ID; //O(1)
                     //1
-                    startVertex.Up(out next);
+                    startVertex.Up(out next); //O(14) Θ(7) Θ(1)
                     triangles[i++] = next.ID;
                     //2
-                    next.Right(out var right);
-                    triangles[i++] = right.ID;
+                    next.Right(out var right); //O(14) Θ(7) Θ(1)
+                    triangles[i++] = right.ID; //O(1)
                     //0
-                    triangles[i++] = startVertex.ID;
+                    triangles[i++] = startVertex.ID; //O(1)
                     //2
-                    triangles[i++] = right.ID;
+                    triangles[i++] = right.ID; //O(1)
                     //3
-                    right.Down(out next);
+                    right.Down(out next); //O(14) Θ(7) Θ(1)
                     triangles[i++] = next.ID;
-                } while (startVertex.Up(out next) && next.Up());
-            } while (firstElementInRow.Right(out next) && next.Right());
+                } while (startVertex.Up(out next) && next.Up()); //O(n+47)
+            } while (firstElementInRow.Right(out next) && next.Right()); //O(n+47)
 
             return triangles;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <complexity>O(n²+2) => O(n²), Θ(n²+2) => Θ(n²), Ω(n²)</complexity>
+        /// <param name="mesh"></param>
         private void GenerateUV(Mesh mesh)
         {
-            var uv = new Vector2[mesh.vertexCount];
-            for (var i = 0; i < uv.Length; i++)
+            var uv = new Vector2[mesh.vertexCount]; //O(1)
+            for (var i = 0; i < uv.Length; i++) //O(n²)
             {
                 uv[i] = new Vector2(mesh.vertices[i].x, mesh.vertices[i].z);
             }
-            mesh.uv = uv;
+            mesh.uv = uv; //O(1)
         }
 
         [Button("Generate")]
@@ -436,20 +452,21 @@ namespace World.Environment
         /// </summary>
         /// <param name="sender">TimeHandler caller</param>
         /// <param name="e">Event data</param>
+        /// <complexity>O(3p+1) => O(3p), Θ(p+1) => Θ(p), Ω(p)</complexity>
         public void HandleAgents(object sender, EventArgs e)
         {
             //#if UNITY_EDITOR
             timer.Start();
             //#endif
-            StartCoroutine(IteratePlants());
-            foreach (var rAgent in removeList)
+            StartCoroutine(IteratePlants()); //O(p) (all plants)
+            foreach (var rAgent in removeList) //O(p), Θ(p/2), Ω(1)
             {
-                rAgent.OnAfterDeath(this, EventArgs.Empty);
+                rAgent.OnAfterDeath(this, EventArgs.Empty); //O(1)
             }
-            removeList.Clear();
-            if (currentColor == ActiveColor.Arid)
+            removeList.Clear();//O(p), Θ(p/2), Ω(1)
+            if (currentColor == ActiveColor.Arid) //O(1)
             {
-                GetComponent<MeshFilter>().sharedMesh.colors = aridityColors;
+                GetComponent<MeshFilter>().sharedMesh.colors = aridityColors; //O(1)
             }
             //#if UNITY_EDITOR
             timer.Stop();
@@ -461,24 +478,25 @@ namespace World.Environment
         /// <summary>
         /// Iterate over all plants and do one plant per update.
         /// </summary>
+        /// <complexity>O((n+7)*(k+7)*(p+7)), Θ((n+6)*(k+6)*(p+6)), Ω(n)</complexity>
         /// <returns>Null yield because there is no waiting time.</returns>
         public IEnumerator IteratePlants()
         {
             foreach (Transform plantTypes in plants.transform)
             {
                 //trees, bushes, grass
-                foreach (Transform plant in plantTypes.transform)
+                foreach (Transform plant in plantTypes.transform) //O(n+7), Θ(n+6), Ω(n)
                 {
-                    if (plant.gameObject.activeSelf)
+                    if (plant.gameObject.activeSelf) //O(7), Θ(6), Ω(6)
                     {
-                        var agent = plant.GetComponent<FloraAgent>();
+                        var agent = plant.GetComponent<FloraAgent>();  //O(3) because 3 components
                         if(agent)
                         {
-                            plant.GetComponent<FloraAgent>().OnHandle(this);
+                            plant.GetComponent<FloraAgent>().OnHandle(this); //O(3) because 3 components
                         }
                         else
                         {
-                            plant.GetComponentInParent<FloraAgent>()?.OnHandle(this);
+                            plant.GetComponentInParent<FloraAgent>()?.OnHandle(this); //O(4) because 3 components in parent
                         }
                         yield return null;
                     }
@@ -691,16 +709,22 @@ namespace World.Environment
             {
                 foreach (var node in MeshGraph.NodeValues)
                 {
-                    Gizmos.color = node.NodeColor();
                     //Handles.Label(new Vector3(node.Pos.x, node.Pos.y+1, node.Pos.z), node.ID.ToString());
-                    Handles.Label(new Vector3(node.Pos.x, node.Pos.y+1, node.Pos.z), node.Pos.y.ToString(CultureInfo.CurrentCulture));
+                    GUIStyle style = new GUIStyle();
+                    style.normal.textColor = Color.white;
+ 
+                    Handles.BeginGUI();
+                    //Handles.Label(new Vector3(node.Pos.x, node.Pos.y+0.5f, node.Pos.z+0.5f), "X:" + node.Pos.x + " Z:" + node.Pos.z, style);
+                    Handles.EndGUI();
+                    
+                    Gizmos.color = Color.gray;
                     Gizmos.DrawSphere(new Vector3(node.Pos.x, node.Pos.y, node.Pos.z), 0.2f*pointScale);
                 }
                 foreach (var edge in MeshGraph.EdgeValues)
                 {
                     var vec1 = edge.Nodes[0].Pos;
                     var vec2 = edge.Nodes[1].Pos;
-                    Gizmos.color = edge.ColorType;
+                    Gizmos.color = Color.blue;
                     Gizmos.DrawLine(new Vector3(vec1.x, vec1.y, vec1.z), new Vector3(vec2.x, vec2.y, vec2.z));
                 }
             }

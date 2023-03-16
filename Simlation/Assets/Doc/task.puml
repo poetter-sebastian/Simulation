@@ -1,0 +1,15 @@
+﻿@startuml
+    (*) --> "ActivateTask"
+    "ActivateTask" -right-> "RegisterEvents"
+    "RegisterEvents" -right-> "WaitForEvents"
+    "WaitForEvents" -right-> if "Conditions satisfied?" then
+        -right->[yes] "TaskSuccess"
+    else
+        -right->[no] "WaitForEvents"
+    endif
+    "TaskSuccess" -right-> if "Next Task?" then
+        -right->[ ] "ActivateTask"
+    else
+        -->[no] (*)
+    endif
+@enduml

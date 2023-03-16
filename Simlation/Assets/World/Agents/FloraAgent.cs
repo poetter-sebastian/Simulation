@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Utility;
 using World.Agents.Modifier;
 using World.Environment;
@@ -66,7 +67,7 @@ namespace World.Agents
 
         public void AddDisease(Disease d)
         {
-            diseases.Add(d);
+            (diseases ?? new List<Disease>()).Add(d);
         }
     }
 }

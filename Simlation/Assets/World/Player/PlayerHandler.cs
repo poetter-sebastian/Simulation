@@ -3,6 +3,7 @@ using System.Globalization;
 using Player.Camera;
 using Player.GUI;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utility;
 using World.Agents;
 using World.Environment;
@@ -17,7 +18,7 @@ namespace Player
         public string LN() => "Time handler";
         
         [Header("Player properties")]
-        public string PlayerName = "Jeff";
+        public string playerName = "Jeff";
         public long playtime = 0;
         public GUIController ui;
         public FreeLookUserInput movement;

@@ -23,36 +23,42 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-de
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 78a53c3521b9a3f49b23902ac2aa8703
     m_Address: Enum_de
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-de
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 69ef597f7fd5a0148834e74096d8de71
     m_Address: Units_de
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-de
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b996feaadf99b9242a0dba7d93319e91
     m_Address: Tasks_de
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-de
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 67ffcc2eb73242145b355b280966de0d
     m_Address: Trees_de
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-de
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6a5aee605b89c6b40ade60ac900d183a
     m_Address: TreeDiseases_de
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-de
     - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: ffe07a746f024e446906ed38eadc61e5, type: 2}
   m_SchemaSet:

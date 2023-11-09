@@ -1,5 +1,5 @@
 # Simulation
-
+Link to the master thesis <https://nbn-resolving.org/urn:nbn:de:bsz:l189-qucosa2-860658/>
 
 # AGPL-3.0-or-later
 Copyright (c) the respective contributors, as shown by the AUTHORS file.
